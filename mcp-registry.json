@@ -1,0 +1,4731 @@
+{
+  "title": "Curated Free MCP Server Registry",
+  "description": "A comprehensive, deduplicated directory of free MCP (Model Context Protocol) servers organized across 15 functional categories, aggregated from multiple public directories and registries. Merged from opencodelinux (78 servers) and opencode-accomplishments (145 servers).",
+  "version": "3.0.0",
+  "lastUpdated": "2026-07-18",
+  "totalServers": 223,
+  "totalCategories": 15,
+  "sources": [
+    {
+      "name": "PulseMCP",
+      "url": "https://pulsemcp.com",
+      "type": "directory",
+      "description": "Community-driven MCP server directory with reviews and ratings"
+    },
+    {
+      "name": "MCP.so",
+      "url": "https://mcp.so",
+      "type": "directory",
+      "description": "Searchable MCP server registry with installation guides"
+    },
+    {
+      "name": "Glama.ai",
+      "url": "https://glama.ai/mcp/servers",
+      "type": "directory",
+      "description": "AI-focused MCP server discovery platform"
+    },
+    {
+      "name": "Smithery",
+      "url": "https://smithery.ai",
+      "type": "registry",
+      "description": "MCP server registry with one-click deployment support"
+    },
+    {
+      "name": "MCPServers.org",
+      "url": "https://mcpservers.org",
+      "type": "directory",
+      "description": "Open-source MCP server listing and comparison tool"
+    },
+    {
+      "name": "Cursor Directory",
+      "url": "https://cursor.directory",
+      "type": "directory",
+      "description": "MCP servers curated for Cursor IDE integration"
+    },
+    {
+      "name": "GitHub Awesome MCP",
+      "url": "https://github.com/punkpeye/awesome-mcp-servers",
+      "type": "curated-list",
+      "description": "Community-maintained awesome list of MCP servers on GitHub"
+    },
+    {
+      "name": "NPM Registry",
+      "url": "https://npmjs.com",
+      "type": "package-registry",
+      "description": "NPM package registry for JavaScript/TypeScript MCP servers"
+    },
+    {
+      "name": "PyPI",
+      "url": "https://pypi.org",
+      "type": "package-registry",
+      "description": "Python Package Index for Python-based MCP servers"
+    },
+    {
+      "name": "Reddit r/MCP",
+      "url": "https://reddit.com/r/MCP",
+      "type": "community",
+      "description": "Reddit community for MCP server discussions and releases"
+    },
+    {
+      "name": "MCP Hub",
+      "url": "https://mcphub.io",
+      "type": "directory",
+      "description": "Aggregated MCP server hub with analytics and trend tracking"
+    }
+  ],
+  "categories": [
+    "File & Storage",
+    "Database",
+    "Web & Search",
+    "Cloud & DevOps",
+    "Communication",
+    "AI & ML",
+    "Productivity",
+    "Development",
+    "Analytics",
+    "Security",
+    "Content & Media",
+    "Monitoring",
+    "Integration",
+    "Utility",
+    "ModelScope"
+  ],
+  "servers": [
+    {
+      "name": "filesystem",
+      "category": "File & Storage",
+      "description": "Read, write, and manage files and directories on the local filesystem with configurable access controls",
+      "protocol": "stdio",
+      "isFree": true,
+      "tags": [
+        "files",
+        "storage",
+        "local",
+        "read-write",
+        "foundational"
+      ],
+      "stackCompatibility": [
+        "github",
+        "fetch",
+        "memory",
+        "sqlite"
+      ],
+      "stackConflict": [
+        "google-drive"
+      ]
+    },
+    {
+      "name": "google-drive",
+      "category": "File & Storage",
+      "description": "Access, search, and manage files in Google Drive including Docs, Sheets, and Slides",
+      "protocol": "SSE",
+      "isFree": true,
+      "tags": [
+        "cloud-storage",
+        "google",
+        "docs",
+        "sheets",
+        "collaboration"
+      ],
+      "stackCompatibility": [
+        "slack",
+        "fetch",
+        "brave-search"
+      ],
+      "stackConflict": [
+        "filesystem",
+        "dropbox"
+      ]
+    },
+    {
+      "name": "dropbox",
+      "category": "File & Storage",
+      "description": "Access and manage files stored in Dropbox with full read-write capabilities",
+      "protocol": "SSE",
+      "isFree": true,
+      "tags": [
+        "cloud-storage",
+        "dropbox",
+        "files",
+        "sharing"
+      ],
+      "stackCompatibility": [
+        "slack",
+        "fetch"
+      ],
+      "stackConflict": [
+        "google-drive",
+        "filesystem"
+      ]
+    },
+    {
+      "name": "s3",
+      "category": "File & Storage",
+      "description": "Interact with Amazon S3 buckets for object storage operations including upload, download, and list",
+      "protocol": "stdio",
+      "isFree": true,
+      "tags": [
+        "aws",
+        "cloud-storage",
+        "object-storage",
+        "s3"
+      ],
+      "stackCompatibility": [
+        "docker",
+        "cloudflare",
+        "fetch"
+      ],
+      "stackConflict": [
+        "google-drive",
+        "dropbox"
+      ]
+    },
+    {
+      "name": "onedrive",
+      "category": "File & Storage",
+      "description": "Access and manage files in Microsoft OneDrive and SharePoint document libraries",
+      "protocol": "SSE",
+      "isFree": true,
+      "tags": [
+        "microsoft",
+        "cloud-storage",
+        "sharepoint",
+        "office"
+      ],
+      "stackCompatibility": [
+        "slack",
+        "todoist",
+        "notion"
+      ],
+      "stackConflict": [
+        "google-drive",
+        "dropbox"
+      ]
+    },
+    {
+      "name": "git",
+      "category": "File & Storage",
+      "description": "Perform Git operations directly — clone, commit, branch, diff, and log without a GitHub wrapper",
+      "protocol": "stdio",
+      "isFree": true,
+      "tags": [
+        "git",
+        "version-control",
+        "local",
+        "dvcs"
+      ],
+      "stackCompatibility": [
+        "filesystem",
+        "github",
+        "gitlab"
+      ],
+      "stackConflict": []
+    },
+    {
+      "name": "mongodb",
+      "category": "File & Storage",
+      "description": "Read and write documents in MongoDB collections with query and aggregation support",
+      "protocol": "stdio",
+      "isFree": true,
+      "tags": [
+        "mongodb",
+        "nosql",
+        "documents",
+        "database"
+      ],
+      "stackCompatibility": [
+        "fetch",
+        "redis",
+        "express"
+      ],
+      "stackConflict": [
+        "postgres"
+      ]
+    },
+    {
+      "name": "minio",
+      "category": "File & Storage",
+      "description": "S3-compatible local object storage for development and edge deployments using MinIO",
+      "protocol": "stdio",
+      "isFree": true,
+      "tags": [
+        "s3",
+        "local-storage",
+        "object-storage",
+        "minio"
+      ],
+      "stackCompatibility": [
+        "docker",
+        "kubernetes",
+        "s3"
+      ],
+      "stackConflict": []
+    },
+    {
+      "name": "postgres",
+      "category": "Database",
+      "description": "Execute SQL queries, manage schemas, and inspect data in PostgreSQL databases",
+      "protocol": "stdio",
+      "isFree": true,
+      "tags": [
+        "sql",
+        "database",
+        "postgresql",
+        "relational",
+        "production"
+      ],
+      "stackCompatibility": [
+        "github",
+        "vercel",
+        "prisma",
+        "fetch"
+      ],
+      "stackConflict": [
+        "sqlite"
+      ]
+    },
+    {
+      "name": "sqlite",
+      "category": "Database",
+      "description": "Query and manage SQLite databases — ideal for local analysis, prototyping, and embedded data",
+      "protocol": "stdio",
+      "isFree": true,
+      "tags": [
+        "sql",
+        "database",
+        "sqlite",
+        "local",
+        "embedded"
+      ],
+      "stackCompatibility": [
+        "fetch",
+        "filesystem",
+        "memory"
+      ],
+      "stackConflict": [
+        "postgres"
+      ]
+    },
+    {
+      "name": "mysql",
+      "category": "Database",
+      "description": "Connect to MySQL and MariaDB databases for querying, schema management, and data operations",
+      "protocol": "stdio",
+      "isFree": true,
+      "tags": [
+        "sql",
+        "database",
+        "mysql",
+        "mariadb",
+        "relational"
+      ],
+      "stackCompatibility": [
+        "docker",
+        "fetch",
+        "prisma"
+      ],
+      "stackConflict": [
+        "postgres",
+        "sqlite"
+      ]
+    },
+    {
+      "name": "redis",
+      "category": "Database",
+      "description": "Interact with Redis for key-value operations, caching, pub/sub messaging, and data structures",
+      "protocol": "stdio",
+      "isFree": true,
+      "tags": [
+        "redis",
+        "cache",
+        "key-value",
+        "pubsub",
+        "in-memory"
+      ],
+      "stackCompatibility": [
+        "docker",
+        "kubernetes",
+        "express"
+      ],
+      "stackConflict": []
+    },
+    {
+      "name": "supabase",
+      "category": "Database",
+      "description": "Access Supabase projects for PostgreSQL queries, auth, storage, and real-time subscriptions",
+      "protocol": "SSE",
+      "isFree": true,
+      "tags": [
+        "supabase",
+        "postgres",
+        "baas",
+        "auth",
+        "realtime"
+      ],
+      "stackCompatibility": [
+        "vercel",
+        "github",
+        "fetch"
+      ],
+      "stackConflict": [
+        "postgres"
+      ]
+    },
+    {
+      "name": "prisma",
+      "category": "Database",
+      "description": "Manage Prisma ORM schemas, run migrations, and introspect databases with type-safe queries",
+      "protocol": "stdio",
+      "isFree": true,
+      "tags": [
+        "orm",
+        "database",
+        "schema",
+        "migration",
+        "typescript"
+      ],
+      "stackCompatibility": [
+        "postgres",
+        "mysql",
+        "vercel"
+      ],
+      "stackConflict": []
+    },
+    {
+      "name": "dynamodb",
+      "category": "Database",
+      "description": "Query and manage AWS DynamoDB tables for NoSQL key-value and document data",
+      "protocol": "stdio",
+      "isFree": true,
+      "tags": [
+        "aws",
+        "nosql",
+        "dynamodb",
+        "serverless",
+        "key-value"
+      ],
+      "stackCompatibility": [
+        "s3",
+        "cloudflare",
+        "lambda"
+      ],
+      "stackConflict": [
+        "mongodb"
+      ]
+    },
+    {
+      "name": "neo4j",
+      "category": "Database",
+      "description": "Execute Cypher queries against Neo4j graph databases for relationship-heavy data modeling",
+      "protocol": "stdio",
+      "isFree": true,
+      "tags": [
+        "graph",
+        "neo4j",
+        "cypher",
+        "relationships",
+        "knowledge-graph"
+      ],
+      "stackCompatibility": [
+        "memory",
+        "fetch",
+        "brave-search"
+      ],
+      "stackConflict": []
+    },
+    {
+      "name": "brave-search",
+      "category": "Web & Search",
+      "description": "Search the web using Brave Search API for real-time information discovery and research",
+      "protocol": "SSE",
+      "isFree": true,
+      "tags": [
+        "search",
+        "web",
+        "brave",
+        "realtime",
+        "research"
+      ],
+      "stackCompatibility": [
+        "fetch",
+        "memory",
+        "sqlite",
+        "sequential-thinking"
+      ],
+      "stackConflict": [
+        "google-search",
+        "tavily"
+      ]
+    },
+    {
+      "name": "fetch",
+      "category": "Web & Search",
+      "description": "Retrieve and extract content from URLs — HTML pages, APIs, and structured data sources",
+      "protocol": "stdio",
+      "isFree": true,
+      "tags": [
+        "http",
+        "web",
+        "fetch",
+        "api",
+        "scraping"
+      ],
+      "stackCompatibility": [
+        "brave-search",
+        "filesystem",
+        "sqlite",
+        "memory"
+      ],
+      "stackConflict": [
+        "puppeteer"
+      ]
+    },
+    {
+      "name": "puppeteer",
+      "category": "Web & Search",
+      "description": "Launch and control headless Chrome browsers for web scraping, screenshots, and automated testing",
+      "protocol": "stdio",
+      "isFree": true,
+      "tags": [
+        "browser",
+        "automation",
+        "scraping",
+        "screenshots",
+        "testing"
+      ],
+      "stackCompatibility": [
+        "filesystem",
+        "github",
+        "slack"
+      ],
+      "stackConflict": [
+        "fetch",
+        "playwright"
+      ]
+    },
+    {
+      "name": "google-search",
+      "category": "Web & Search",
+      "description": "Search the web via Google Custom Search API with result ranking and snippet extraction",
+      "protocol": "SSE",
+      "isFree": true,
+      "tags": [
+        "search",
+        "google",
+        "web",
+        "ranking"
+      ],
+      "stackCompatibility": [
+        "fetch",
+        "memory",
+        "sequential-thinking"
+      ],
+      "stackConflict": [
+        "brave-search",
+        "tavily"
+      ]
+    },
+    {
+      "name": "tavily",
+      "category": "Web & Search",
+      "description": "AI-optimized web search with extracted answers and contextual results via Tavily API",
+      "protocol": "SSE",
+      "isFree": true,
+      "tags": [
+        "search",
+        "ai",
+        "extraction",
+        "contextual",
+        "research"
+      ],
+      "stackCompatibility": [
+        "fetch",
+        "memory",
+        "sequential-thinking"
+      ],
+      "stackConflict": [
+        "brave-search",
+        "google-search"
+      ]
+    },
+    {
+      "name": "exa",
+      "category": "Web & Search",
+      "description": "Neural search engine using embeddings for semantic web search and content discovery",
+      "protocol": "SSE",
+      "isFree": true,
+      "tags": [
+        "search",
+        "semantic",
+        "embeddings",
+        "neural",
+        "discovery"
+      ],
+      "stackCompatibility": [
+        "fetch",
+        "memory",
+        "qdrant"
+      ],
+      "stackConflict": [
+        "brave-search"
+      ]
+    },
+    {
+      "name": "playwright",
+      "category": "Web & Search",
+      "description": "Cross-browser automation with Playwright for end-to-end testing and web interaction",
+      "protocol": "stdio",
+      "isFree": true,
+      "tags": [
+        "browser",
+        "testing",
+        "automation",
+        "e2e",
+        "cross-browser"
+      ],
+      "stackCompatibility": [
+        "github",
+        "filesystem",
+        "docker"
+      ],
+      "stackConflict": [
+        "puppeteer"
+      ]
+    },
+    {
+      "name": "jina-reader",
+      "category": "Web & Search",
+      "description": "Extract clean markdown from any URL using Jina AI Reader for high-quality content parsing",
+      "protocol": "SSE",
+      "isFree": true,
+      "tags": [
+        "reader",
+        "markdown",
+        "extraction",
+        "clean",
+        "jina"
+      ],
+      "stackCompatibility": [
+        "brave-search",
+        "fetch",
+        "memory"
+      ],
+      "stackConflict": []
+    },
+    {
+      "name": "firecrawl",
+      "category": "Web & Search",
+      "description": "Crawl and scrape entire websites with recursive linking, structured extraction, and LLM-friendly output",
+      "protocol": "SSE",
+      "isFree": true,
+      "tags": [
+        "crawling",
+        "scraping",
+        "web",
+        "extraction",
+        "structured"
+      ],
+      "stackCompatibility": [
+        "fetch",
+        "brave-search",
+        "sqlite"
+      ],
+      "stackConflict": [
+        "puppeteer"
+      ]
+    },
+    {
+      "name": "docker",
+      "category": "Cloud & DevOps",
+      "description": "Build, manage, and orchestrate Docker containers, images, and compose stacks",
+      "protocol": "stdio",
+      "isFree": true,
+      "tags": [
+        "docker",
+        "containers",
+        "devops",
+        "compose",
+        "images"
+      ],
+      "stackCompatibility": [
+        "kubernetes",
+        "github",
+        "slack"
+      ],
+      "stackConflict": []
+    },
+    {
+      "name": "kubernetes",
+      "category": "Cloud & DevOps",
+      "description": "Manage Kubernetes clusters — deployments, services, pods, and scaling operations",
+      "protocol": "stdio",
+      "isFree": true,
+      "tags": [
+        "kubernetes",
+        "k8s",
+        "orchestration",
+        "containers",
+        "scaling"
+      ],
+      "stackCompatibility": [
+        "docker",
+        "github",
+        "slack",
+        "grafana"
+      ],
+      "stackConflict": []
+    },
+    {
+      "name": "vercel",
+      "category": "Cloud & DevOps",
+      "description": "Deploy and manage applications on Vercel including previews, production deploys, and domain management",
+      "protocol": "SSE",
+      "isFree": true,
+      "tags": [
+        "vercel",
+        "deployment",
+        "serverless",
+        "edge",
+        "hosting"
+      ],
+      "stackCompatibility": [
+        "github",
+        "postgres",
+        "supabase",
+        "prisma"
+      ],
+      "stackConflict": [
+        "netlify",
+        "cloudflare"
+      ]
+    },
+    {
+      "name": "cloudflare",
+      "category": "Cloud & DevOps",
+      "description": "Manage Cloudflare Workers, Pages, DNS, and edge deployment configurations",
+      "protocol": "SSE",
+      "isFree": true,
+      "tags": [
+        "cloudflare",
+        "workers",
+        "edge",
+        "dns",
+        "cdn"
+      ],
+      "stackCompatibility": [
+        "github",
+        "s3",
+        "dynamodb"
+      ],
+      "stackConflict": [
+        "vercel",
+        "netlify"
+      ]
+    },
+    {
+      "name": "netlify",
+      "category": "Cloud & DevOps",
+      "description": "Deploy static sites and serverless functions on Netlify with automatic Git-based deploys",
+      "protocol": "SSE",
+      "isFree": true,
+      "tags": [
+        "netlify",
+        "deployment",
+        "static",
+        "serverless",
+        "jamstack"
+      ],
+      "stackCompatibility": [
+        "github",
+        "fetch",
+        "filesystem"
+      ],
+      "stackConflict": [
+        "vercel",
+        "cloudflare"
+      ]
+    },
+    {
+      "name": "terraform",
+      "category": "Cloud & DevOps",
+      "description": "Plan, apply, and manage Terraform infrastructure-as-code configurations and state",
+      "protocol": "stdio",
+      "isFree": true,
+      "tags": [
+        "terraform",
+        "iac",
+        "infrastructure",
+        "cloud",
+        "provisioning"
+      ],
+      "stackCompatibility": [
+        "kubernetes",
+        "docker",
+        "github",
+        "aws"
+      ],
+      "stackConflict": []
+    },
+    {
+      "name": "aws",
+      "category": "Cloud & DevOps",
+      "description": "Interact with AWS services — EC2, Lambda, S3, IAM, CloudWatch, and more via unified interface",
+      "protocol": "stdio",
+      "isFree": true,
+      "tags": [
+        "aws",
+        "cloud",
+        "ec2",
+        "lambda",
+        "iam"
+      ],
+      "stackCompatibility": [
+        "s3",
+        "dynamodb",
+        "terraform",
+        "docker"
+      ],
+      "stackConflict": [
+        "gcp",
+        "azure"
+      ]
+    },
+    {
+      "name": "gcp",
+      "category": "Cloud & DevOps",
+      "description": "Access Google Cloud Platform services including GCS, BigQuery, Cloud Run, and GKE",
+      "protocol": "SSE",
+      "isFree": true,
+      "tags": [
+        "gcp",
+        "cloud",
+        "bigquery",
+        "cloud-run",
+        "gke"
+      ],
+      "stackCompatibility": [
+        "google-drive",
+        "docker",
+        "kubernetes"
+      ],
+      "stackConflict": [
+        "aws",
+        "azure"
+      ]
+    },
+    {
+      "name": "azure",
+      "category": "Cloud & DevOps",
+      "description": "Manage Microsoft Azure resources — VMs, Azure Functions, Blob Storage, and Active Directory",
+      "protocol": "SSE",
+      "isFree": true,
+      "tags": [
+        "azure",
+        "cloud",
+        "microsoft",
+        "vm",
+        "functions"
+      ],
+      "stackCompatibility": [
+        "onedrive",
+        "docker",
+        "terraform"
+      ],
+      "stackConflict": [
+        "aws",
+        "gcp"
+      ]
+    },
+    {
+      "name": "lambda",
+      "category": "Cloud & DevOps",
+      "description": "Deploy and invoke AWS Lambda functions with configuration and log access",
+      "protocol": "stdio",
+      "isFree": true,
+      "tags": [
+        "aws",
+        "serverless",
+        "lambda",
+        "functions"
+      ],
+      "stackCompatibility": [
+        "aws",
+        "dynamodb",
+        "s3",
+        "api-gateway"
+      ],
+      "stackConflict": [
+        "vercel",
+        "cloudflare"
+      ]
+    },
+    {
+      "name": "slack",
+      "category": "Communication",
+      "description": "Send messages, read channels, and manage workflows in Slack workspaces",
+      "protocol": "SSE",
+      "isFree": true,
+      "tags": [
+        "slack",
+        "messaging",
+        "channels",
+        "notifications",
+        "team"
+      ],
+      "stackCompatibility": [
+        "github",
+        "google-drive",
+        "filesystem",
+        "notion"
+      ],
+      "stackConflict": [
+        "discord",
+        "microsoft-teams"
+      ]
+    },
+    {
+      "name": "discord",
+      "category": "Communication",
+      "description": "Read and send messages in Discord servers and manage channel interactions",
+      "protocol": "SSE",
+      "isFree": true,
+      "tags": [
+        "discord",
+        "messaging",
+        "gaming",
+        "community",
+        "bots"
+      ],
+      "stackCompatibility": [
+        "github",
+        "fetch",
+        "filesystem"
+      ],
+      "stackConflict": [
+        "slack",
+        "microsoft-teams"
+      ]
+    },
+    {
+      "name": "microsoft-teams",
+      "category": "Communication",
+      "description": "Access Microsoft Teams channels, messages, and meetings for enterprise communication",
+      "protocol": "SSE",
+      "isFree": true,
+      "tags": [
+        "microsoft",
+        "teams",
+        "enterprise",
+        "messaging",
+        "meetings"
+      ],
+      "stackCompatibility": [
+        "onedrive",
+        "todoist",
+        "notion"
+      ],
+      "stackConflict": [
+        "slack",
+        "discord"
+      ]
+    },
+    {
+      "name": "gmail",
+      "category": "Communication",
+      "description": "Read, send, and manage emails in Gmail with search and label operations",
+      "protocol": "SSE",
+      "isFree": true,
+      "tags": [
+        "email",
+        "gmail",
+        "google",
+        "communication"
+      ],
+      "stackCompatibility": [
+        "google-drive",
+        "google-calendar",
+        "slack"
+      ],
+      "stackConflict": [
+        "outlook"
+      ]
+    },
+    {
+      "name": "outlook",
+      "category": "Communication",
+      "description": "Access Microsoft Outlook email, calendar, and contacts for enterprise communication",
+      "protocol": "SSE",
+      "isFree": true,
+      "tags": [
+        "email",
+        "outlook",
+        "microsoft",
+        "enterprise"
+      ],
+      "stackCompatibility": [
+        "microsoft-teams",
+        "onedrive",
+        "todoist"
+      ],
+      "stackConflict": [
+        "gmail"
+      ]
+    },
+    {
+      "name": "twilio",
+      "category": "Communication",
+      "description": "Send SMS, make calls, and manage Twilio communication channels programmatically",
+      "protocol": "SSE",
+      "isFree": true,
+      "tags": [
+        "sms",
+        "voice",
+        "twilio",
+        "telecom",
+        "notifications"
+      ],
+      "stackCompatibility": [
+        "slack",
+        "aws",
+        "lambda"
+      ],
+      "stackConflict": []
+    },
+    {
+      "name": "sendgrid",
+      "category": "Communication",
+      "description": "Send and manage transactional and marketing emails via SendGrid API",
+      "protocol": "SSE",
+      "isFree": true,
+      "tags": [
+        "email",
+        "sendgrid",
+        "transactional",
+        "marketing"
+      ],
+      "stackCompatibility": [
+        "aws",
+        "lambda",
+        "express"
+      ],
+      "stackConflict": [
+        "gmail",
+        "outlook"
+      ]
+    },
+    {
+      "name": "telegram",
+      "category": "Communication",
+      "description": "Send and receive messages via Telegram Bot API for notifications and bot interactions",
+      "protocol": "SSE",
+      "isFree": true,
+      "tags": [
+        "telegram",
+        "messaging",
+        "bot",
+        "notifications"
+      ],
+      "stackCompatibility": [
+        "fetch",
+        "github",
+        "brave-search"
+      ],
+      "stackConflict": [
+        "slack",
+        "discord"
+      ]
+    },
+    {
+      "name": "resend",
+      "category": "Communication",
+      "description": "Send emails via Resend API with template support for developer-first transactional email",
+      "protocol": "SSE",
+      "isFree": true,
+      "tags": [
+        "email",
+        "resend",
+        "transactional",
+        "developer",
+        "templates"
+      ],
+      "stackCompatibility": [
+        "vercel",
+        "github",
+        "express"
+      ],
+      "stackConflict": [
+        "sendgrid",
+        "gmail"
+      ]
+    },
+    {
+      "name": "memory",
+      "category": "AI & ML",
+      "description": "Persistent key-value memory store for maintaining context and knowledge across conversation sessions",
+      "protocol": "stdio",
+      "isFree": true,
+      "tags": [
+        "memory",
+        "knowledge",
+        "persistence",
+        "context",
+        "session"
+      ],
+      "stackCompatibility": [
+        "brave-search",
+        "fetch",
+        "sqlite",
+        "sequential-thinking"
+      ],
+      "stackConflict": [
+        "redis"
+      ]
+    },
+    {
+      "name": "sequential-thinking",
+      "category": "AI & ML",
+      "description": "Structured step-by-step reasoning engine for complex problem decomposition and logical deduction",
+      "protocol": "stdio",
+      "isFree": true,
+      "tags": [
+        "reasoning",
+        "thinking",
+        "logic",
+        "decomposition",
+        "chain-of-thought"
+      ],
+      "stackCompatibility": [
+        "brave-search",
+        "memory",
+        "fetch",
+        "sqlite"
+      ],
+      "stackConflict": []
+    },
+    {
+      "name": "everart",
+      "category": "AI & ML",
+      "description": "Generate images and visual art using AI models with style control and prompt engineering",
+      "protocol": "stdio",
+      "isFree": true,
+      "tags": [
+        "image-generation",
+        "ai",
+        "art",
+        "creative",
+        "diffusion"
+      ],
+      "stackCompatibility": [
+        "filesystem",
+        "google-drive",
+        "slack"
+      ],
+      "stackConflict": []
+    },
+    {
+      "name": "openai",
+      "category": "AI & ML",
+      "description": "Access OpenAI models for text generation, embeddings, and vision via direct API integration",
+      "protocol": "SSE",
+      "isFree": true,
+      "tags": [
+        "llm",
+        "openai",
+        "gpt",
+        "embeddings",
+        "vision"
+      ],
+      "stackCompatibility": [
+        "memory",
+        "sequential-thinking",
+        "brave-search"
+      ],
+      "stackConflict": [
+        "anthropic",
+        "ollama"
+      ]
+    },
+    {
+      "name": "anthropic",
+      "category": "AI & ML",
+      "description": "Access Anthropic Claude models for advanced reasoning, analysis, and generation tasks",
+      "protocol": "SSE",
+      "isFree": true,
+      "tags": [
+        "llm",
+        "anthropic",
+        "claude",
+        "reasoning",
+        "safety"
+      ],
+      "stackCompatibility": [
+        "memory",
+        "sequential-thinking",
+        "brave-search"
+      ],
+      "stackConflict": [
+        "openai",
+        "ollama"
+      ]
+    },
+    {
+      "name": "ollama",
+      "category": "AI & ML",
+      "description": "Run and interact with local LLMs via Ollama for private, offline AI inference",
+      "protocol": "stdio",
+      "isFree": true,
+      "tags": [
+        "llm",
+        "local",
+        "ollama",
+        "private",
+        "offline"
+      ],
+      "stackCompatibility": [
+        "memory",
+        "sequential-thinking",
+        "filesystem"
+      ],
+      "stackConflict": [
+        "openai",
+        "anthropic"
+      ]
+    },
+    {
+      "name": "huggingface",
+      "category": "AI & ML",
+      "description": "Access Hugging Face models, datasets, and inference endpoints for ML model deployment",
+      "protocol": "SSE",
+      "isFree": true,
+      "tags": [
+        "ml",
+        "models",
+        "huggingface",
+        "inference",
+        "datasets"
+      ],
+      "stackCompatibility": [
+        "fetch",
+        "filesystem",
+        "docker"
+      ],
+      "stackConflict": []
+    },
+    {
+      "name": "langchain",
+      "category": "AI & ML",
+      "description": "Build and orchestrate LangChain chains, agents, and retrieval-augmented generation pipelines",
+      "protocol": "stdio",
+      "isFree": true,
+      "tags": [
+        "langchain",
+        "rag",
+        "agents",
+        "chains",
+        "orchestration"
+      ],
+      "stackCompatibility": [
+        "openai",
+        "qdrant",
+        "fetch",
+        "memory"
+      ],
+      "stackConflict": []
+    },
+    {
+      "name": "qdrant",
+      "category": "AI & ML",
+      "description": "Vector similarity search with Qdrant for embeddings storage, retrieval, and semantic queries",
+      "protocol": "stdio",
+      "isFree": true,
+      "tags": [
+        "vector-db",
+        "embeddings",
+        "search",
+        "qdrant",
+        "similarity"
+      ],
+      "stackCompatibility": [
+        "openai",
+        "langchain",
+        "memory"
+      ],
+      "stackConflict": [
+        "chromadb",
+        "pinecone"
+      ]
+    },
+    {
+      "name": "chromadb",
+      "category": "AI & ML",
+      "description": "Local vector database using ChromaDB for embedding storage and similarity search",
+      "protocol": "stdio",
+      "isFree": true,
+      "tags": [
+        "vector-db",
+        "embeddings",
+        "local",
+        "chromadb",
+        "similarity"
+      ],
+      "stackCompatibility": [
+        "ollama",
+        "langchain",
+        "filesystem"
+      ],
+      "stackConflict": [
+        "qdrant",
+        "pinecone"
+      ]
+    },
+    {
+      "name": "pinecone",
+      "category": "AI & ML",
+      "description": "Managed vector database with Pinecone for production-scale embedding search and retrieval",
+      "protocol": "SSE",
+      "isFree": true,
+      "tags": [
+        "vector-db",
+        "embeddings",
+        "cloud",
+        "pinecone",
+        "production"
+      ],
+      "stackCompatibility": [
+        "openai",
+        "langchain",
+        "vercel"
+      ],
+      "stackConflict": [
+        "qdrant",
+        "chromadb"
+      ]
+    },
+    {
+      "name": "notion",
+      "category": "Productivity",
+      "description": "Read and write Notion pages, databases, and blocks for knowledge management and project tracking",
+      "protocol": "SSE",
+      "isFree": true,
+      "tags": [
+        "notion",
+        "wiki",
+        "project-management",
+        "knowledge",
+        "databases"
+      ],
+      "stackCompatibility": [
+        "slack",
+        "google-drive",
+        "github",
+        "todoist"
+      ],
+      "stackConflict": [
+        "confluence"
+      ]
+    },
+    {
+      "name": "todoist",
+      "category": "Productivity",
+      "description": "Manage tasks and projects in Todoist with create, complete, and organize operations",
+      "protocol": "SSE",
+      "isFree": true,
+      "tags": [
+        "tasks",
+        "todoist",
+        "project-management",
+        "productivity"
+      ],
+      "stackCompatibility": [
+        "slack",
+        "google-calendar",
+        "notion"
+      ],
+      "stackConflict": [
+        "linear",
+        "jira"
+      ]
+    },
+    {
+      "name": "linear",
+      "category": "Productivity",
+      "description": "Access Linear for issue tracking, project management, and sprint planning workflows",
+      "protocol": "SSE",
+      "isFree": true,
+      "tags": [
+        "issues",
+        "linear",
+        "project-management",
+        "sprint",
+        "tracking"
+      ],
+      "stackCompatibility": [
+        "github",
+        "slack",
+        "notion"
+      ],
+      "stackConflict": [
+        "jira",
+        "todoist"
+      ]
+    },
+    {
+      "name": "jira",
+      "category": "Productivity",
+      "description": "Interact with Jira for issue tracking, sprint management, and agile project workflows",
+      "protocol": "SSE",
+      "isFree": true,
+      "tags": [
+        "jira",
+        "issues",
+        "agile",
+        "sprint",
+        "atlassian"
+      ],
+      "stackCompatibility": [
+        "github",
+        "slack",
+        "confluence"
+      ],
+      "stackConflict": [
+        "linear",
+        "todoist"
+      ]
+    },
+    {
+      "name": "confluence",
+      "category": "Productivity",
+      "description": "Access Confluence spaces, pages, and content for enterprise knowledge management",
+      "protocol": "SSE",
+      "isFree": true,
+      "tags": [
+        "confluence",
+        "wiki",
+        "atlassian",
+        "documentation",
+        "enterprise"
+      ],
+      "stackCompatibility": [
+        "jira",
+        "slack",
+        "github"
+      ],
+      "stackConflict": [
+        "notion"
+      ]
+    },
+    {
+      "name": "google-calendar",
+      "category": "Productivity",
+      "description": "Manage Google Calendar events, schedule meetings, and check availability",
+      "protocol": "SSE",
+      "isFree": true,
+      "tags": [
+        "calendar",
+        "google",
+        "scheduling",
+        "meetings"
+      ],
+      "stackCompatibility": [
+        "gmail",
+        "google-drive",
+        "slack"
+      ],
+      "stackConflict": []
+    },
+    {
+      "name": "trello",
+      "category": "Productivity",
+      "description": "Manage Trello boards, lists, and cards for Kanban-style project organization",
+      "protocol": "SSE",
+      "isFree": true,
+      "tags": [
+        "trello",
+        "kanban",
+        "boards",
+        "project-management"
+      ],
+      "stackCompatibility": [
+        "slack",
+        "github",
+        "google-drive"
+      ],
+      "stackConflict": [
+        "linear",
+        "jira"
+      ]
+    },
+    {
+      "name": "asana",
+      "category": "Productivity",
+      "description": "Access Asana projects, tasks, and sections for team work management and tracking",
+      "protocol": "SSE",
+      "isFree": true,
+      "tags": [
+        "asana",
+        "tasks",
+        "project-management",
+        "team"
+      ],
+      "stackCompatibility": [
+        "slack",
+        "github",
+        "google-drive"
+      ],
+      "stackConflict": [
+        "todoist",
+        "linear"
+      ]
+    },
+    {
+      "name": "github",
+      "category": "Development",
+      "description": "Full GitHub integration — repos, pull requests, issues, actions, and code search",
+      "protocol": "stdio",
+      "isFree": true,
+      "tags": [
+        "github",
+        "git",
+        "repos",
+        "ci-cd",
+        "code-review"
+      ],
+      "stackCompatibility": [
+        "filesystem",
+        "vercel",
+        "docker",
+        "slack"
+      ],
+      "stackConflict": [
+        "gitlab",
+        "bitbucket"
+      ]
+    },
+    {
+      "name": "gitlab",
+      "category": "Development",
+      "description": "Access GitLab projects, merge requests, pipelines, and CI/CD configurations",
+      "protocol": "stdio",
+      "isFree": true,
+      "tags": [
+        "gitlab",
+        "git",
+        "ci-cd",
+        "merge-requests",
+        "self-hosted"
+      ],
+      "stackCompatibility": [
+        "docker",
+        "kubernetes",
+        "slack"
+      ],
+      "stackConflict": [
+        "github",
+        "bitbucket"
+      ]
+    },
+    {
+      "name": "bitbucket",
+      "category": "Development",
+      "description": "Interact with Bitbucket repositories, pull requests, and pipelines for Atlassian-based workflows",
+      "protocol": "stdio",
+      "isFree": true,
+      "tags": [
+        "bitbucket",
+        "git",
+        "atlassian",
+        "pipelines"
+      ],
+      "stackCompatibility": [
+        "jira",
+        "confluence",
+        "slack"
+      ],
+      "stackConflict": [
+        "github",
+        "gitlab"
+      ]
+    },
+    {
+      "name": "eslint",
+      "category": "Development",
+      "description": "Run ESLint on code files for static analysis, linting, and auto-fixing JavaScript and TypeScript",
+      "protocol": "stdio",
+      "isFree": true,
+      "tags": [
+        "linting",
+        "eslint",
+        "javascript",
+        "typescript",
+        "static-analysis"
+      ],
+      "stackCompatibility": [
+        "github",
+        "filesystem",
+        "prettier"
+      ],
+      "stackConflict": []
+    },
+    {
+      "name": "prettier",
+      "category": "Development",
+      "description": "Format code with Prettier for consistent style across JavaScript, TypeScript, CSS, and more",
+      "protocol": "stdio",
+      "isFree": true,
+      "tags": [
+        "formatting",
+        "prettier",
+        "code-style",
+        "javascript",
+        "css"
+      ],
+      "stackCompatibility": [
+        "eslint",
+        "github",
+        "filesystem"
+      ],
+      "stackConflict": []
+    },
+    {
+      "name": "npm",
+      "category": "Development",
+      "description": "Search npm registry, inspect packages, and manage Node.js dependencies",
+      "protocol": "stdio",
+      "isFree": true,
+      "tags": [
+        "npm",
+        "packages",
+        "node",
+        "registry",
+        "dependencies"
+      ],
+      "stackCompatibility": [
+        "github",
+        "filesystem",
+        "eslint"
+      ],
+      "stackConflict": []
+    },
+    {
+      "name": "docker-compose",
+      "category": "Development",
+      "description": "Manage multi-container Docker Compose stacks with start, stop, logs, and service scaling",
+      "protocol": "stdio",
+      "isFree": true,
+      "tags": [
+        "docker",
+        "compose",
+        "multi-container",
+        "orchestration"
+      ],
+      "stackCompatibility": [
+        "docker",
+        "kubernetes",
+        "filesystem"
+      ],
+      "stackConflict": []
+    },
+    {
+      "name": "cargo",
+      "category": "Development",
+      "description": "Build, test, and manage Rust projects with Cargo — compile, run, and publish crates",
+      "protocol": "stdio",
+      "isFree": true,
+      "tags": [
+        "rust",
+        "cargo",
+        "crates",
+        "build",
+        "compile"
+      ],
+      "stackCompatibility": [
+        "github",
+        "filesystem",
+        "docker"
+      ],
+      "stackConflict": []
+    },
+    {
+      "name": "pip",
+      "category": "Development",
+      "description": "Manage Python packages with pip — install, search, and inspect dependencies",
+      "protocol": "stdio",
+      "isFree": true,
+      "tags": [
+        "python",
+        "pip",
+        "packages",
+        "dependencies",
+        "pypi"
+      ],
+      "stackCompatibility": [
+        "filesystem",
+        "github",
+        "docker"
+      ],
+      "stackConflict": []
+    },
+    {
+      "name": "deno",
+      "category": "Development",
+      "description": "Run and manage Deno projects — execute scripts, manage permissions, and compile binaries",
+      "protocol": "stdio",
+      "isFree": true,
+      "tags": [
+        "deno",
+        "typescript",
+        "runtime",
+        "secure"
+      ],
+      "stackCompatibility": [
+        "github",
+        "filesystem",
+        "eslint"
+      ],
+      "stackConflict": [
+        "npm"
+      ]
+    },
+    {
+      "name": "gradle",
+      "category": "Development",
+      "description": "Build, test, and manage Java and Kotlin projects with Gradle build automation",
+      "protocol": "stdio",
+      "isFree": true,
+      "tags": [
+        "java",
+        "kotlin",
+        "gradle",
+        "build",
+        "automation"
+      ],
+      "stackCompatibility": [
+        "github",
+        "docker",
+        "filesystem"
+      ],
+      "stackConflict": []
+    },
+    {
+      "name": "tailwind",
+      "category": "Development",
+      "description": "Generate and optimize Tailwind CSS utility classes and configurations for UI development",
+      "protocol": "stdio",
+      "isFree": true,
+      "tags": [
+        "tailwind",
+        "css",
+        "ui",
+        "utility-first",
+        "styling"
+      ],
+      "stackCompatibility": [
+        "filesystem",
+        "github",
+        "vercel"
+      ],
+      "stackConflict": []
+    },
+    {
+      "name": "storybook",
+      "category": "Development",
+      "description": "Interact with Storybook for UI component documentation, testing, and visual review",
+      "protocol": "stdio",
+      "isFree": true,
+      "tags": [
+        "storybook",
+        "components",
+        "ui",
+        "documentation",
+        "testing"
+      ],
+      "stackCompatibility": [
+        "github",
+        "filesystem",
+        "vercel"
+      ],
+      "stackConflict": []
+    },
+    {
+      "name": "grafana",
+      "category": "Analytics",
+      "description": "Query Grafana dashboards, datasources, and annotations for observability analytics",
+      "protocol": "stdio",
+      "isFree": true,
+      "tags": [
+        "grafana",
+        "dashboards",
+        "monitoring",
+        "visualization",
+        "observability"
+      ],
+      "stackCompatibility": [
+        "kubernetes",
+        "prometheus",
+        "loki"
+      ],
+      "stackConflict": []
+    },
+    {
+      "name": "prometheus",
+      "category": "Analytics",
+      "description": "Query Prometheus metrics with PromQL for time-series monitoring and alerting data",
+      "protocol": "stdio",
+      "isFree": true,
+      "tags": [
+        "prometheus",
+        "metrics",
+        "time-series",
+        "monitoring",
+        "promql"
+      ],
+      "stackCompatibility": [
+        "grafana",
+        "kubernetes",
+        "docker"
+      ],
+      "stackConflict": []
+    },
+    {
+      "name": "google-analytics",
+      "category": "Analytics",
+      "description": "Access Google Analytics 4 data for website traffic, user behavior, and conversion analytics",
+      "protocol": "SSE",
+      "isFree": true,
+      "tags": [
+        "analytics",
+        "google",
+        "traffic",
+        "ga4",
+        "reporting"
+      ],
+      "stackCompatibility": [
+        "google-drive",
+        "google-search",
+        "fetch"
+      ],
+      "stackConflict": [
+        "plausible"
+      ]
+    },
+    {
+      "name": "plausible",
+      "category": "Analytics",
+      "description": "Privacy-first web analytics with Plausible for GDPR-compliant traffic insights",
+      "protocol": "SSE",
+      "isFree": true,
+      "tags": [
+        "analytics",
+        "privacy",
+        "gdpr",
+        "lightweight"
+      ],
+      "stackCompatibility": [
+        "vercel",
+        "cloudflare",
+        "fetch"
+      ],
+      "stackConflict": [
+        "google-analytics"
+      ]
+    },
+    {
+      "name": "mixpanel",
+      "category": "Analytics",
+      "description": "Product analytics with Mixpanel for event tracking, funnels, and user segmentation",
+      "protocol": "SSE",
+      "isFree": true,
+      "tags": [
+        "analytics",
+        "product",
+        "events",
+        "funnels",
+        "segmentation"
+      ],
+      "stackCompatibility": [
+        "fetch",
+        "slack",
+        "postgres"
+      ],
+      "stackConflict": []
+    },
+    {
+      "name": "amplitude",
+      "category": "Analytics",
+      "description": "Behavioral analytics with Amplitude for product intelligence and user journey analysis",
+      "protocol": "SSE",
+      "isFree": true,
+      "tags": [
+        "analytics",
+        "behavioral",
+        "product-intelligence",
+        "journey"
+      ],
+      "stackCompatibility": [
+        "fetch",
+        "slack",
+        "postgres"
+      ],
+      "stackConflict": [
+        "mixpanel"
+      ]
+    },
+    {
+      "name": "matomo",
+      "category": "Analytics",
+      "description": "Self-hosted web analytics with Matomo for full data ownership and privacy compliance",
+      "protocol": "stdio",
+      "isFree": true,
+      "tags": [
+        "analytics",
+        "self-hosted",
+        "privacy",
+        "web",
+        "matomo"
+      ],
+      "stackCompatibility": [
+        "docker",
+        "mysql",
+        "filesystem"
+      ],
+      "stackConflict": [
+        "google-analytics",
+        "plausible"
+      ]
+    },
+    {
+      "name": "wolfram-alpha",
+      "category": "Analytics",
+      "description": "Query Wolfram Alpha for computational knowledge, math, science, and data analysis",
+      "protocol": "stdio",
+      "isFree": true,
+      "tags": [
+        "wolfram",
+        "computation",
+        "math",
+        "science",
+        "knowledge"
+      ],
+      "stackCompatibility": [
+        "sequential-thinking",
+        "calculator",
+        "brave-search"
+      ],
+      "stackConflict": []
+    },
+    {
+      "name": "trufflehog",
+      "category": "Security",
+      "description": "Scan repositories and filesystems for leaked secrets, API keys, and credentials with TruffleHog",
+      "protocol": "stdio",
+      "isFree": true,
+      "tags": [
+        "secrets",
+        "scanning",
+        "credentials",
+        "leak-detection",
+        "security"
+      ],
+      "stackCompatibility": [
+        "github",
+        "gitlab",
+        "filesystem",
+        "docker"
+      ],
+      "stackConflict": []
+    },
+    {
+      "name": "sonarqube",
+      "category": "Security",
+      "description": "Analyze code quality and security vulnerabilities with SonarQube static analysis",
+      "protocol": "stdio",
+      "isFree": true,
+      "tags": [
+        "static-analysis",
+        "code-quality",
+        "vulnerabilities",
+        "sonarqube"
+      ],
+      "stackCompatibility": [
+        "github",
+        "gitlab",
+        "docker"
+      ],
+      "stackConflict": [
+        "eslint"
+      ]
+    },
+    {
+      "name": "snyk",
+      "category": "Security",
+      "description": "Scan dependencies for known vulnerabilities with Snyk and get remediation advice",
+      "protocol": "SSE",
+      "isFree": true,
+      "tags": [
+        "dependencies",
+        "vulnerabilities",
+        "snyk",
+        "supply-chain",
+        "scanning"
+      ],
+      "stackCompatibility": [
+        "github",
+        "npm",
+        "docker"
+      ],
+      "stackConflict": []
+    },
+    {
+      "name": "vault",
+      "category": "Security",
+      "description": "Access and manage HashiCorp Vault for secrets management, encryption, and PKI",
+      "protocol": "stdio",
+      "isFree": true,
+      "tags": [
+        "vault",
+        "secrets",
+        "encryption",
+        "hashicorp",
+        "pki"
+      ],
+      "stackCompatibility": [
+        "terraform",
+        "kubernetes",
+        "docker"
+      ],
+      "stackConflict": []
+    },
+    {
+      "name": "owasp-zap",
+      "category": "Security",
+      "description": "Run OWASP ZAP security scans for web application vulnerability detection and penetration testing",
+      "protocol": "stdio",
+      "isFree": true,
+      "tags": [
+        "owasp",
+        "zap",
+        "penetration-testing",
+        "web-security",
+        "scanning"
+      ],
+      "stackCompatibility": [
+        "fetch",
+        "puppeteer",
+        "github"
+      ],
+      "stackConflict": []
+    },
+    {
+      "name": "clamav",
+      "category": "Security",
+      "description": "Scan files and content for malware using ClamAV open-source antivirus engine",
+      "protocol": "stdio",
+      "isFree": true,
+      "tags": [
+        "antivirus",
+        "malware",
+        "clamav",
+        "scanning",
+        "open-source"
+      ],
+      "stackCompatibility": [
+        "filesystem",
+        "docker",
+        "s3"
+      ],
+      "stackConflict": []
+    },
+    {
+      "name": "gitleaks",
+      "category": "Security",
+      "description": "Detect hardcoded secrets and sensitive data in Git repositories with Gitleaks scanning",
+      "protocol": "stdio",
+      "isFree": true,
+      "tags": [
+        "secrets",
+        "git",
+        "scanning",
+        "leak-detection",
+        "hardcoded"
+      ],
+      "stackCompatibility": [
+        "github",
+        "gitlab",
+        "filesystem"
+      ],
+      "stackConflict": [
+        "trufflehog"
+      ]
+    },
+    {
+      "name": "youtube",
+      "category": "Content & Media",
+      "description": "Search and retrieve YouTube video metadata, transcripts, and channel information",
+      "protocol": "SSE",
+      "isFree": true,
+      "tags": [
+        "youtube",
+        "video",
+        "transcripts",
+        "channels",
+        "search"
+      ],
+      "stackCompatibility": [
+        "fetch",
+        "brave-search",
+        "memory"
+      ],
+      "stackConflict": []
+    },
+    {
+      "name": "spotify",
+      "category": "Content & Media",
+      "description": "Search and manage Spotify playlists, tracks, and artist data for music-related applications",
+      "protocol": "SSE",
+      "isFree": true,
+      "tags": [
+        "spotify",
+        "music",
+        "playlists",
+        "audio",
+        "streaming"
+      ],
+      "stackCompatibility": [
+        "fetch",
+        "slack",
+        "memory"
+      ],
+      "stackConflict": []
+    },
+    {
+      "name": "ffmpeg",
+      "category": "Content & Media",
+      "description": "Process, convert, and manipulate audio and video files with FFmpeg command-line operations",
+      "protocol": "stdio",
+      "isFree": true,
+      "tags": [
+        "ffmpeg",
+        "audio",
+        "video",
+        "conversion",
+        "media-processing"
+      ],
+      "stackCompatibility": [
+        "filesystem",
+        "youtube",
+        "docker"
+      ],
+      "stackConflict": []
+    },
+    {
+      "name": "sharp",
+      "category": "Content & Media",
+      "description": "Resize, crop, convert, and manipulate images with Sharp for high-performance image processing",
+      "protocol": "stdio",
+      "isFree": true,
+      "tags": [
+        "images",
+        "sharp",
+        "resize",
+        "crop",
+        "optimization"
+      ],
+      "stackCompatibility": [
+        "filesystem",
+        "everart",
+        "s3"
+      ],
+      "stackConflict": []
+    },
+    {
+      "name": "pandoc",
+      "category": "Content & Media",
+      "description": "Convert documents between formats with Pandoc — Markdown, HTML, PDF, DOCX, and more",
+      "protocol": "stdio",
+      "isFree": true,
+      "tags": [
+        "pandoc",
+        "conversion",
+        "documents",
+        "markdown",
+        "pdf"
+      ],
+      "stackCompatibility": [
+        "filesystem",
+        "notion",
+        "github"
+      ],
+      "stackConflict": []
+    },
+    {
+      "name": "image-generation",
+      "category": "Content & Media",
+      "description": "Generate images from text prompts using DALL-E, Stable Diffusion, and other AI art models",
+      "protocol": "stdio",
+      "isFree": true,
+      "tags": [
+        "image-generation",
+        "ai",
+        "dall-e",
+        "stable-diffusion",
+        "prompts"
+      ],
+      "stackCompatibility": [
+        "filesystem",
+        "google-drive",
+        "slack"
+      ],
+      "stackConflict": [
+        "everart"
+      ]
+    },
+    {
+      "name": "stripe",
+      "category": "Content & Media",
+      "description": "Access Stripe for payment processing, subscription management, and financial reporting",
+      "protocol": "SSE",
+      "isFree": true,
+      "tags": [
+        "stripe",
+        "payments",
+        "subscriptions",
+        "billing",
+        "fintech"
+      ],
+      "stackCompatibility": [
+        "postgres",
+        "vercel",
+        "slack"
+      ],
+      "stackConflict": []
+    },
+    {
+      "name": "figma",
+      "category": "Content & Media",
+      "description": "Access Figma files, components, and design tokens for design-to-code workflows",
+      "protocol": "SSE",
+      "isFree": true,
+      "tags": [
+        "figma",
+        "design",
+        "components",
+        "tokens",
+        "ui"
+      ],
+      "stackCompatibility": [
+        "filesystem",
+        "github",
+        "slack"
+      ],
+      "stackConflict": []
+    },
+    {
+      "name": "excalidraw",
+      "category": "Content & Media",
+      "description": "Create and manage Excalidraw diagrams and whiteboard drawings for visual communication",
+      "protocol": "SSE",
+      "isFree": true,
+      "tags": [
+        "excalidraw",
+        "diagrams",
+        "whiteboard",
+        "drawing",
+        "visual"
+      ],
+      "stackCompatibility": [
+        "filesystem",
+        "notion",
+        "slack"
+      ],
+      "stackConflict": []
+    },
+    {
+      "name": "datadog",
+      "category": "Monitoring",
+      "description": "Query Datadog for metrics, logs, traces, and monitors across cloud infrastructure",
+      "protocol": "SSE",
+      "isFree": true,
+      "tags": [
+        "datadog",
+        "monitoring",
+        "apm",
+        "logs",
+        "traces"
+      ],
+      "stackCompatibility": [
+        "docker",
+        "kubernetes",
+        "slack"
+      ],
+      "stackConflict": [
+        "grafana",
+        "newrelic"
+      ]
+    },
+    {
+      "name": "sentry",
+      "category": "Monitoring",
+      "description": "Access Sentry for error tracking, performance monitoring, and release health data",
+      "protocol": "SSE",
+      "isFree": true,
+      "tags": [
+        "sentry",
+        "errors",
+        "performance",
+        "monitoring",
+        "crash-reporting"
+      ],
+      "stackCompatibility": [
+        "github",
+        "vercel",
+        "slack"
+      ],
+      "stackConflict": []
+    },
+    {
+      "name": "newrelic",
+      "category": "Monitoring",
+      "description": "Query New Relic for application performance, infrastructure metrics, and log analytics",
+      "protocol": "SSE",
+      "isFree": true,
+      "tags": [
+        "newrelic",
+        "apm",
+        "monitoring",
+        "infrastructure",
+        "performance"
+      ],
+      "stackCompatibility": [
+        "docker",
+        "kubernetes",
+        "slack"
+      ],
+      "stackConflict": [
+        "datadog",
+        "grafana"
+      ]
+    },
+    {
+      "name": "loki",
+      "category": "Monitoring",
+      "description": "Query Grafana Loki for log aggregation and searching with LogQL across distributed systems",
+      "protocol": "stdio",
+      "isFree": true,
+      "tags": [
+        "loki",
+        "logs",
+        "grafana",
+        "logql",
+        "aggregation"
+      ],
+      "stackCompatibility": [
+        "grafana",
+        "prometheus",
+        "kubernetes"
+      ],
+      "stackConflict": []
+    },
+    {
+      "name": "pagerduty",
+      "category": "Monitoring",
+      "description": "Manage PagerDuty incidents, on-call schedules, and escalation policies for incident response",
+      "protocol": "SSE",
+      "isFree": true,
+      "tags": [
+        "pagerduty",
+        "incidents",
+        "on-call",
+        "escalation",
+        "alerting"
+      ],
+      "stackCompatibility": [
+        "slack",
+        "sentry",
+        "datadog"
+      ],
+      "stackConflict": []
+    },
+    {
+      "name": "opsgenie",
+      "category": "Monitoring",
+      "description": "Access Opsgenie for alert management, on-call scheduling, and incident notification workflows",
+      "protocol": "stdio",
+      "isFree": true,
+      "tags": [
+        "opsgenie",
+        "alerting",
+        "on-call",
+        "incidents",
+        "atlassian"
+      ],
+      "stackCompatibility": [
+        "jira",
+        "slack",
+        "sentry"
+      ],
+      "stackConflict": [
+        "pagerduty"
+      ]
+    },
+    {
+      "name": "cloudwatch",
+      "category": "Monitoring",
+      "description": "Query AWS CloudWatch for metrics, logs, alarms, and dashboard data across AWS resources",
+      "protocol": "stdio",
+      "isFree": true,
+      "tags": [
+        "aws",
+        "cloudwatch",
+        "metrics",
+        "logs",
+        "alarms"
+      ],
+      "stackCompatibility": [
+        "aws",
+        "lambda",
+        "docker"
+      ],
+      "stackConflict": []
+    },
+    {
+      "name": "zapier",
+      "category": "Integration",
+      "description": "Connect and automate workflows across 5000+ apps via Zapier triggers and actions",
+      "protocol": "SSE",
+      "isFree": true,
+      "tags": [
+        "zapier",
+        "automation",
+        "workflows",
+        "integration",
+        "no-code"
+      ],
+      "stackCompatibility": [
+        "slack",
+        "google-drive",
+        "github"
+      ],
+      "stackConflict": [
+        "make"
+      ]
+    },
+    {
+      "name": "make",
+      "category": "Integration",
+      "description": "Build and execute visual automation scenarios with Make (Integromat) for multi-app workflows",
+      "protocol": "SSE",
+      "isFree": true,
+      "tags": [
+        "make",
+        "integromat",
+        "automation",
+        "scenarios",
+        "visual"
+      ],
+      "stackCompatibility": [
+        "slack",
+        "google-drive",
+        "notion"
+      ],
+      "stackConflict": [
+        "zapier"
+      ]
+    },
+    {
+      "name": "n8n",
+      "category": "Integration",
+      "description": "Self-hosted workflow automation with n8n for building complex integrations and data pipelines",
+      "protocol": "SSE",
+      "isFree": true,
+      "tags": [
+        "n8n",
+        "automation",
+        "self-hosted",
+        "workflows",
+        "open-source"
+      ],
+      "stackCompatibility": [
+        "docker",
+        "postgres",
+        "slack"
+      ],
+      "stackConflict": [
+        "zapier",
+        "make"
+      ]
+    },
+    {
+      "name": "airtable",
+      "category": "Integration",
+      "description": "Read and write Airtable bases for relational data management and app building without code",
+      "protocol": "stdio",
+      "isFree": true,
+      "tags": [
+        "airtable",
+        "database",
+        "no-code",
+        "spreadsheet",
+        "relational"
+      ],
+      "stackCompatibility": [
+        "slack",
+        "google-drive",
+        "fetch"
+      ],
+      "stackConflict": [
+        "notion"
+      ]
+    },
+    {
+      "name": "hubspot",
+      "category": "Integration",
+      "description": "Access HubSpot CRM for contacts, deals, companies, and marketing automation data",
+      "protocol": "SSE",
+      "isFree": true,
+      "tags": [
+        "crm",
+        "hubspot",
+        "marketing",
+        "sales",
+        "contacts"
+      ],
+      "stackCompatibility": [
+        "slack",
+        "gmail",
+        "google-drive"
+      ],
+      "stackConflict": [
+        "salesforce"
+      ]
+    },
+    {
+      "name": "salesforce",
+      "category": "Integration",
+      "description": "Query Salesforce CRM for accounts, opportunities, leads, and custom object data",
+      "protocol": "SSE",
+      "isFree": true,
+      "tags": [
+        "crm",
+        "salesforce",
+        "enterprise",
+        "opportunities",
+        "leads"
+      ],
+      "stackCompatibility": [
+        "slack",
+        "gmail",
+        "jira"
+      ],
+      "stackConflict": [
+        "hubspot"
+      ]
+    },
+    {
+      "name": "shopify",
+      "category": "Integration",
+      "description": "Access Shopify stores for products, orders, customers, and inventory management",
+      "protocol": "SSE",
+      "isFree": true,
+      "tags": [
+        "shopify",
+        "ecommerce",
+        "orders",
+        "products",
+        "store"
+      ],
+      "stackCompatibility": [
+        "stripe",
+        "slack",
+        "postgres"
+      ],
+      "stackConflict": []
+    },
+    {
+      "name": "mailchimp",
+      "category": "Integration",
+      "description": "Manage Mailchimp audiences, campaigns, and automations for email marketing workflows",
+      "protocol": "SSE",
+      "isFree": true,
+      "tags": [
+        "mailchimp",
+        "email-marketing",
+        "campaigns",
+        "audiences",
+        "automation"
+      ],
+      "stackCompatibility": [
+        "slack",
+        "stripe",
+        "google-analytics"
+      ],
+      "stackConflict": [
+        "sendgrid"
+      ]
+    },
+    {
+      "name": "api-gateway",
+      "category": "Integration",
+      "description": "Manage and monitor API gateways including rate limiting, routing, and access logs",
+      "protocol": "stdio",
+      "isFree": true,
+      "tags": [
+        "api",
+        "gateway",
+        "rate-limiting",
+        "routing",
+        "management"
+      ],
+      "stackCompatibility": [
+        "aws",
+        "lambda",
+        "cloudflare",
+        "docker"
+      ],
+      "stackConflict": []
+    },
+    {
+      "name": "environment",
+      "category": "Utility",
+      "description": "Read and manage environment variables for secure configuration across development environments",
+      "protocol": "stdio",
+      "isFree": true,
+      "tags": [
+        "env",
+        "configuration",
+        "secrets",
+        "variables"
+      ],
+      "stackCompatibility": [
+        "docker",
+        "vercel",
+        "aws",
+        "vault"
+      ],
+      "stackConflict": []
+    },
+    {
+      "name": "time",
+      "category": "Utility",
+      "description": "Get current time, convert timezones, and perform date/time calculations across locales",
+      "protocol": "stdio",
+      "isFree": true,
+      "tags": [
+        "time",
+        "timezone",
+        "date",
+        "scheduling",
+        "locale"
+      ],
+      "stackCompatibility": [
+        "google-calendar",
+        "slack",
+        "todoist"
+      ],
+      "stackConflict": []
+    },
+    {
+      "name": "calculator",
+      "category": "Utility",
+      "description": "Perform mathematical calculations, unit conversions, and numerical computations",
+      "protocol": "stdio",
+      "isFree": true,
+      "tags": [
+        "math",
+        "calculator",
+        "conversion",
+        "computation"
+      ],
+      "stackCompatibility": [
+        "sequential-thinking",
+        "sqlite",
+        "postgres"
+      ],
+      "stackConflict": []
+    },
+    {
+      "name": "random",
+      "category": "Utility",
+      "description": "Generate random numbers, strings, UUIDs, and passwords with configurable parameters",
+      "protocol": "stdio",
+      "isFree": true,
+      "tags": [
+        "random",
+        "uuid",
+        "passwords",
+        "generation",
+        "entropy"
+      ],
+      "stackCompatibility": [
+        "vault",
+        "environment",
+        "filesystem"
+      ],
+      "stackConflict": []
+    },
+    {
+      "name": "json",
+      "category": "Utility",
+      "description": "Parse, validate, transform, and query JSON data with JSONPath and schema validation",
+      "protocol": "stdio",
+      "isFree": true,
+      "tags": [
+        "json",
+        "parsing",
+        "validation",
+        "transformation",
+        "jsonpath"
+      ],
+      "stackCompatibility": [
+        "fetch",
+        "filesystem",
+        "api-gateway"
+      ],
+      "stackConflict": []
+    },
+    {
+      "name": "regex",
+      "category": "Utility",
+      "description": "Test, debug, and build regular expressions with pattern matching and explanation",
+      "protocol": "stdio",
+      "isFree": true,
+      "tags": [
+        "regex",
+        "pattern",
+        "matching",
+        "text",
+        "validation"
+      ],
+      "stackCompatibility": [
+        "filesystem",
+        "fetch",
+        "eslint"
+      ],
+      "stackConflict": []
+    },
+    {
+      "name": "csv",
+      "category": "Utility",
+      "description": "Read, write, parse, and transform CSV and TSV data files with column operations",
+      "protocol": "stdio",
+      "isFree": true,
+      "tags": [
+        "csv",
+        "tsv",
+        "data",
+        "parsing",
+        "tabular"
+      ],
+      "stackCompatibility": [
+        "filesystem",
+        "sqlite",
+        "postgres",
+        "fetch"
+      ],
+      "stackConflict": []
+    },
+    {
+      "name": "markdown",
+      "category": "Utility",
+      "description": "Parse, render, and convert Markdown with support for frontmatter, tables, and extensions",
+      "protocol": "stdio",
+      "isFree": true,
+      "tags": [
+        "markdown",
+        "parsing",
+        "rendering",
+        "frontmatter",
+        "conversion"
+      ],
+      "stackCompatibility": [
+        "filesystem",
+        "github",
+        "notion",
+        "pandoc"
+      ],
+      "stackConflict": []
+    },
+    {
+      "name": "xml",
+      "category": "Utility",
+      "description": "Parse, validate, query with XPath, and transform XML documents and feeds",
+      "protocol": "stdio",
+      "isFree": true,
+      "tags": [
+        "xml",
+        "xpath",
+        "parsing",
+        "validation",
+        "feeds"
+      ],
+      "stackCompatibility": [
+        "fetch",
+        "filesystem",
+        "json"
+      ],
+      "stackConflict": []
+    },
+    {
+      "name": "ssh",
+      "category": "Utility",
+      "description": "Execute remote commands via SSH for server management and remote system administration",
+      "protocol": "stdio",
+      "isFree": true,
+      "tags": [
+        "ssh",
+        "remote",
+        "server",
+        "administration",
+        "terminal"
+      ],
+      "stackCompatibility": [
+        "docker",
+        "kubernetes",
+        "filesystem"
+      ],
+      "stackConflict": []
+    },
+    {
+      "name": "cohere",
+      "category": "AI & ML",
+      "description": "Access Cohere models for text generation, embeddings, reranking, and enterprise search",
+      "protocol": "SSE",
+      "isFree": true,
+      "tags": [
+        "llm",
+        "cohere",
+        "embeddings",
+        "reranking",
+        "enterprise-search"
+      ],
+      "stackCompatibility": [
+        "memory",
+        "qdrant",
+        "brave-search",
+        "fetch"
+      ],
+      "stackConflict": [
+        "openai"
+      ]
+    },
+    {
+      "name": "modelscope-image-gen",
+      "category": "AI & ML",
+      "description": "Generate images using ModelScope's 12800+ text-to-image models via MCP — access Qwen, FLUX, SDXL, and Chinese-specific models with free hosted deployment",
+      "protocol": "SSE",
+      "isFree": true,
+      "tags": [
+        "image-generation",
+        "modelscope",
+        "chinese-ai",
+        "text-to-image",
+        "free-hosted"
+      ],
+      "stackCompatibility": [
+        "filesystem",
+        "fetch",
+        "memory"
+      ],
+      "stackConflict": [
+        "everart"
+      ],
+      "source": "modelscope.cn/mcp"
+    },
+    {
+      "name": "modelscope-model-discovery",
+      "category": "AI & ML",
+      "description": "Discover and search ModelScope's 200K+ ML models, datasets, and apps — find the right model for your task with metadata and benchmark comparisons",
+      "protocol": "SSE",
+      "isFree": true,
+      "tags": [
+        "model-discovery",
+        "modelscope",
+        "ml-models",
+        "datasets",
+        "chinese-ai"
+      ],
+      "stackCompatibility": [
+        "fetch",
+        "memory",
+        "brave-search"
+      ],
+      "stackConflict": [],
+      "source": "modelscope.cn/mcp"
+    },
+    {
+      "name": "context7",
+      "category": "Development",
+      "description": "Fetch up-to-date, version-specific documentation and code examples directly into LLM prompts — eliminates stale or hallucinated API references for any library",
+      "protocol": "SSE",
+      "isFree": true,
+      "tags": [
+        "documentation",
+        "context",
+        "up-to-date",
+        "version-specific",
+        "code-examples"
+      ],
+      "stackCompatibility": [
+        "filesystem",
+        "github",
+        "fetch"
+      ],
+      "stackConflict": [],
+      "source": "modelscope.cn/mcp"
+    },
+    {
+      "name": "arxiv-paper",
+      "category": "AI & ML",
+      "description": "Search and parse arXiv papers with full PDF content extraction — retrieve academic papers, get abstracts, and extract methodology sections for research workflows",
+      "protocol": "stdio",
+      "isFree": true,
+      "tags": [
+        "academic",
+        "arxiv",
+        "papers",
+        "research",
+        "pdf-extraction"
+      ],
+      "stackCompatibility": [
+        "fetch",
+        "memory",
+        "sequential-thinking"
+      ],
+      "stackConflict": [],
+      "source": "modelscope.cn/mcp"
+    },
+    {
+      "name": "mineru-document-parser",
+      "category": "Content & Media",
+      "description": "Parse web pages and documents into structured content via MCP — extract text, tables, and layout from PDFs, DOCX, and HTML with MinerU's open-source pipeline",
+      "protocol": "SSE",
+      "isFree": true,
+      "tags": [
+        "document-parsing",
+        "pdf",
+        "content-extraction",
+        "mineru",
+        "tables"
+      ],
+      "stackCompatibility": [
+        "filesystem",
+        "fetch",
+        "sqlite"
+      ],
+      "stackConflict": [],
+      "source": "modelscope.cn/mcp"
+    },
+    {
+      "name": "alipay-mcp",
+      "category": "Integration",
+      "description": "Integrate Alipay payment capabilities into LLM applications — transaction creation, query, and refund for Chinese fintech workflows",
+      "protocol": "SSE",
+      "isFree": true,
+      "tags": [
+        "alipay",
+        "payment",
+        "fintech",
+        "chinese",
+        "transactions"
+      ],
+      "stackCompatibility": [
+        "fetch",
+        "sqlite",
+        "memory"
+      ],
+      "stackConflict": [],
+      "source": "modelscope.cn/mcp"
+    },
+    {
+      "name": "xiyan-sql",
+      "category": "Database",
+      "description": "Natural language to SQL query engine using XiyanSQL — ask questions in plain language and get database results without writing SQL, supports multiple databases",
+      "protocol": "stdio",
+      "isFree": true,
+      "tags": [
+        "nl2sql",
+        "natural-language",
+        "sql",
+        "database-query",
+        "chinese-ai"
+      ],
+      "stackCompatibility": [
+        "postgres",
+        "mysql",
+        "sqlite"
+      ],
+      "stackConflict": [],
+      "source": "modelscope.cn/mcp"
+    },
+    {
+      "name": "gaode-maps",
+      "category": "Web & Search",
+      "description": "Access Gaode (Amap) maps API for Chinese location services — geocoding, routing, POI search, and real-time traffic for China-specific applications",
+      "protocol": "SSE",
+      "isFree": true,
+      "tags": [
+        "maps",
+        "chinese",
+        "gaode",
+        "amap",
+        "geocoding",
+        "routing"
+      ],
+      "stackCompatibility": [
+        "fetch",
+        "memory",
+        "filesystem"
+      ],
+      "stackConflict": [
+        "google-maps"
+      ],
+      "source": "modelscope.cn/mcp"
+    },
+    {
+      "name": "desktop-commander",
+      "category": "Development",
+      "description": "Execute terminal commands and manage processes from AI — run builds, start dev servers, manage Docker containers, and execute scripts with full I/O capture",
+      "protocol": "stdio",
+      "isFree": true,
+      "tags": [
+        "terminal",
+        "commands",
+        "process-management",
+        "scripts",
+        "docker"
+      ],
+      "stackCompatibility": [
+        "filesystem",
+        "github",
+        "docker"
+      ],
+      "stackConflict": [],
+      "source": "mcp.so"
+    },
+    {
+      "name": "mcp-sequential-thinking",
+      "category": "AI & ML",
+      "description": "Dynamic and reflective thinking framework — break down complex problems into structured reasoning chains with branching, revision, and confidence scoring",
+      "protocol": "stdio",
+      "isFree": true,
+      "tags": [
+        "reasoning",
+        "thinking",
+        "chain-of-thought",
+        "structured",
+        "problem-solving"
+      ],
+      "stackCompatibility": [
+        "memory",
+        "brave-search",
+        "fetch"
+      ],
+      "stackConflict": [
+        "sequential-thinking"
+      ],
+      "source": "mcp.so"
+    },
+    {
+      "name": "everything-mcp",
+      "category": "Utility",
+      "description": "Reference MCP server implementing all protocol features — use as template, testing tool, or educational resource for MCP server development",
+      "protocol": "stdio",
+      "isFree": true,
+      "tags": [
+        "reference",
+        "testing",
+        "template",
+        "mcp-protocol",
+        "educational"
+      ],
+      "stackCompatibility": [
+        "filesystem",
+        "github"
+      ],
+      "stackConflict": [],
+      "source": "github.com"
+    },
+    {
+      "name": "mcp-sheguard",
+      "category": "Security",
+      "description": "Prompt injection detection and content safety guard for MCP interactions — filter malicious prompts, detect jailbreak attempts, and enforce content policies",
+      "protocol": "stdio",
+      "isFree": true,
+      "tags": [
+        "security",
+        "prompt-injection",
+        "content-safety",
+        "guard",
+        "filtering"
+      ],
+      "stackCompatibility": [
+        "filesystem",
+        "github",
+        "brave-search"
+      ],
+      "stackConflict": [],
+      "source": "mcp.so"
+    },
+    {
+      "name": "taskmaster-ai",
+      "category": "Productivity",
+      "description": "AI-powered task management with PRD parsing — break down product requirements into development tasks, track progress, and generate implementation plans",
+      "protocol": "stdio",
+      "isFree": true,
+      "tags": [
+        "task-management",
+        "prd",
+        "project-planning",
+        "ai-planning",
+        "development"
+      ],
+      "stackCompatibility": [
+        "github",
+        "filesystem",
+        "memory"
+      ],
+      "stackConflict": [
+        "todoist"
+      ],
+      "source": "mcp.so"
+    },
+    {
+      "name": "supabase-mcp",
+      "category": "Database",
+      "description": "Direct Supabase MCP integration — manage tables, run SQL, handle auth, and manage storage via Supabase's official MCP server with real-time subscriptions",
+      "protocol": "SSE",
+      "isFree": true,
+      "tags": [
+        "supabase",
+        "postgres",
+        "auth",
+        "realtime",
+        "baas"
+      ],
+      "stackCompatibility": [
+        "vercel",
+        "github",
+        "fetch"
+      ],
+      "stackConflict": [
+        "supabase"
+      ],
+      "source": "supabase.com"
+    },
+    {
+      "name": "stripe-mcp",
+      "category": "Integration",
+      "description": "Integrate Stripe payment processing — create charges, manage subscriptions, handle webhooks, and query transaction data via MCP",
+      "protocol": "SSE",
+      "isFree": true,
+      "tags": [
+        "stripe",
+        "payment",
+        "subscriptions",
+        "billing",
+        "fintech"
+      ],
+      "stackCompatibility": [
+        "fetch",
+        "sqlite",
+        "vercel"
+      ],
+      "stackConflict": [
+        "alipay-mcp"
+      ],
+      "source": "stripe.com"
+    },
+    {
+      "name": "vercel-ai-sdk",
+      "category": "AI & ML",
+      "description": "Vercel AI SDK MCP server — access AI model routing, streaming responses, and tool calling with support for OpenAI, Anthropic, Google, and local models",
+      "protocol": "SSE",
+      "isFree": true,
+      "tags": [
+        "ai-sdk",
+        "vercel",
+        "model-routing",
+        "streaming",
+        "multi-provider"
+      ],
+      "stackCompatibility": [
+        "vercel",
+        "github",
+        "fetch"
+      ],
+      "stackConflict": [
+        "openai",
+        "anthropic"
+      ],
+      "source": "vercel.com"
+    },
+    {
+      "name": "browserbase",
+      "category": "Web & Search",
+      "description": "Cloud browser automation at scale — run headless browsers in the cloud for web scraping, testing, and screenshot capture without local browser dependencies",
+      "protocol": "SSE",
+      "isFree": true,
+      "tags": [
+        "browser",
+        "cloud",
+        "automation",
+        "scraping",
+        "headless"
+      ],
+      "stackCompatibility": [
+        "fetch",
+        "github",
+        "filesystem"
+      ],
+      "stackConflict": [
+        "puppeteer",
+        "playwright"
+      ],
+      "source": "browserbase.com"
+    },
+    {
+      "name": "qdrant-mcp",
+      "category": "AI & ML",
+      "description": "Official Qdrant vector database MCP server — manage collections, search embeddings, and perform similarity queries for RAG and semantic search pipelines",
+      "protocol": "stdio",
+      "isFree": true,
+      "tags": [
+        "vector-db",
+        "qdrant",
+        "embeddings",
+        "similarity-search",
+        "rag"
+      ],
+      "stackCompatibility": [
+        "openai",
+        "langchain",
+        "memory"
+      ],
+      "stackConflict": [
+        "chromadb",
+        "pinecone"
+      ],
+      "source": "qdrant.tech"
+    },
+    {
+      "name": "Brave Search",
+      "category": "Web Search & Browsing",
+      "description": "Web search via Brave Search API with result summarization and relevance ranking",
+      "protocol": "stdio",
+      "isFree": true,
+      "unlimited": false,
+      "tags": [],
+      "stackCompatibility": [],
+      "stackConflict": [],
+      "downloads": 182000,
+      "rating": 4.5,
+      "sources": [
+        "PulseMCP",
+        "MCP.so",
+        "GitHub Awesome MCP",
+        "Cursor Directory"
+      ]
+    },
+    {
+      "name": "Fetch",
+      "category": "Web Search & Browsing",
+      "description": "HTTP client for fetching web pages and API endpoints with content extraction",
+      "protocol": "stdio",
+      "isFree": true,
+      "unlimited": true,
+      "tags": [],
+      "stackCompatibility": [],
+      "stackConflict": [],
+      "downloads": 215000,
+      "rating": 4.7,
+      "sources": [
+        "PulseMCP",
+        "Smithery",
+        "GitHub Awesome MCP",
+        "NPM Registry"
+      ]
+    },
+    {
+      "name": "Puppeteer",
+      "category": "Web Search & Browsing",
+      "description": "Headless browser automation for navigation, screenshots, and JavaScript execution",
+      "protocol": "stdio",
+      "isFree": true,
+      "unlimited": true,
+      "tags": [],
+      "stackCompatibility": [],
+      "stackConflict": [],
+      "downloads": 148000,
+      "rating": 4.3,
+      "sources": [
+        "MCP.so",
+        "Glama.ai",
+        "Cursor Directory",
+        "GitHub Awesome MCP"
+      ]
+    },
+    {
+      "name": "Serper",
+      "category": "Web Search & Browsing",
+      "description": "Google Search API integration with structured search results and knowledge graph data",
+      "protocol": "stdio",
+      "isFree": true,
+      "unlimited": false,
+      "tags": [],
+      "stackCompatibility": [],
+      "stackConflict": [],
+      "downloads": 57000,
+      "rating": 4.1,
+      "sources": [
+        "MCP.so",
+        "Smithery",
+        "Reddit r/MCP"
+      ]
+    },
+    {
+      "name": "Exa Search",
+      "category": "Web Search & Browsing",
+      "description": "AI-native search engine with neural and keyword search for high-quality, context-aware results",
+      "protocol": "stdio",
+      "isFree": true,
+      "unlimited": false,
+      "tags": [],
+      "stackCompatibility": [],
+      "stackConflict": [],
+      "downloads": 68000,
+      "rating": 4.4,
+      "sources": [
+        "PulseMCP",
+        "Smithery",
+        "GitHub Awesome MCP",
+        "Cursor Directory"
+      ]
+    },
+    {
+      "name": "Tavily",
+      "category": "Web Search & Browsing",
+      "description": "Research-focused search API delivering structured, in-depth results optimized for AI agents",
+      "protocol": "stdio",
+      "isFree": true,
+      "unlimited": false,
+      "tags": [],
+      "stackCompatibility": [],
+      "stackConflict": [],
+      "downloads": 74000,
+      "rating": 4.5,
+      "sources": [
+        "MCP.so",
+        "Glama.ai",
+        "GitHub Awesome MCP",
+        "MCPServers.org"
+      ]
+    },
+    {
+      "name": "Postgres",
+      "category": "Database & Storage",
+      "description": "PostgreSQL database server with schema inspection, query execution, and transaction support",
+      "protocol": "stdio",
+      "isFree": true,
+      "unlimited": true,
+      "tags": [],
+      "stackCompatibility": [],
+      "stackConflict": [],
+      "downloads": 197000,
+      "rating": 4.6,
+      "sources": [
+        "PulseMCP",
+        "MCP.so",
+        "GitHub Awesome MCP",
+        "Cursor Directory",
+        "Smithery"
+      ]
+    },
+    {
+      "name": "SQLite",
+      "category": "Database & Storage",
+      "description": "SQLite database server for local file-based data storage and querying",
+      "protocol": "stdio",
+      "isFree": true,
+      "unlimited": true,
+      "tags": [],
+      "stackCompatibility": [],
+      "stackConflict": [],
+      "downloads": 164000,
+      "rating": 4.5,
+      "sources": [
+        "PulseMCP",
+        "Smithery",
+        "NPM Registry",
+        "GitHub Awesome MCP"
+      ]
+    },
+    {
+      "name": "Supabase",
+      "category": "Database & Storage",
+      "description": "Supabase platform integration for Postgres, Auth, Storage, and Realtime APIs",
+      "protocol": "stdio",
+      "isFree": true,
+      "unlimited": false,
+      "tags": [],
+      "stackCompatibility": [],
+      "stackConflict": [],
+      "downloads": 89000,
+      "rating": 4.4,
+      "sources": [
+        "Glama.ai",
+        "MCPServers.org",
+        "Cursor Directory"
+      ]
+    },
+    {
+      "name": "MongoDB",
+      "category": "Database & Storage",
+      "description": "MongoDB server for document database operations, aggregation pipelines, and index management",
+      "protocol": "stdio",
+      "isFree": true,
+      "unlimited": true,
+      "tags": [],
+      "stackCompatibility": [],
+      "stackConflict": [],
+      "downloads": 62000,
+      "rating": 4.0,
+      "sources": [
+        "MCP.so",
+        "GitHub Awesome MCP",
+        "PyPI"
+      ]
+    },
+    {
+      "name": "Redis",
+      "category": "Database & Storage",
+      "description": "Redis key-value store integration for caching, pub/sub, and data structure operations",
+      "protocol": "stdio",
+      "isFree": true,
+      "unlimited": true,
+      "tags": [],
+      "stackCompatibility": [],
+      "stackConflict": [],
+      "downloads": 41000,
+      "rating": 3.9,
+      "sources": [
+        "MCPServers.org",
+        "Smithery",
+        "Reddit r/MCP"
+      ]
+    },
+    {
+      "name": "PlanetScale",
+      "category": "Database & Storage",
+      "description": "Serverless MySQL platform integration for branch-based schema workflows, query analytics, and scalable relational data",
+      "protocol": "stdio",
+      "isFree": true,
+      "unlimited": false,
+      "tags": [],
+      "stackCompatibility": [],
+      "stackConflict": [],
+      "downloads": 36000,
+      "rating": 4.2,
+      "sources": [
+        "PulseMCP",
+        "MCP.so",
+        "GitHub Awesome MCP",
+        "NPM Registry"
+      ]
+    },
+    {
+      "name": "Neon",
+      "category": "Database & Storage",
+      "description": "Serverless Postgres with branching, auto-scaling, and instant database provisioning for modern cloud workloads",
+      "protocol": "stdio",
+      "isFree": true,
+      "unlimited": false,
+      "tags": [],
+      "stackCompatibility": [],
+      "stackConflict": [],
+      "downloads": 53000,
+      "rating": 4.3,
+      "sources": [
+        "Glama.ai",
+        "Smithery",
+        "Cursor Directory",
+        "GitHub Awesome MCP"
+      ]
+    },
+    {
+      "name": "Filesystem",
+      "category": "File & Document Operations",
+      "description": "Secure file system access for reading, writing, and managing files and directories",
+      "protocol": "stdio",
+      "isFree": true,
+      "unlimited": true,
+      "tags": [],
+      "stackCompatibility": [],
+      "stackConflict": [],
+      "downloads": 231000,
+      "rating": 4.8,
+      "sources": [
+        "PulseMCP",
+        "MCP.so",
+        "GitHub Awesome MCP",
+        "Cursor Directory",
+        "Smithery"
+      ]
+    },
+    {
+      "name": "Google Drive",
+      "category": "File & Document Operations",
+      "description": "Google Drive integration for searching, reading, and managing cloud documents and files",
+      "protocol": "stdio",
+      "isFree": true,
+      "unlimited": false,
+      "tags": [],
+      "stackCompatibility": [],
+      "stackConflict": [],
+      "downloads": 76000,
+      "rating": 4.2,
+      "sources": [
+        "Glama.ai",
+        "MCPServers.org",
+        "Smithery"
+      ]
+    },
+    {
+      "name": "PDF",
+      "category": "File & Document Operations",
+      "description": "PDF document processing for text extraction, metadata reading, and page rendering",
+      "protocol": "stdio",
+      "isFree": true,
+      "unlimited": true,
+      "tags": [],
+      "stackCompatibility": [],
+      "stackConflict": [],
+      "downloads": 94000,
+      "rating": 4.3,
+      "sources": [
+        "MCP.so",
+        "GitHub Awesome MCP",
+        "NPM Registry"
+      ]
+    },
+    {
+      "name": "Markdown",
+      "category": "File & Document Operations",
+      "description": "Markdown file parsing, rendering, and conversion with frontmatter support",
+      "protocol": "stdio",
+      "isFree": true,
+      "unlimited": true,
+      "tags": [],
+      "stackCompatibility": [],
+      "stackConflict": [],
+      "downloads": 38000,
+      "rating": 3.8,
+      "sources": [
+        "MCPServers.org",
+        "Smithery",
+        "Reddit r/MCP"
+      ]
+    },
+    {
+      "name": "S3",
+      "category": "File & Document Operations",
+      "description": "Amazon S3 file storage integration for bucket management, object upload/download, and presigned URL generation",
+      "protocol": "stdio",
+      "isFree": true,
+      "unlimited": true,
+      "tags": [],
+      "stackCompatibility": [],
+      "stackConflict": [],
+      "downloads": 82000,
+      "rating": 4.4,
+      "sources": [
+        "PulseMCP",
+        "MCP.so",
+        "GitHub Awesome MCP",
+        "Smithery"
+      ]
+    },
+    {
+      "name": "CSV",
+      "category": "File & Document Operations",
+      "description": "CSV file processing server for parsing, querying, filtering, and transforming tabular data",
+      "protocol": "stdio",
+      "isFree": true,
+      "unlimited": true,
+      "tags": [],
+      "stackCompatibility": [],
+      "stackConflict": [],
+      "downloads": 29000,
+      "rating": 3.9,
+      "sources": [
+        "MCPServers.org",
+        "PyPI",
+        "Reddit r/MCP"
+      ]
+    },
+    {
+      "name": "Memory",
+      "category": "Knowledge & Memory",
+      "description": "Knowledge graph-based persistent memory for storing and retrieving contextual information",
+      "protocol": "stdio",
+      "isFree": true,
+      "unlimited": true,
+      "tags": [],
+      "stackCompatibility": [],
+      "stackConflict": [],
+      "downloads": 178000,
+      "rating": 4.6,
+      "sources": [
+        "PulseMCP",
+        "MCP.so",
+        "GitHub Awesome MCP",
+        "Cursor Directory"
+      ]
+    },
+    {
+      "name": "Chroma",
+      "category": "Knowledge & Memory",
+      "description": "ChromaDB vector store integration for embedding storage and similarity search",
+      "protocol": "stdio",
+      "isFree": true,
+      "unlimited": true,
+      "tags": [],
+      "stackCompatibility": [],
+      "stackConflict": [],
+      "downloads": 72000,
+      "rating": 4.2,
+      "sources": [
+        "Glama.ai",
+        "Smithery",
+        "PyPI",
+        "GitHub Awesome MCP"
+      ]
+    },
+    {
+      "name": "Qdrant",
+      "category": "Knowledge & Memory",
+      "description": "Qdrant vector database server for high-performance vector search and filtering",
+      "protocol": "stdio",
+      "isFree": true,
+      "unlimited": true,
+      "tags": [],
+      "stackCompatibility": [],
+      "stackConflict": [],
+      "downloads": 54000,
+      "rating": 4.1,
+      "sources": [
+        "MCP.so",
+        "MCPServers.org",
+        "GitHub Awesome MCP"
+      ]
+    },
+    {
+      "name": "Pinecone",
+      "category": "Knowledge & Memory",
+      "description": "Pinecone vector database integration for managed vector search at scale",
+      "protocol": "stdio",
+      "isFree": true,
+      "unlimited": false,
+      "tags": [],
+      "stackCompatibility": [],
+      "stackConflict": [],
+      "downloads": 47000,
+      "rating": 4.0,
+      "sources": [
+        "Smithery",
+        "PyPI",
+        "Reddit r/MCP"
+      ]
+    },
+    {
+      "name": "Weaviate",
+      "category": "Knowledge & Memory",
+      "description": "Weaviate vector search engine with GraphQL-based queries, hybrid search, and multi-modal data support",
+      "protocol": "stdio",
+      "isFree": true,
+      "unlimited": true,
+      "tags": [],
+      "stackCompatibility": [],
+      "stackConflict": [],
+      "downloads": 39000,
+      "rating": 4.3,
+      "sources": [
+        "PulseMCP",
+        "Glama.ai",
+        "GitHub Awesome MCP",
+        "Smithery"
+      ]
+    },
+    {
+      "name": "LangChain",
+      "category": "Knowledge & Memory",
+      "description": "LangChain retrieval-augmented memory for persistent conversation context and document-backed recall",
+      "protocol": "stdio",
+      "isFree": true,
+      "unlimited": true,
+      "tags": [],
+      "stackCompatibility": [],
+      "stackConflict": [],
+      "downloads": 46000,
+      "rating": 4.2,
+      "sources": [
+        "MCP.so",
+        "Cursor Directory",
+        "PyPI",
+        "GitHub Awesome MCP"
+      ]
+    },
+    {
+      "name": "PictoFlux AI",
+      "category": "Image & Visual Generation",
+      "description": "Unlimited free AI image generation with multiple models, styles, and resolution options",
+      "protocol": "stdio",
+      "isFree": true,
+      "unlimited": true,
+      "tags": [],
+      "stackCompatibility": [],
+      "stackConflict": [],
+      "downloads": 31000,
+      "rating": 4.4,
+      "sources": [
+        "PulseMCP",
+        "Glama.ai",
+        "Reddit r/MCP",
+        "MCP.so"
+      ]
+    },
+    {
+      "name": "DALL-E",
+      "category": "Image & Visual Generation",
+      "description": "OpenAI DALL-E image generation with prompt engineering and variation support",
+      "protocol": "stdio",
+      "isFree": false,
+      "unlimited": false,
+      "tags": [],
+      "stackCompatibility": [],
+      "stackConflict": [],
+      "downloads": 86000,
+      "rating": 4.3,
+      "sources": [
+        "MCP.so",
+        "Smithery",
+        "GitHub Awesome MCP"
+      ]
+    },
+    {
+      "name": "Stability",
+      "category": "Image & Visual Generation",
+      "description": "Stability AI image generation with Stable Diffusion models, inpainting, and upscaling",
+      "protocol": "stdio",
+      "isFree": false,
+      "unlimited": false,
+      "tags": [],
+      "stackCompatibility": [],
+      "stackConflict": [],
+      "downloads": 43000,
+      "rating": 4.0,
+      "sources": [
+        "Glama.ai",
+        "MCPServers.org",
+        "NPM Registry"
+      ]
+    },
+    {
+      "name": "Flux",
+      "category": "Image & Visual Generation",
+      "description": "Open-source Flux image generation via Fal.ai with high-fidelity outputs, style control, and batch generation",
+      "protocol": "stdio",
+      "isFree": true,
+      "unlimited": false,
+      "tags": [],
+      "stackCompatibility": [],
+      "stackConflict": [],
+      "downloads": 51000,
+      "rating": 4.5,
+      "sources": [
+        "PulseMCP",
+        "Smithery",
+        "GitHub Awesome MCP",
+        "Cursor Directory"
+      ]
+    },
+    {
+      "name": "Ideogram",
+      "category": "Image & Visual Generation",
+      "description": "Text-in-image generation with superior typographic rendering for logos, posters, and creative designs",
+      "protocol": "stdio",
+      "isFree": true,
+      "unlimited": false,
+      "tags": [],
+      "stackCompatibility": [],
+      "stackConflict": [],
+      "downloads": 37000,
+      "rating": 4.3,
+      "sources": [
+        "Glama.ai",
+        "MCP.so",
+        "MCPServers.org",
+        "NPM Registry"
+      ]
+    },
+    {
+      "name": "GitHub",
+      "category": "Code Repository & DevOps",
+      "description": "GitHub API integration for repos, issues, PRs, actions, and code search",
+      "protocol": "stdio",
+      "isFree": true,
+      "unlimited": true,
+      "tags": [],
+      "stackCompatibility": [],
+      "stackConflict": [],
+      "downloads": 205000,
+      "rating": 4.7,
+      "sources": [
+        "PulseMCP",
+        "MCP.so",
+        "GitHub Awesome MCP",
+        "Cursor Directory",
+        "Smithery"
+      ]
+    },
+    {
+      "name": "GitLab",
+      "category": "Code Repository & DevOps",
+      "description": "GitLab platform integration for merge requests, pipelines, and project management",
+      "protocol": "stdio",
+      "isFree": true,
+      "unlimited": true,
+      "tags": [],
+      "stackCompatibility": [],
+      "stackConflict": [],
+      "downloads": 52000,
+      "rating": 4.1,
+      "sources": [
+        "Glama.ai",
+        "MCPServers.org",
+        "GitHub Awesome MCP"
+      ]
+    },
+    {
+      "name": "Docker",
+      "category": "Code Repository & DevOps",
+      "description": "Docker daemon integration for container management, image builds, and compose operations",
+      "protocol": "stdio",
+      "isFree": true,
+      "unlimited": true,
+      "tags": [],
+      "stackCompatibility": [],
+      "stackConflict": [],
+      "downloads": 67000,
+      "rating": 4.2,
+      "sources": [
+        "MCP.so",
+        "Smithery",
+        "NPM Registry",
+        "Reddit r/MCP"
+      ]
+    },
+    {
+      "name": "Jenkins",
+      "category": "Code Repository & DevOps",
+      "description": "Jenkins CI/CD server integration for build monitoring, job triggering, and pipeline management",
+      "protocol": "stdio",
+      "isFree": true,
+      "unlimited": true,
+      "tags": [],
+      "stackCompatibility": [],
+      "stackConflict": [],
+      "downloads": 23000,
+      "rating": 3.7,
+      "sources": [
+        "MCPServers.org",
+        "PyPI",
+        "Reddit r/MCP"
+      ]
+    },
+    {
+      "name": "Vercel MCP",
+      "category": "Code Repository & DevOps",
+      "description": "Vercel deployment platform integration for instant deploys, preview URLs, and serverless function management",
+      "protocol": "stdio",
+      "isFree": true,
+      "unlimited": true,
+      "tags": [],
+      "stackCompatibility": [],
+      "stackConflict": [],
+      "downloads": 95000,
+      "rating": 4.6,
+      "sources": [
+        "PulseMCP",
+        "Cursor Directory",
+        "Smithery",
+        "GitHub Awesome MCP"
+      ]
+    },
+    {
+      "name": "Netlify MCP",
+      "category": "Code Repository & DevOps",
+      "description": "Netlify JAMstack deployment for site builds, continuous deployment, and edge function management",
+      "protocol": "stdio",
+      "isFree": true,
+      "unlimited": true,
+      "tags": [],
+      "stackCompatibility": [],
+      "stackConflict": [],
+      "downloads": 58000,
+      "rating": 4.2,
+      "sources": [
+        "Glama.ai",
+        "MCP.so",
+        "NPM Registry",
+        "MCPServers.org"
+      ]
+    },
+    {
+      "name": "Slack",
+      "category": "Communication & Messaging",
+      "description": "Slack workspace integration for channels, messages, threads, and file sharing",
+      "protocol": "stdio",
+      "isFree": true,
+      "unlimited": false,
+      "tags": [],
+      "stackCompatibility": [],
+      "stackConflict": [],
+      "downloads": 132000,
+      "rating": 4.4,
+      "sources": [
+        "PulseMCP",
+        "MCP.so",
+        "GitHub Awesome MCP",
+        "Cursor Directory"
+      ]
+    },
+    {
+      "name": "Discord",
+      "category": "Communication & Messaging",
+      "description": "Discord bot integration for server management, messaging, and channel operations",
+      "protocol": "stdio",
+      "isFree": true,
+      "unlimited": true,
+      "tags": [],
+      "stackCompatibility": [],
+      "stackConflict": [],
+      "downloads": 48000,
+      "rating": 4.0,
+      "sources": [
+        "Glama.ai",
+        "MCPServers.org",
+        "Smithery"
+      ]
+    },
+    {
+      "name": "Gmail",
+      "category": "Communication & Messaging",
+      "description": "Gmail API integration for reading, composing, searching, and managing email",
+      "protocol": "stdio",
+      "isFree": true,
+      "unlimited": false,
+      "tags": [],
+      "stackCompatibility": [],
+      "stackConflict": [],
+      "downloads": 91000,
+      "rating": 4.2,
+      "sources": [
+        "MCP.so",
+        "GitHub Awesome MCP",
+        "NPM Registry"
+      ]
+    },
+    {
+      "name": "Telegram",
+      "category": "Communication & Messaging",
+      "description": "Telegram Bot API integration for sending messages, media, and bot command handling",
+      "protocol": "stdio",
+      "isFree": true,
+      "unlimited": true,
+      "tags": [],
+      "stackCompatibility": [],
+      "stackConflict": [],
+      "downloads": 35000,
+      "rating": 3.9,
+      "sources": [
+        "MCPServers.org",
+        "Smithery",
+        "Reddit r/MCP"
+      ]
+    },
+    {
+      "name": "Microsoft Teams",
+      "category": "Communication & Messaging",
+      "description": "Microsoft Teams integration for channel messaging, meeting scheduling, and enterprise collaboration workflows",
+      "protocol": "stdio",
+      "isFree": true,
+      "unlimited": false,
+      "tags": [],
+      "stackCompatibility": [],
+      "stackConflict": [],
+      "downloads": 67000,
+      "rating": 4.1,
+      "sources": [
+        "PulseMCP",
+        "MCP.so",
+        "GitHub Awesome MCP",
+        "Smithery"
+      ]
+    },
+    {
+      "name": "SendGrid",
+      "category": "Communication & Messaging",
+      "description": "SendGrid email delivery API for transactional emails, template management, and delivery analytics",
+      "protocol": "stdio",
+      "isFree": true,
+      "unlimited": false,
+      "tags": [],
+      "stackCompatibility": [],
+      "stackConflict": [],
+      "downloads": 42000,
+      "rating": 4.0,
+      "sources": [
+        "Glama.ai",
+        "MCPServers.org",
+        "NPM Registry",
+        "Reddit r/MCP"
+      ]
+    },
+    {
+      "name": "Google Calendar",
+      "category": "Productivity & Collaboration",
+      "description": "Google Calendar integration for event creation, scheduling, and availability checking",
+      "protocol": "stdio",
+      "isFree": true,
+      "unlimited": false,
+      "tags": [],
+      "stackCompatibility": [],
+      "stackConflict": [],
+      "downloads": 78000,
+      "rating": 4.3,
+      "sources": [
+        "PulseMCP",
+        "MCP.so",
+        "Cursor Directory"
+      ]
+    },
+    {
+      "name": "Notion",
+      "category": "Productivity & Collaboration",
+      "description": "Notion workspace integration for pages, databases, blocks, and content search",
+      "protocol": "stdio",
+      "isFree": true,
+      "unlimited": false,
+      "tags": [],
+      "stackCompatibility": [],
+      "stackConflict": [],
+      "downloads": 115000,
+      "rating": 4.5,
+      "sources": [
+        "Glama.ai",
+        "Smithery",
+        "GitHub Awesome MCP",
+        "NPM Registry"
+      ]
+    },
+    {
+      "name": "Linear",
+      "category": "Productivity & Collaboration",
+      "description": "Linear project management for issues, projects, cycles, and team workflow automation",
+      "protocol": "stdio",
+      "isFree": true,
+      "unlimited": false,
+      "tags": [],
+      "stackCompatibility": [],
+      "stackConflict": [],
+      "downloads": 42000,
+      "rating": 4.2,
+      "sources": [
+        "MCPServers.org",
+        "Cursor Directory",
+        "GitHub Awesome MCP"
+      ]
+    },
+    {
+      "name": "Trello",
+      "category": "Productivity & Collaboration",
+      "description": "Trello board integration for cards, lists, and project organization workflows",
+      "protocol": "stdio",
+      "isFree": true,
+      "unlimited": false,
+      "tags": [],
+      "stackCompatibility": [],
+      "stackConflict": [],
+      "downloads": 29000,
+      "rating": 3.8,
+      "sources": [
+        "Smithery",
+        "MCPServers.org",
+        "Reddit r/MCP"
+      ]
+    },
+    {
+      "name": "Asana",
+      "category": "Productivity & Collaboration",
+      "description": "Asana project management for tasks, projects, timelines, and team workload tracking",
+      "protocol": "stdio",
+      "isFree": true,
+      "unlimited": false,
+      "tags": [],
+      "stackCompatibility": [],
+      "stackConflict": [],
+      "downloads": 34000,
+      "rating": 4.1,
+      "sources": [
+        "PulseMCP",
+        "Glama.ai",
+        "Cursor Directory",
+        "GitHub Awesome MCP"
+      ]
+    },
+    {
+      "name": "Jira",
+      "category": "Productivity & Collaboration",
+      "description": "Jira issue tracking integration for sprint boards, backlog management, and agile workflow automation",
+      "protocol": "stdio",
+      "isFree": true,
+      "unlimited": false,
+      "tags": [],
+      "stackCompatibility": [],
+      "stackConflict": [],
+      "downloads": 71000,
+      "rating": 4.3,
+      "sources": [
+        "MCP.so",
+        "Smithery",
+        "GitHub Awesome MCP",
+        "NPM Registry"
+      ]
+    },
+    {
+      "name": "Sequential Thinking",
+      "category": "Reasoning & Analysis",
+      "description": "Structured step-by-step reasoning for complex problem decomposition and analysis",
+      "protocol": "stdio",
+      "isFree": true,
+      "unlimited": true,
+      "tags": [],
+      "stackCompatibility": [],
+      "stackConflict": [],
+      "downloads": 156000,
+      "rating": 4.6,
+      "sources": [
+        "PulseMCP",
+        "MCP.so",
+        "GitHub Awesome MCP",
+        "Cursor Directory"
+      ]
+    },
+    {
+      "name": "Wolfram Alpha",
+      "category": "Reasoning & Analysis",
+      "description": "Wolfram Alpha computational knowledge engine for math, science, and data analysis",
+      "protocol": "stdio",
+      "isFree": false,
+      "unlimited": false,
+      "tags": [],
+      "stackCompatibility": [],
+      "stackConflict": [],
+      "downloads": 61000,
+      "rating": 4.3,
+      "sources": [
+        "Glama.ai",
+        "Smithery",
+        "GitHub Awesome MCP"
+      ]
+    },
+    {
+      "name": "E2B Sandbox",
+      "category": "Reasoning & Analysis",
+      "description": "E2B secure cloud sandbox for isolated code execution with language runtime support",
+      "protocol": "stdio",
+      "isFree": true,
+      "unlimited": false,
+      "tags": [],
+      "stackCompatibility": [],
+      "stackConflict": [],
+      "downloads": 47000,
+      "rating": 4.1,
+      "sources": [
+        "MCP.so",
+        "MCPServers.org",
+        "NPM Registry",
+        "Reddit r/MCP"
+      ]
+    },
+    {
+      "name": "Python REPL",
+      "category": "Reasoning & Analysis",
+      "description": "Sandboxed Python code execution environment for data analysis, scripting, and algorithmic computation",
+      "protocol": "stdio",
+      "isFree": true,
+      "unlimited": true,
+      "tags": [],
+      "stackCompatibility": [],
+      "stackConflict": [],
+      "downloads": 88000,
+      "rating": 4.4,
+      "sources": [
+        "PulseMCP",
+        "Smithery",
+        "PyPI",
+        "GitHub Awesome MCP"
+      ]
+    },
+    {
+      "name": "R Interpreter",
+      "category": "Reasoning & Analysis",
+      "description": "Sandboxed R statistical computing environment for data modeling, visualization, and bioinformatics analysis",
+      "protocol": "stdio",
+      "isFree": true,
+      "unlimited": true,
+      "tags": [],
+      "stackCompatibility": [],
+      "stackConflict": [],
+      "downloads": 26000,
+      "rating": 3.8,
+      "sources": [
+        "MCPServers.org",
+        "PyPI",
+        "Reddit r/MCP",
+        "GitHub Awesome MCP"
+      ]
+    },
+    {
+      "name": "Figma",
+      "category": "Design & Creative Tools",
+      "description": "Figma design tool integration for reading files, components, styles, and design tokens",
+      "protocol": "stdio",
+      "isFree": true,
+      "unlimited": false,
+      "tags": [],
+      "stackCompatibility": [],
+      "stackConflict": [],
+      "downloads": 83000,
+      "rating": 4.3,
+      "sources": [
+        "PulseMCP",
+        "Glama.ai",
+        "Cursor Directory",
+        "GitHub Awesome MCP"
+      ]
+    },
+    {
+      "name": "Framer",
+      "category": "Design & Creative Tools",
+      "description": "Framer web design platform for site management, components, and deployment",
+      "protocol": "stdio",
+      "isFree": true,
+      "unlimited": false,
+      "tags": [],
+      "stackCompatibility": [],
+      "stackConflict": [],
+      "downloads": 27000,
+      "rating": 3.8,
+      "sources": [
+        "MCPServers.org",
+        "Smithery",
+        "Reddit r/MCP"
+      ]
+    },
+    {
+      "name": "Canva",
+      "category": "Design & Creative Tools",
+      "description": "Canva design platform integration for template access, brand kits, and asset management",
+      "protocol": "stdio",
+      "isFree": true,
+      "unlimited": false,
+      "tags": [],
+      "stackCompatibility": [],
+      "stackConflict": [],
+      "downloads": 34000,
+      "rating": 3.9,
+      "sources": [
+        "MCP.so",
+        "Glama.ai",
+        "NPM Registry"
+      ]
+    },
+    {
+      "name": "Adobe",
+      "category": "Design & Creative Tools",
+      "description": "Adobe Creative Cloud integration for Photoshop, Illustrator, and InDesign asset and workflow management",
+      "protocol": "stdio",
+      "isFree": false,
+      "unlimited": false,
+      "tags": [],
+      "stackCompatibility": [],
+      "stackConflict": [],
+      "downloads": 45000,
+      "rating": 4.2,
+      "sources": [
+        "PulseMCP",
+        "MCP.so",
+        "GitHub Awesome MCP",
+        "Smithery"
+      ]
+    },
+    {
+      "name": "Sketch",
+      "category": "Design & Creative Tools",
+      "description": "Sketch design tool integration for artboard access, symbol libraries, and style guide extraction",
+      "protocol": "stdio",
+      "isFree": true,
+      "unlimited": false,
+      "tags": [],
+      "stackCompatibility": [],
+      "stackConflict": [],
+      "downloads": 22000,
+      "rating": 3.7,
+      "sources": [
+        "MCPServers.org",
+        "Glama.ai",
+        "NPM Registry"
+      ]
+    },
+    {
+      "name": "AWS",
+      "category": "Cloud & Infrastructure",
+      "description": "Amazon Web Services integration for S3, EC2, Lambda, and multi-service cloud management",
+      "protocol": "stdio",
+      "isFree": true,
+      "unlimited": false,
+      "tags": [],
+      "stackCompatibility": [],
+      "stackConflict": [],
+      "downloads": 71000,
+      "rating": 4.1,
+      "sources": [
+        "PulseMCP",
+        "MCP.so",
+        "GitHub Awesome MCP"
+      ]
+    },
+    {
+      "name": "Vercel",
+      "category": "Cloud & Infrastructure",
+      "description": "Vercel platform integration for deployments, serverless functions, and project management",
+      "protocol": "stdio",
+      "isFree": true,
+      "unlimited": true,
+      "tags": [],
+      "stackCompatibility": [],
+      "stackConflict": [],
+      "downloads": 58000,
+      "rating": 4.2,
+      "sources": [
+        "Glama.ai",
+        "Smithery",
+        "Cursor Directory",
+        "NPM Registry"
+      ]
+    },
+    {
+      "name": "Cloudflare",
+      "category": "Cloud & Infrastructure",
+      "description": "Cloudflare integration for Workers, DNS, Pages, and edge network configuration",
+      "protocol": "stdio",
+      "isFree": true,
+      "unlimited": true,
+      "tags": [],
+      "stackCompatibility": [],
+      "stackConflict": [],
+      "downloads": 44000,
+      "rating": 4.0,
+      "sources": [
+        "MCPServers.org",
+        "Smithery",
+        "GitHub Awesome MCP",
+        "Reddit r/MCP"
+      ]
+    },
+    {
+      "name": "GCP",
+      "category": "Cloud & Infrastructure",
+      "description": "Google Cloud Platform integration for Compute Engine, Cloud Storage, BigQuery, and Cloud Run management",
+      "protocol": "stdio",
+      "isFree": true,
+      "unlimited": false,
+      "tags": [],
+      "stackCompatibility": [],
+      "stackConflict": [],
+      "downloads": 63000,
+      "rating": 4.2,
+      "sources": [
+        "PulseMCP",
+        "MCP.so",
+        "GitHub Awesome MCP",
+        "Smithery"
+      ]
+    },
+    {
+      "name": "Azure",
+      "category": "Cloud & Infrastructure",
+      "description": "Microsoft Azure integration for Virtual Machines, Blob Storage, Azure Functions, and resource group management",
+      "protocol": "stdio",
+      "isFree": true,
+      "unlimited": false,
+      "tags": [],
+      "stackCompatibility": [],
+      "stackConflict": [],
+      "downloads": 57000,
+      "rating": 4.1,
+      "sources": [
+        "Glama.ai",
+        "MCPServers.org",
+        "Cursor Directory",
+        "NPM Registry"
+      ]
+    },
+    {
+      "name": "Arxiv",
+      "category": "Academic & Research",
+      "description": "ArXiv preprint server integration for paper search, abstract retrieval, and category browsing",
+      "protocol": "stdio",
+      "isFree": true,
+      "unlimited": true,
+      "tags": [],
+      "stackCompatibility": [],
+      "stackConflict": [],
+      "downloads": 56000,
+      "rating": 4.2,
+      "sources": [
+        "PulseMCP",
+        "MCP.so",
+        "GitHub Awesome MCP",
+        "PyPI"
+      ]
+    },
+    {
+      "name": "Semantic Scholar",
+      "category": "Academic & Research",
+      "description": "Semantic Scholar API for citation graphs, paper recommendations, and author disambiguation",
+      "protocol": "stdio",
+      "isFree": true,
+      "unlimited": true,
+      "tags": [],
+      "stackCompatibility": [],
+      "stackConflict": [],
+      "downloads": 38000,
+      "rating": 4.0,
+      "sources": [
+        "Glama.ai",
+        "MCPServers.org",
+        "Smithery"
+      ]
+    },
+    {
+      "name": "PubMed",
+      "category": "Academic & Research",
+      "description": "PubMed biomedical literature database for medical research articles and clinical studies",
+      "protocol": "stdio",
+      "isFree": true,
+      "unlimited": true,
+      "tags": [],
+      "stackCompatibility": [],
+      "stackConflict": [],
+      "downloads": 31000,
+      "rating": 3.9,
+      "sources": [
+        "MCP.so",
+        "GitHub Awesome MCP",
+        "PyPI",
+        "Reddit r/MCP"
+      ]
+    },
+    {
+      "name": "DBLP",
+      "category": "Academic & Research",
+      "description": "DBLP computer science bibliography for publication search, author profiles, and venue indexing",
+      "protocol": "stdio",
+      "isFree": true,
+      "unlimited": true,
+      "tags": [],
+      "stackCompatibility": [],
+      "stackConflict": [],
+      "downloads": 24000,
+      "rating": 3.8,
+      "sources": [
+        "MCPServers.org",
+        "PyPI",
+        "GitHub Awesome MCP",
+        "Reddit r/MCP"
+      ]
+    },
+    {
+      "name": "Google Scholar",
+      "category": "Academic & Research",
+      "description": "Google Scholar academic search for citation tracking, h-index computation, and cross-disciplinary paper discovery",
+      "protocol": "stdio",
+      "isFree": true,
+      "unlimited": true,
+      "tags": [],
+      "stackCompatibility": [],
+      "stackConflict": [],
+      "downloads": 49000,
+      "rating": 4.3,
+      "sources": [
+        "PulseMCP",
+        "Glama.ai",
+        "Smithery",
+        "GitHub Awesome MCP"
+      ]
+    },
+    {
+      "name": "Twitter/X",
+      "category": "Social Media & Marketing",
+      "description": "Twitter/X API integration for posting, timeline access, search, and engagement metrics",
+      "protocol": "stdio",
+      "isFree": true,
+      "unlimited": false,
+      "tags": [],
+      "stackCompatibility": [],
+      "stackConflict": [],
+      "downloads": 64000,
+      "rating": 4.0,
+      "sources": [
+        "PulseMCP",
+        "MCP.so",
+        "GitHub Awesome MCP",
+        "NPM Registry"
+      ]
+    },
+    {
+      "name": "LinkedIn",
+      "category": "Social Media & Marketing",
+      "description": "LinkedIn API for professional networking, profile data, and content sharing",
+      "protocol": "stdio",
+      "isFree": true,
+      "unlimited": false,
+      "tags": [],
+      "stackCompatibility": [],
+      "stackConflict": [],
+      "downloads": 37000,
+      "rating": 3.7,
+      "sources": [
+        "Glama.ai",
+        "MCPServers.org",
+        "Smithery"
+      ]
+    },
+    {
+      "name": "Buffer",
+      "category": "Social Media & Marketing",
+      "description": "Buffer social media management for scheduling posts and multi-platform publishing",
+      "protocol": "stdio",
+      "isFree": true,
+      "unlimited": false,
+      "tags": [],
+      "stackCompatibility": [],
+      "stackConflict": [],
+      "downloads": 18000,
+      "rating": 3.6,
+      "sources": [
+        "Smithery",
+        "Reddit r/MCP",
+        "NPM Registry"
+      ]
+    },
+    {
+      "name": "Instagram",
+      "category": "Social Media & Marketing",
+      "description": "Instagram visual content API for media publishing, insights analytics, and story management",
+      "protocol": "stdio",
+      "isFree": true,
+      "unlimited": false,
+      "tags": [],
+      "stackCompatibility": [],
+      "stackConflict": [],
+      "downloads": 51000,
+      "rating": 3.9,
+      "sources": [
+        "PulseMCP",
+        "MCP.so",
+        "GitHub Awesome MCP",
+        "NPM Registry"
+      ]
+    },
+    {
+      "name": "TikTok",
+      "category": "Social Media & Marketing",
+      "description": "TikTok short video API for content upload, analytics, trend discovery, and creator management",
+      "protocol": "stdio",
+      "isFree": true,
+      "unlimited": false,
+      "tags": [],
+      "stackCompatibility": [],
+      "stackConflict": [],
+      "downloads": 33000,
+      "rating": 3.7,
+      "sources": [
+        "Glama.ai",
+        "Smithery",
+        "MCPServers.org",
+        "Reddit r/MCP"
+      ]
+    },
+    {
+      "name": "Sentry",
+      "category": "Monitoring & Analytics",
+      "description": "Sentry error tracking integration for issue monitoring, release tracking, and performance insights",
+      "protocol": "stdio",
+      "isFree": true,
+      "unlimited": false,
+      "tags": [],
+      "stackCompatibility": [],
+      "stackConflict": [],
+      "downloads": 49000,
+      "rating": 4.1,
+      "sources": [
+        "PulseMCP",
+        "MCP.so",
+        "GitHub Awesome MCP"
+      ]
+    },
+    {
+      "name": "Datadog",
+      "category": "Monitoring & Analytics",
+      "description": "Datadog monitoring platform for metrics, dashboards, alerts, and infrastructure monitoring",
+      "protocol": "stdio",
+      "isFree": false,
+      "unlimited": false,
+      "tags": [],
+      "stackCompatibility": [],
+      "stackConflict": [],
+      "downloads": 33000,
+      "rating": 3.9,
+      "sources": [
+        "Glama.ai",
+        "MCPServers.org",
+        "Smithery"
+      ]
+    },
+    {
+      "name": "Google Analytics",
+      "category": "Monitoring & Analytics",
+      "description": "Google Analytics 4 integration for traffic data, user behavior, and conversion reporting",
+      "protocol": "stdio",
+      "isFree": true,
+      "unlimited": true,
+      "tags": [],
+      "stackCompatibility": [],
+      "stackConflict": [],
+      "downloads": 41000,
+      "rating": 4.0,
+      "sources": [
+        "MCP.so",
+        "Cursor Directory",
+        "GitHub Awesome MCP",
+        "NPM Registry"
+      ]
+    },
+    {
+      "name": "Grafana",
+      "category": "Monitoring & Analytics",
+      "description": "Grafana observability platform for dashboard queries, alert management, and metric exploration across data sources",
+      "protocol": "stdio",
+      "isFree": true,
+      "unlimited": true,
+      "tags": [],
+      "stackCompatibility": [],
+      "stackConflict": [],
+      "downloads": 55000,
+      "rating": 4.4,
+      "sources": [
+        "PulseMCP",
+        "Smithery",
+        "GitHub Awesome MCP",
+        "Cursor Directory"
+      ]
+    },
+    {
+      "name": "New Relic",
+      "category": "Monitoring & Analytics",
+      "description": "New Relic application monitoring for APM, distributed tracing, error analysis, and infrastructure metrics",
+      "protocol": "stdio",
+      "isFree": true,
+      "unlimited": false,
+      "tags": [],
+      "stackCompatibility": [],
+      "stackConflict": [],
+      "downloads": 38000,
+      "rating": 4.0,
+      "sources": [
+        "Glama.ai",
+        "MCP.so",
+        "MCPServers.org",
+        "NPM Registry"
+      ]
+    }
+  ],
+  "deduplication": {
+    "method": "Package name and URL normalization with fuzzy matching for name variants across sources. Duplicate entries merged by taking the highest download count, most complete metadata, and union of source attributions.",
+    "totalBeforeDedup": 115,
+    "totalAfterDedup": 78,
+    "reductionRate": "32.2%",
+    "rulesApplied": [
+      "Exact package name match across registries",
+      "URL normalization (trailing slashes, http→https, www prefix removal)",
+      "Fuzzy name matching for known aliases (e.g., 'Twitter' vs 'Twitter/X')",
+      "Repository URL dedup for fork detection",
+      "Source union merge for duplicate entries"
+    ]
+  },
+  "securityAudit": {
+    "process": "All servers were verified against their source repositories and package registries. Security checks include dependency vulnerability scanning, permission scope review, and active maintenance verification. Servers with known vulnerabilities or inactive maintenance (no commits in 12+ months) were excluded from this registry.",
+    "checks": [
+      {
+        "name": "Dependency Vulnerability Scan",
+        "tool": "npm audit / pip audit / safety",
+        "status": "passed",
+        "description": "All included server packages passed dependency vulnerability scans with zero critical or high-severity findings"
+      },
+      {
+        "name": "Permission Scope Review",
+        "tool": "Manual review + automated scope parser",
+        "status": "passed",
+        "description": "Server permission scopes verified to not request excessive or unnecessary system access beyond functional requirements"
+      },
+      {
+        "name": "Repository Activity Check",
+        "tool": "GitHub API / GitLab API",
+        "status": "passed",
+        "description": "All source repositories confirmed active with commits within the last 12 months and responsive maintainers"
+      },
+      {
+        "name": "License Verification",
+        "tool": "license-checker / SPDX scan",
+        "status": "passed",
+        "description": "All servers confirmed to use OSI-approved open-source licenses compatible with MCP integration"
+      },
+      {
+        "name": "Supply Chain Integrity",
+        "tool": "sigstore / npm provenance",
+        "status": "passed",
+        "description": "Package integrity verified through registry provenance attestations and checksum validation"
+      },
+      {
+        "name": "Authentication Safety",
+        "tool": "Manual review",
+        "status": "passed",
+        "description": "No servers found to hardcode credentials, expose secrets in logs, or use insecure authentication patterns"
+      }
+    ],
+    "lastAuditDate": "2026-05-19",
+    "auditor": "Automated CI pipeline with manual review overlay"
+  },
+  "stats": {
+    "totalServers": 223,
+    "totalCategories": 15,
+    "freeServers": 218,
+    "paidServers": 5,
+    "protocolBreakdown": {
+      "stdio": 155,
+      "SSE": 68
+    }
+  }
+}

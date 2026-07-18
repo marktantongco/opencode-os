@@ -1,0 +1,1404 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover, user-scalable=no">
+  <title>opencode OS — Knowledge Base | Walkthrough Wiki + Skill Installer</title>
+  <meta name="description" content="Mobile-first interactive knowledge base for the opencode OS AI Agent Skill Store. Walkthrough wiki, infographic motion, one-click skill installers, and searchable agent system docs.">
+  <meta name="theme-color" content="#05060A">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+  <meta name="mobile-web-app-capable" content="yes">
+
+  <!-- SEO/GEO -->
+  <link rel="canonical" href="https://marktantongco.github.io/opencode-accomplishments/kb.html">
+  <meta name="robots" content="index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1">
+  <meta name="keywords" content="opencode OS, knowledge base, wiki, walkthrough, skill installer, AI agent skills, mobile-first, infographic, GSAP, Three.js">
+  <meta name="author" content="Mark Tan Tongco">
+  <meta name="geo.region" content="PH-00">
+  <meta name="geo.placename" content="Manila, Philippines">
+  <meta name="geo.position" content="14.5995;120.9842">
+  <meta name="ICBM" content="14.5995, 120.9842">
+
+  <!-- OpenGraph -->
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://marktantongco.github.io/opencode-accomplishments/kb.html">
+  <meta property="og:site_name" content="opencode OS — Knowledge Base">
+  <meta property="og:title" content="opencode OS — Knowledge Base | Walkthrough Wiki + Skill Installer">
+  <meta property="og:description" content="Mobile-first interactive knowledge base. Walkthrough wiki, infographic motion, one-click skill installers.">
+  <meta property="og:locale" content="en_US">
+  <meta property="og:image" content="https://marktantongco.github.io/opencode-accomplishments/og-image.png">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+
+  <!-- Twitter -->
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:site" content="@marktantongco">
+  <meta name="twitter:creator" content="@marktantongco">
+  <meta name="twitter:title" content="opencode OS — Knowledge Base">
+  <meta name="twitter:description" content="Mobile-first walkthrough wiki + skill installer.">
+  <meta name="twitter:image" content="https://marktantongco.github.io/opencode-accomplishments/og-image.png">
+
+  <link rel="manifest" href="manifest.json">
+  <link rel="icon" href="icon-192.svg" type="image/svg+xml">
+  <link rel="apple-touch-icon" href="icon-192.svg">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+  <!-- JSON-LD: Course (walkthrough) + FAQPage + ItemList -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Course",
+    "name": "opencode OS — Walkthrough",
+    "description": "A 5-step interactive walkthrough of the opencode OS AI Agent Skill Store — from first launch to installing your first skill stack.",
+    "provider": {"@type": "Organization", "name": "opencode OS", "url": "https://marktantongco.github.io/opencode-accomplishments/"}
+  }
+  </script>
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "ItemList",
+    "name": "Curated External Skills",
+    "description": "7 production-grade AI agent skills from the skills.sh registry, curated for the opencode OS knowledge base.",
+    "itemListElement": [
+      {"@type": "ListItem", "position": 1, "name": "ui-ux-pro-max", "url": "https://github.com/nextlevelbuilder/ui-ux-pro-max-skill"},
+      {"@type": "ListItem", "position": 2, "name": "21st-registry", "url": "https://github.com/21st-dev/registry"},
+      {"@type": "ListItem", "position": 3, "name": "21st marketplace", "url": "https://github.com/serafimcloud/21st"},
+      {"@type": "ListItem", "position": 4, "name": "gsap-core", "url": "https://github.com/greensock/gsap-skills"},
+      {"@type": "ListItem", "position": 5, "name": "framer-motion-animator", "url": "https://github.com/patricio0312rev/skills"},
+      {"@type": "ListItem", "position": 6, "name": "threejs-animation", "url": "https://github.com/cloudai-x/threejs-skills"},
+      {"@type": "ListItem", "position": 7, "name": "stitch-loop", "url": "https://github.com/google-labs-code/stitch-skills"}
+    ]
+  }
+  </script>
+
+  <!-- GSAP -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+
+  <style>
+    /* ═══ RESET + TOKENS ═══ */
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; -webkit-tap-highlight-color: transparent; }
+
+    :root {
+      --bg-base: #05060A;
+      --bg-surface: #0C0D12;
+      --bg-elevated: #12141C;
+      --bg-card: rgba(21, 23, 32, 0.72);
+      --bg-card-solid: #151720;
+      --border: rgba(255,255,255,0.06);
+      --border-hover: rgba(255,255,255,0.14);
+      --border-active: rgba(139,92,246,0.45);
+      --text-0: #F8F9FC;
+      --text-1: #C4C9D8;
+      --text-2: #7C849B;
+      --text-3: #4A5168;
+      --purple: #8B5CF6;
+      --purple-dim: rgba(139,92,246,0.12);
+      --purple-glow: rgba(139,92,246,0.35);
+      --cyan: #06B6D4;
+      --green: #10B981;
+      --orange: #F97316;
+      --yellow: #EAB308;
+      --rose: #F43F5E;
+      --amber: #F59E0B;
+      --font-sans: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+      --font-mono: 'JetBrains Mono', 'Fira Code', monospace;
+      --radius: 14px;
+      --radius-lg: 20px;
+      --radius-pill: 9999px;
+      --ease-out: cubic-bezier(0.16, 1, 0.3, 1);
+      --ease-spring: cubic-bezier(0.34, 1.56, 0.64, 1);
+      --ease-fluid: cubic-bezier(0.4, 0.0, 0.2, 1);
+      --safe-top: env(safe-area-inset-top, 0px);
+      --safe-bottom: env(safe-area-inset-bottom, 0px);
+      --nav-h: calc(56px + var(--safe-bottom));
+    }
+
+    html { -webkit-font-smoothing: antialiased; -moz-osx-font-smoothing: grayscale; scroll-behavior: smooth; }
+
+    body {
+      font-family: var(--font-sans);
+      background: var(--bg-base);
+      color: var(--text-0);
+      line-height: 1.5;
+      overflow-x: hidden;
+      min-height: 100vh;
+      min-height: 100dvh;
+      padding-bottom: calc(var(--nav-h) + 16px);
+      -webkit-user-select: none;
+      user-select: none;
+    }
+    body.allow-select { -webkit-user-select: text; user-select: text; }
+
+    /* Atmospheric gradient */
+    body::before {
+      content: '';
+      position: fixed; inset: 0;
+      background:
+        radial-gradient(ellipse 70% 50% at 20% 0%, rgba(139,92,246,0.10), transparent),
+        radial-gradient(ellipse 60% 40% at 80% 100%, rgba(6,182,212,0.06), transparent),
+        radial-gradient(ellipse 50% 30% at 50% 50%, rgba(139,92,246,0.03), transparent);
+      pointer-events: none; z-index: -1;
+    }
+
+    ::-webkit-scrollbar { width: 0; height: 0; }
+
+    /* ═══ HEADER ═══ */
+    .header {
+      position: sticky; top: 0; z-index: 50;
+      padding: calc(12px + var(--safe-top)) 16px 12px;
+      background: rgba(5,6,10,0.78);
+      backdrop-filter: blur(20px) saturate(180%);
+      -webkit-backdrop-filter: blur(20px) saturate(180%);
+      border-bottom: 1px solid var(--border);
+      display: flex; align-items: center; gap: 10px;
+    }
+    .header-back {
+      width: 38px; height: 38px;
+      display: flex; align-items: center; justify-content: center;
+      border-radius: 12px;
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      color: var(--text-1);
+      text-decoration: none;
+      transition: all 0.2s var(--ease-out);
+      flex-shrink: 0;
+    }
+    .header-back:active { transform: scale(0.92); background: var(--purple-dim); }
+    .header-title {
+      font-size: 15px; font-weight: 600;
+      flex: 1; min-width: 0;
+      overflow: hidden; text-overflow: ellipsis; white-space: nowrap;
+    }
+    .header-title .accent { color: var(--purple); }
+    .header-search {
+      width: 38px; height: 38px;
+      display: flex; align-items: center; justify-content: center;
+      border-radius: 12px;
+      background: var(--purple-dim);
+      border: 1px solid var(--border-active);
+      color: var(--purple);
+      flex-shrink: 0;
+    }
+
+    /* ═══ HERO ═══ */
+    .hero {
+      padding: 24px 16px 16px;
+      text-align: center;
+      position: relative;
+    }
+    .hero-badge {
+      display: inline-flex; align-items: center; gap: 6px;
+      padding: 5px 12px;
+      border-radius: var(--radius-pill);
+      background: var(--purple-dim);
+      border: 1px solid var(--border-active);
+      font-size: 11px; font-weight: 600;
+      color: var(--purple);
+      font-family: var(--font-mono);
+      letter-spacing: 0.5px;
+      margin-bottom: 14px;
+    }
+    .hero-badge::before {
+      content: '';
+      width: 6px; height: 6px;
+      border-radius: 50%;
+      background: var(--purple);
+      box-shadow: 0 0 8px var(--purple);
+      animation: pulse 2s var(--ease-fluid) infinite;
+    }
+    @keyframes pulse {
+      0%, 100% { opacity: 1; transform: scale(1); }
+      50% { opacity: 0.5; transform: scale(0.8); }
+    }
+    .hero h1 {
+      font-size: 28px; font-weight: 800;
+      letter-spacing: -0.02em;
+      line-height: 1.1;
+      margin-bottom: 10px;
+    }
+    .hero h1 .gradient {
+      background: linear-gradient(135deg, #8B5CF6 0%, #06B6D4 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+    .hero p {
+      font-size: 14px;
+      color: var(--text-2);
+      max-width: 320px;
+      margin: 0 auto;
+      line-height: 1.5;
+    }
+
+    /* ═══ ANIMATED STAT STRIP ═══ */
+    .stat-strip {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 8px;
+      padding: 0 16px;
+      margin: 20px 0;
+    }
+    .stat-cell {
+      background: var(--bg-card);
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 12px 8px;
+      text-align: center;
+      transition: all 0.3s var(--ease-out);
+    }
+    .stat-cell:hover, .stat-cell:active {
+      border-color: var(--border-active);
+      transform: translateY(-2px);
+    }
+    .stat-num {
+      font-family: var(--font-mono);
+      font-size: 18px; font-weight: 700;
+      background: linear-gradient(135deg, var(--purple), var(--cyan));
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+    .stat-label {
+      font-size: 9px;
+      color: var(--text-2);
+      text-transform: uppercase;
+      letter-spacing: 0.6px;
+      margin-top: 2px;
+    }
+
+    /* ═══ WALKTHROUGH ═══ */
+    .section {
+      padding: 24px 16px 8px;
+    }
+    .section-label {
+      font-size: 10px; font-weight: 700;
+      color: var(--text-2);
+      text-transform: uppercase;
+      letter-spacing: 1.5px;
+      margin-bottom: 4px;
+      font-family: var(--font-mono);
+    }
+    .section-title {
+      font-size: 20px; font-weight: 700;
+      letter-spacing: -0.01em;
+      margin-bottom: 6px;
+    }
+    .section-desc {
+      font-size: 13px;
+      color: var(--text-2);
+      margin-bottom: 16px;
+      line-height: 1.5;
+    }
+
+    .walkthrough-card {
+      background: linear-gradient(135deg, rgba(139,92,246,0.08), rgba(6,182,212,0.04));
+      border: 1px solid var(--border-active);
+      border-radius: var(--radius-lg);
+      padding: 18px;
+      position: relative;
+      overflow: hidden;
+    }
+    .walkthrough-card::before {
+      content: '';
+      position: absolute;
+      top: -50%; right: -30%;
+      width: 200px; height: 200px;
+      background: radial-gradient(circle, var(--purple-glow), transparent 70%);
+      pointer-events: none;
+    }
+    .walkthrough-steps {
+      display: flex; flex-direction: column;
+      gap: 12px;
+      position: relative;
+    }
+    .wt-step {
+      display: flex; align-items: flex-start; gap: 12px;
+      padding: 12px;
+      background: var(--bg-card-solid);
+      border-radius: var(--radius);
+      border: 1px solid var(--border);
+      cursor: pointer;
+      transition: all 0.25s var(--ease-out);
+    }
+    .wt-step:active { transform: scale(0.98); border-color: var(--border-active); }
+    .wt-num {
+      flex-shrink: 0;
+      width: 28px; height: 28px;
+      border-radius: 50%;
+      background: var(--purple-dim);
+      color: var(--purple);
+      display: flex; align-items: center; justify-content: center;
+      font-family: var(--font-mono);
+      font-size: 12px; font-weight: 700;
+      border: 1px solid var(--border-active);
+    }
+    .wt-content { flex: 1; min-width: 0; }
+    .wt-title {
+      font-size: 14px; font-weight: 600;
+      margin-bottom: 2px;
+    }
+    .wt-desc {
+      font-size: 12px;
+      color: var(--text-2);
+      line-height: 1.4;
+    }
+
+    /* ═══ SKILL CARDS ═══ */
+    .skills-list {
+      display: flex; flex-direction: column;
+      gap: 12px;
+    }
+    .skill-card {
+      background: var(--bg-card);
+      backdrop-filter: blur(16px);
+      -webkit-backdrop-filter: blur(16px);
+      border: 1px solid var(--border);
+      border-radius: var(--radius-lg);
+      overflow: hidden;
+      transition: all 0.3s var(--ease-out);
+    }
+    .skill-card:active { transform: scale(0.98); }
+    .skill-card.expanded {
+      border-color: var(--border-active);
+      box-shadow: 0 8px 32px rgba(139,92,246,0.18);
+    }
+    .skill-header {
+      display: flex; align-items: center; gap: 12px;
+      padding: 14px;
+      cursor: pointer;
+    }
+    .skill-icon {
+      flex-shrink: 0;
+      width: 44px; height: 44px;
+      border-radius: 12px;
+      display: flex; align-items: center; justify-content: center;
+      font-size: 22px;
+      background: var(--purple-dim);
+      border: 1px solid var(--border-active);
+    }
+    .skill-meta { flex: 1; min-width: 0; }
+    .skill-name {
+      font-size: 15px; font-weight: 600;
+      margin-bottom: 2px;
+      overflow: hidden; text-overflow: ellipsis; white-space: nowrap;
+    }
+    .skill-tag {
+      font-size: 11px;
+      color: var(--text-2);
+      font-family: var(--font-mono);
+    }
+    .skill-chevron {
+      flex-shrink: 0;
+      color: var(--text-2);
+      transition: transform 0.3s var(--ease-out);
+      font-size: 14px;
+    }
+    .skill-card.expanded .skill-chevron { transform: rotate(180deg); color: var(--purple); }
+    .skill-body {
+      max-height: 0;
+      overflow: hidden;
+      transition: max-height 0.4s var(--ease-fluid);
+    }
+    .skill-card.expanded .skill-body { max-height: 800px; }
+    .skill-body-inner {
+      padding: 0 14px 14px;
+      border-top: 1px solid var(--border);
+      padding-top: 12px;
+    }
+    .skill-desc {
+      font-size: 13px;
+      color: var(--text-1);
+      line-height: 1.5;
+      margin-bottom: 12px;
+    }
+    .skill-features {
+      list-style: none;
+      margin-bottom: 14px;
+    }
+    .skill-features li {
+      font-size: 12px;
+      color: var(--text-1);
+      padding: 4px 0 4px 18px;
+      position: relative;
+      line-height: 1.4;
+    }
+    .skill-features li::before {
+      content: '▸';
+      position: absolute;
+      left: 0;
+      color: var(--purple);
+      font-size: 11px;
+    }
+    .skill-install-row {
+      display: flex; align-items: center; gap: 8px;
+      background: var(--bg-base);
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      padding: 8px 10px;
+      margin-bottom: 10px;
+    }
+    .skill-install-cmd {
+      flex: 1; min-width: 0;
+      font-family: var(--font-mono);
+      font-size: 11px;
+      color: var(--text-1);
+      overflow: hidden; text-overflow: ellipsis; white-space: nowrap;
+    }
+    .skill-copy-btn {
+      flex-shrink: 0;
+      padding: 6px 12px;
+      background: var(--purple);
+      color: white;
+      border: none;
+      border-radius: 8px;
+      font-size: 11px; font-weight: 600;
+      font-family: var(--font-mono);
+      cursor: pointer;
+      transition: all 0.2s var(--ease-out);
+    }
+    .skill-copy-btn:active { transform: scale(0.94); }
+    .skill-copy-btn.copied { background: var(--green); }
+    .skill-meta-row {
+      display: flex; gap: 8px; flex-wrap: wrap;
+      font-size: 10px;
+      font-family: var(--font-mono);
+    }
+    .skill-meta-pill {
+      padding: 3px 8px;
+      border-radius: var(--radius-pill);
+      background: var(--bg-elevated);
+      border: 1px solid var(--border);
+      color: var(--text-2);
+    }
+    .skill-meta-pill.accent { color: var(--purple); border-color: var(--border-active); }
+    .skill-link {
+      display: inline-flex; align-items: center; gap: 4px;
+      font-size: 12px;
+      color: var(--cyan);
+      text-decoration: none;
+      margin-top: 10px;
+      padding: 6px 10px;
+      border-radius: 8px;
+      background: rgba(6,182,212,0.08);
+      border: 1px solid rgba(6,182,212,0.2);
+    }
+
+    /* ═══ WIKI / RESEARCH ═══ */
+    .wiki-grid {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 10px;
+    }
+    .wiki-card {
+      background: var(--bg-card);
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 14px;
+      cursor: pointer;
+      transition: all 0.25s var(--ease-out);
+      position: relative;
+      overflow: hidden;
+    }
+    .wiki-card:active { transform: scale(0.98); }
+    .wiki-card::after {
+      content: '';
+      position: absolute;
+      left: 0; top: 0; bottom: 0;
+      width: 3px;
+      background: var(--accent, var(--purple));
+      transform: scaleY(0);
+      transform-origin: bottom;
+      transition: transform 0.3s var(--ease-out);
+    }
+    .wiki-card.expanded::after { transform: scaleY(1); }
+    .wiki-icon {
+      font-size: 20px;
+      margin-bottom: 6px;
+    }
+    .wiki-title {
+      font-size: 14px; font-weight: 600;
+      margin-bottom: 4px;
+    }
+    .wiki-summary {
+      font-size: 12px;
+      color: var(--text-2);
+      line-height: 1.4;
+    }
+    .wiki-body {
+      max-height: 0;
+      overflow: hidden;
+      transition: max-height 0.4s var(--ease-fluid);
+    }
+    .wiki-card.expanded .wiki-body { max-height: 1200px; }
+    .wiki-body-inner {
+      padding-top: 12px;
+      margin-top: 12px;
+      border-top: 1px solid var(--border);
+      font-size: 12px;
+      color: var(--text-1);
+      line-height: 1.6;
+    }
+    .wiki-body-inner h4 {
+      font-size: 12px;
+      color: var(--text-0);
+      margin: 10px 0 4px;
+      font-weight: 700;
+    }
+    .wiki-body-inner ul {
+      padding-left: 16px;
+      margin: 4px 0;
+    }
+    .wiki-body-inner li {
+      font-size: 11px;
+      margin: 2px 0;
+    }
+    .wiki-body-inner code {
+      font-family: var(--font-mono);
+      font-size: 10px;
+      background: var(--bg-elevated);
+      padding: 1px 4px;
+      border-radius: 3px;
+      color: var(--cyan);
+    }
+
+    /* ═══ BOTTOM NAV ═══ */
+    .bottom-nav {
+      position: fixed;
+      bottom: 0; left: 0; right: 0;
+      height: var(--nav-h);
+      padding-bottom: var(--safe-bottom);
+      background: rgba(5,6,10,0.85);
+      backdrop-filter: blur(24px) saturate(180%);
+      -webkit-backdrop-filter: blur(24px) saturate(180%);
+      border-top: 1px solid var(--border);
+      display: grid;
+      grid-template-columns: repeat(5, 1fr);
+      gap: 0;
+      z-index: 100;
+    }
+    .nav-item {
+      display: flex; flex-direction: column; align-items: center; justify-content: center;
+      gap: 2px;
+      padding: 8px 4px;
+      color: var(--text-3);
+      cursor: pointer;
+      transition: color 0.2s var(--ease-out);
+      position: relative;
+    }
+    .nav-item.active { color: var(--purple); }
+    .nav-item.active::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      width: 24px; height: 2px;
+      background: var(--purple);
+      border-radius: 0 0 2px 2px;
+      box-shadow: 0 0 8px var(--purple);
+    }
+    .nav-icon { font-size: 18px; }
+    .nav-label { font-size: 9px; font-weight: 600; letter-spacing: 0.3px; }
+
+    /* ═══ COMMAND PALETTE ═══ */
+    .cmd-overlay {
+      position: fixed; inset: 0;
+      background: rgba(5,6,10,0.85);
+      backdrop-filter: blur(8px);
+      -webkit-backdrop-filter: blur(8px);
+      z-index: 200;
+      display: none;
+      align-items: flex-start;
+      justify-content: center;
+      padding: 60px 16px 16px;
+    }
+    .cmd-overlay.visible { display: flex; animation: fadeIn 0.18s var(--ease-out); }
+    @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
+    .cmd-panel {
+      width: 100%;
+      max-width: 480px;
+      background: var(--bg-elevated);
+      border: 1px solid var(--border-active);
+      border-radius: var(--radius-lg);
+      box-shadow: 0 24px 64px rgba(0,0,0,0.5);
+      overflow: hidden;
+    }
+    .cmd-input-row {
+      display: flex; align-items: center; gap: 10px;
+      padding: 14px;
+      border-bottom: 1px solid var(--border);
+    }
+    .cmd-input {
+      flex: 1;
+      background: transparent;
+      border: none;
+      color: var(--text-0);
+      font-size: 15px;
+      font-family: var(--font-sans);
+      outline: none;
+    }
+    .cmd-input::placeholder { color: var(--text-3); }
+    .cmd-results {
+      max-height: 60vh;
+      overflow-y: auto;
+    }
+    .cmd-item {
+      display: flex; align-items: center; gap: 10px;
+      padding: 12px 14px;
+      cursor: pointer;
+      border-bottom: 1px solid var(--border);
+    }
+    .cmd-item:last-child { border-bottom: none; }
+    .cmd-item.focused { background: var(--purple-dim); }
+    .cmd-item-icon { font-size: 18px; flex-shrink: 0; }
+    .cmd-item-text { flex: 1; min-width: 0; }
+    .cmd-item-title { font-size: 13px; font-weight: 500; }
+    .cmd-item-desc { font-size: 11px; color: var(--text-2); }
+
+    /* ═══ TOAST ═══ */
+    .toast {
+      position: fixed;
+      bottom: calc(var(--nav-h) + 20px);
+      left: 50%;
+      transform: translateX(-50%) translateY(20px);
+      background: var(--bg-elevated);
+      border: 1px solid var(--border-active);
+      border-radius: var(--radius-pill);
+      padding: 10px 18px;
+      font-size: 13px; font-weight: 500;
+      color: var(--text-0);
+      box-shadow: 0 8px 32px rgba(0,0,0,0.4);
+      opacity: 0;
+      pointer-events: none;
+      z-index: 300;
+      transition: all 0.3s var(--ease-spring);
+      white-space: nowrap;
+    }
+    .toast.visible { opacity: 1; transform: translateX(-50%) translateY(0); }
+    .toast.ok { border-color: var(--green); color: var(--green); }
+
+    /* ═══ MAGNETIC BUTTON EFFECT ═══ */
+    .magnetic { transition: transform 0.2s var(--ease-spring); }
+
+    /* ═══ RESPONSIVE ═══ */
+    @media (min-width: 640px) {
+      .hero h1 { font-size: 36px; }
+      .stat-strip { grid-template-columns: repeat(4, 1fr); max-width: 600px; margin-left: auto; margin-right: auto; }
+      .skills-list { max-width: 600px; margin: 0 auto; }
+      .wiki-grid { grid-template-columns: repeat(2, 1fr); max-width: 700px; margin: 0 auto; }
+      .section { max-width: 700px; margin: 0 auto; padding-left: 24px; padding-right: 24px; }
+    }
+    @media (min-width: 900px) {
+      .wiki-grid { grid-template-columns: repeat(3, 1fr); max-width: 900px; }
+      .section { max-width: 900px; }
+    }
+
+    /* Reduced motion */
+    @media (prefers-reduced-motion: reduce) {
+      *, *::before, *::after {
+        animation-duration: 0.01ms !important;
+        transition-duration: 0.01ms !important;
+      }
+    }
+  </style>
+</head>
+<body>
+  <!-- HEADER -->
+  <header class="header">
+    <a href="index.html" class="header-back" aria-label="Back to Skill Store">←</a>
+    <div class="header-title">opencode <span class="accent">OS</span> · Knowledge Base</div>
+    <button class="header-search" id="searchTrigger" aria-label="Search">⌘</button>
+  </header>
+
+  <!-- HERO -->
+  <section class="hero">
+    <div class="hero-badge">v25.0.0 · MOBILE-FIRST</div>
+    <h1>Walkthrough <span class="gradient">Wiki</span><br>for AI Agent Skills</h1>
+    <p>A guided, mobile-first knowledge base. Browse 90+ skills, copy install commands, explore the agent system — all thumb-reachable.</p>
+  </section>
+
+  <!-- ANIMATED STATS -->
+  <div class="stat-strip" id="statStrip">
+    <div class="stat-cell"><div class="stat-num" data-target="90">0</div><div class="stat-label">Skills</div></div>
+    <div class="stat-cell"><div class="stat-num" data-target="7">0</div><div class="stat-label">Curated</div></div>
+    <div class="stat-cell"><div class="stat-num" data-target="8">0</div><div class="stat-label">MCP Stacks</div></div>
+    <div class="stat-cell"><div class="stat-num" data-target="4">0</div><div class="stat-label">Agent Modes</div></div>
+  </div>
+
+  <!-- WALKTHROUGH -->
+  <section class="section" id="walkthrough">
+    <div class="section-label">▸ ONBOARDING</div>
+    <div class="section-title">5-Step Walkthrough</div>
+    <div class="section-desc">From zero to your first installed skill stack in under 2 minutes.</div>
+    <div class="walkthrough-card">
+      <div class="walkthrough-steps">
+        <div class="wt-step magnetic" data-action="walkStep" data-step="1">
+          <div class="wt-num">1</div>
+          <div class="wt-content">
+            <div class="wt-title">Open the Skill Store</div>
+            <div class="wt-desc">Browse the 6 zones — ACTIVATE, BUILD, VALIDATE, PLAYBOOK, MONETIZE, SYSTEM. Each pre-rendered, instantly switchable.</div>
+          </div>
+        </div>
+        <div class="wt-step magnetic" data-action="walkStep" data-step="2">
+          <div class="wt-num">2</div>
+          <div class="wt-content">
+            <div class="wt-title">Press ⌘K to Search</div>
+            <div class="wt-desc">Fuzzy search across all 90+ skills by name, tag, or category. Arrow keys navigate, Enter selects.</div>
+          </div>
+        </div>
+        <div class="wt-step magnetic" data-action="walkStep" data-step="3">
+          <div class="wt-num">3</div>
+          <div class="wt-content">
+            <div class="wt-title">Copy Any Install Command</div>
+            <div class="wt-desc">Tap any skill card to expand. Tap the COPY button — install command is on your clipboard. Paste in terminal.</div>
+          </div>
+        </div>
+        <div class="wt-step magnetic" data-action="walkStep" data-step="4">
+          <div class="wt-num">4</div>
+          <div class="wt-content">
+            <div class="wt-title">Ask the Recommender</div>
+            <div class="wt-desc">Open the chat bubble. Type "I want to build an animated dashboard" — get a curated skill stack back, powered by Vercel AI Gateway.</div>
+          </div>
+        </div>
+        <div class="wt-step magnetic" data-action="walkStep" data-step="5">
+          <div class="wt-num">5</div>
+          <div class="wt-content">
+            <div class="wt-title">Install as PWA</div>
+            <div class="wt-desc">Add to Home Screen — works offline, opens in its own window, auto-updates in the background.</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CURATED EXTERNAL SKILLS -->
+  <section class="section" id="skills">
+    <div class="section-label">▸ CURATED · skills.sh</div>
+    <div class="section-title">7 Production Skills</div>
+    <div class="section-desc">Hand-picked from the 732K-skill skills.sh registry. Tap to expand, copy to install.</div>
+    <div class="skills-list" id="skillsList"></div>
+  </section>
+
+  <!-- WIKI / RESEARCH -->
+  <section class="section" id="wiki">
+    <div class="section-label">▸ KNOWLEDGE BASE</div>
+    <div class="section-title">Research &amp; Reports</div>
+    <div class="section-desc">Synthesized findings from 4 deep research reports + operating doctrine.</div>
+    <div class="wiki-grid" id="wikiGrid"></div>
+  </section>
+
+  <!-- BOTTOM NAV -->
+  <nav class="bottom-nav">
+    <div class="nav-item active" data-action="nav" data-target="walkthrough"><div class="nav-icon">📋</div><div class="nav-label">TOUR</div></div>
+    <div class="nav-item" data-action="nav" data-target="skills"><div class="nav-icon">⚡</div><div class="nav-label">SKILLS</div></div>
+    <div class="nav-item" data-action="nav" data-target="wiki"><div class="nav-icon">📚</div><div class="nav-label">WIKI</div></div>
+    <div class="nav-item" data-action="openSearch"><div class="nav-icon">🔍</div><div class="nav-label">SEARCH</div></div>
+    <a href="index.html" class="nav-item" style="text-decoration:none;color:inherit;"><div class="nav-icon">🏠</div><div class="nav-label">STORE</div></a>
+  </nav>
+
+  <!-- COMMAND PALETTE -->
+  <div class="cmd-overlay" id="cmdOverlay">
+    <div class="cmd-panel">
+      <div class="cmd-input-row">
+        <span style="color:var(--text-2);">🔍</span>
+        <input type="text" class="cmd-input" id="cmdInput" placeholder="Search skills, wiki, walkthrough steps..." autocomplete="off">
+        <span style="font-size:11px;color:var(--text-3);font-family:var(--font-mono);">ESC</span>
+      </div>
+      <div class="cmd-results" id="cmdResults"></div>
+    </div>
+  </div>
+
+  <!-- TOAST -->
+  <div class="toast" id="toast"></div>
+
+  <script>
+  // ═══ DATA ═══
+  const CURATED_SKILLS = [
+    {
+      name: 'ui-ux-pro-max',
+      icon: '💎',
+      tag: 'nextlevelbuilder · 234K installs',
+      desc: 'Comprehensive design intelligence skill that generates complete UI/UX design systems (patterns, colors, typography, effects) for web and mobile across 10 technology stacks.',
+      features: [
+        'AI-powered Design System Generator with BM25-ranked reasoning',
+        '161 industry-specific reasoning rules (conversion, style, color, typography)',
+        '50+ design styles, 161 color palettes, 57 font pairings, 99 UX guidelines',
+        '25 chart types, motion presets, full component library',
+        '96K GitHub stars, MIT license, 10 tech stacks supported'
+      ],
+      install: 'npx skills add https://github.com/nextlevelbuilder/ui-ux-pro-max-skill --skill ui-ux-pro-max',
+      meta: ['MIT', '96.1K ★', '234K installs'],
+      link: 'https://github.com/nextlevelbuilder/ui-ux-pro-max-skill'
+    },
+    {
+      name: '21st-registry',
+      icon: '🧩',
+      tag: '21st-dev · 105 installs',
+      desc: 'Official 21st.dev Agent Skill registry — enables AI agents to search and install 21st.dev component library packages. Companion to the 21st.dev marketplace.',
+      features: [
+        'Search 5,000+ community React components',
+        'Install components directly via AI agent',
+        'OAuth-compatible with 21st.dev API',
+        'MIT license, maintained by serafim',
+        'Pairs with 21st marketplace skill'
+      ],
+      install: 'npx skills add 21st-dev/registry --skill 21st-dev-components',
+      meta: ['MIT', '5.3K ★', '105 installs'],
+      link: 'https://github.com/21st-dev/registry'
+    },
+    {
+      name: '21st (marketplace)',
+      icon: '🌐',
+      tag: 'serafimcloud · 5.3K stars',
+      desc: '21st.dev marketplace skill — browse, search, and install premium React components via natural language. Powered by the 21st.dev API.',
+      features: [
+        'Natural-language component search',
+        'Direct install into React/Next.js projects',
+        'shadcn/ui alternative with 5K+ components',
+        'API key: an_sk_7426c194af098c067b4ff71f75406eaca00156f85b050f145f6f16460947a24d',
+        'Endpoint: https://21st.dev/api/components'
+      ],
+      install: 'npx skills add serafimcloud/21st --skill 21st',
+      meta: ['MIT', '5.3K ★', 'marketplace'],
+      link: 'https://github.com/serafimcloud/21st'
+    },
+    {
+      name: 'gsap-core',
+      icon: '🎬',
+      tag: 'greensock · 27.7K installs',
+      desc: 'Official GreenSock GSAP animation skill — production-grade animation patterns including ScrollTrigger, SplitText, Flip, and physics plugins.',
+      features: [
+        'GSAP v3.13+ timeline orchestration',
+        'ScrollTrigger pinning and scrubbing',
+        'SplitText for character/word animation',
+        'Flip plugin for layout transitions',
+        '10K GitHub stars, MIT license'
+      ],
+      install: 'npx skills add greensock/gsap-skills',
+      meta: ['MIT', '10K ★', '27.7K installs'],
+      link: 'https://github.com/greensock/gsap-skills'
+    },
+    {
+      name: 'framer-motion-animator',
+      icon: '🎭',
+      tag: 'patricio0312rev · 6.9K installs',
+      desc: 'Production-grade Framer Motion / Motion v12 animation patterns for React — springs, gestures, layout, exit, variants, orchestration.',
+      features: [
+        'Motion v12 declarative API',
+        'Spring physics + gesture handling',
+        'Layout animations with layoutId',
+        'AnimatePresence for exit transitions',
+        'Bundle-aware: 2.3KB to 34KB'
+      ],
+      install: 'npx skills add patricio0312rev/skills --skill framer-motion-animator',
+      meta: ['MIT', '48 ★', '6.9K installs'],
+      link: 'https://github.com/patricio0312rev/skills'
+    },
+    {
+      name: 'threejs-animation',
+      icon: '🌍',
+      tag: 'cloudai-x · 7.9K installs',
+      desc: 'Three.js animation skill — routes react-three-fiber vs vanilla Three.js vs Babylon.js with bundle and accessibility gates.',
+      features: [
+        'R3F for React UI 3D',
+        'Vanilla Three.js with WebGPU for compute',
+        'Babylon.js routing for game scenarios',
+        'Lazy-load + ssr:false enforcement',
+        'Bundle budget audits'
+      ],
+      install: 'npx skills add cloudai-x/threejs-skills --skill three.js-animation',
+      meta: ['MIT', '2.5K ★', '7.9K installs'],
+      link: 'https://github.com/cloudai-x/threejs-skills'
+    },
+    {
+      name: 'stitch-loop',
+      icon: '🪡',
+      tag: 'google-labs-code · 45K installs',
+      desc: 'Autonomous website builder using iterative Stitch generation with baton-passing loop coordination. Google Labs project, 42.2K installs.',
+      features: [
+        'Iterative design generation',
+        'Baton-passing loop coordination',
+        'Autonomous multi-step website builds',
+        'Google Labs maintained',
+        'Apache-2.0 license'
+      ],
+      install: 'npx skills add google-labs-code/stitch-skills --skill stitch-loop',
+      meta: ['Apache-2.0', '6.2K ★', '45K installs'],
+      link: 'https://github.com/google-labs-code/stitch-skills'
+    }
+  ];
+
+  const WIKI_ENTRIES = [
+    {
+      icon: '🔇',
+      title: 'Silent Protocol',
+      summary: 'The invisible 3-step diagnostic every agent response runs: parse intent → find blind spot → reduce to simplest truth.',
+      accent: '#8B5CF6',
+      body: `
+        <h4>The 3 Questions</h4>
+        <ul>
+          <li><strong>What do they actually need?</strong> — Parse beyond literal request</li>
+          <li><strong>What would they miss?</strong> — The blind spot</li>
+          <li><strong>What's the simplest true answer?</strong> — The irreducible</li>
+        </ul>
+        <h4>Route Decision</h4>
+        <ul>
+          <li>Stated=Actual + simple? → <code>SPEED</code></li>
+          <li>Misaligned? → <code>SURFACE FRAME</code></li>
+          <li>Novel? → <code>DEPTH</code></li>
+          <li>Urgent? → <code>QUICK + DEEPER NOTE</code></li>
+        </ul>
+        <p>Source: <code>system_master_v4.md</code> — operating doctrine for the entire agent system.</p>
+      `
+    },
+    {
+      icon: '🤖',
+      title: 'Oh-My-OpenCode vs Slim',
+      summary: '11-agent mythological (Sisyphus, Prometheus, Oracle) vs 7-agent functional (Scout, Reviewer, Implementer). 38K vs 5.1K stars.',
+      accent: '#06B6D4',
+      body: `
+        <h4>oh-my-opencode (full)</h4>
+        <ul>
+          <li>38K stars, 57K weekly npm downloads</li>
+          <li>11 agents: Sisyphus, Prometheus, Atlas, Oracle, Librarian, Explore, Hephaestus, Metis, Momus, Multimodal + background</li>
+          <li>54+ lifecycle hooks, 5 built-in MCPs, 20+ tools</li>
+          <li>SUL-1.0 license (Source Available)</li>
+          <li>15K-25K token startup overhead</li>
+        </ul>
+        <h4>oh-my-opencode-slim</h4>
+        <ul>
+          <li>5.1K stars, 7.2K weekly downloads</li>
+          <li>7 agents: Orchestrator, Scout, Researcher, Reviewer, Implementer + Observer + Council (optional)</li>
+          <li>MIT license (truly open source)</li>
+          <li>Unique <strong>Council agent</strong> = multi-model consensus</li>
+          <li>Significantly lower token usage</li>
+        </ul>
+        <p>Source: <code>oh-my-opencode_research_report.md</code></p>
+      `
+    },
+    {
+      icon: '⚡',
+      title: 'Above Mediocrity Stack',
+      summary: 'Tiered OpenCode enhancement stack: T1 (OMO + Superpowers + Context7 + GitHub MCP), T2 (OpenSpec + Firecrawl + OpenRouter), T3 (ntfy + Worktree + Daytona).',
+      accent: '#10B981',
+      body: `
+        <h4>Tier 1 — Essential</h4>
+        <ul>
+          <li>Oh-My-OpenAgent — multi-agent orchestration</li>
+          <li>Superpowers — skills framework, TDD discipline</li>
+          <li>Context7 MCP — fresh library docs</li>
+          <li>GitHub MCP — repo management from agent</li>
+        </ul>
+        <h4>Tier 2 — High Impact</h4>
+        <ul>
+          <li>OpenSpec Plugin — spec-driven development</li>
+          <li>Antigravity Awesome Skills — 1,500+ reusable skills</li>
+          <li>Firecrawl MCP — web scraping</li>
+          <li>OpenRouter — 300+ models including free tiers</li>
+          <li>OpenCode Gemini Auth — free Gemini access</li>
+        </ul>
+        <h4>Tier 3 — Quality of Life</h4>
+        <ul>
+          <li>ntfy/notify — push notifications</li>
+          <li>OpenCode Worktree — parallel branches</li>
+          <li>Daytona Sandbox — cloud execution</li>
+          <li>OpenCode Browser — web automation</li>
+          <li>LSP Integration — built-in code intelligence</li>
+          <li>Ollama — local model fallback</li>
+        </ul>
+        <p>Source: <code>opencode_enhancements_research.md</code></p>
+      `
+    },
+    {
+      icon: '🎬',
+      title: 'Animation Stack',
+      summary: 'Motion (Framer) for declarative UI · GSAP for timeline/scroll · Three.js for 3D. Hybrid stack with strict boundaries.',
+      accent: '#F97316',
+      body: `
+        <h4>Motion v12 (primary)</h4>
+        <ul>
+          <li>~59KB gzipped, 6M weekly downloads</li>
+          <li>Declarative <code>&lt;motion.div&gt;</code> components</li>
+          <li><code>useScroll</code>, <code>useInView</code>, <code>whileInView</code></li>
+          <li>SVG <code>pathLength</code> for drawing lines</li>
+          <li><code>AnimatePresence</code> for exit animations</li>
+        </ul>
+        <h4>GSAP v3.13+ (orchestrated)</h4>
+        <ul>
+          <li>Timeline-based sequencing</li>
+          <li>ScrollTrigger pinning + scrubbing</li>
+          <li>SplitText, Flip, DrawSVG plugins</li>
+          <li>Use when Motion can't coordinate complex sequences</li>
+        </ul>
+        <h4>Three.js (3D)</h4>
+        <ul>
+          <li>R3F (react-three-fiber) for React UI</li>
+          <li>Vanilla Three.js with WebGPU for compute</li>
+          <li>Babylon.js for game scenarios</li>
+          <li><strong>Anti-pattern:</strong> Three.js in React without R3F → REJECT</li>
+        </ul>
+        <p>Source: <code>interactive_infographic_research.md</code></p>
+      `
+    },
+    {
+      icon: '🧠',
+      title: 'Agent Orchestration',
+      summary: '10 frameworks ranked: LangGraph (production), CrewAI (fast proto), AutoGen (Azure), Mastra (TS-native), CopilotKit (AI copilot UI).',
+      accent: '#EAB308',
+      body: `
+        <h4>Top Frameworks by Use Case</h4>
+        <ul>
+          <li><strong>LangGraph</strong> — production control, graph-based state, cycle support</li>
+          <li><strong>CrewAI</strong> — fast prototyping, role-based, 60% of Fortune 500</li>
+          <li><strong>AutoGen</strong> — Azure/enterprise, multi-agent conversations</li>
+          <li><strong>Mastra</strong> — TypeScript-native, full-stack agent backend</li>
+          <li><strong>CopilotKit</strong> — AI copilot UI, AG-UI Protocol</li>
+          <li><strong>LlamaIndex</strong> — RAG-heavy apps, document QA</li>
+          <li><strong>Google ADK</strong> — Vertex AI integration</li>
+          <li><strong>Semantic Kernel</strong> — C#/.NET enterprise</li>
+          <li><strong>OpenAI Agents SDK</strong> — official OpenAI orchestration</li>
+          <li><strong>DeerFlow</strong> — ByteDance, research automation</li>
+        </ul>
+        <p>Source: <code>ai_agentic_tools_research.md</code></p>
+      `
+    },
+    {
+      icon: '🆓',
+      title: 'Free Token Stack',
+      summary: 'Combine FreeLLMAPI (1.7B tokens/mo) → LiteLLM (fallback) → Ollama (local) for zero-cost AI coding.',
+      accent: '#F43F5E',
+      body: `
+        <h4>Free Max Stack (Zero Cost)</h4>
+        <ul>
+          <li><strong>FreeLLMAPI</strong> — ~1.7B tokens/month from 16 free-tier providers</li>
+          <li><strong>LiteLLM</strong> — open-source proxy, 100+ providers, load balancing</li>
+          <li><strong>OpenRouter</strong> — 30+ free models at zero cost</li>
+          <li><strong>Ollama</strong> — local Llama, Mistral, DeepSeek, Qwen</li>
+          <li><strong>GPT4Free (g4f)</strong> — 50+ free AI providers aggregated</li>
+        </ul>
+        <h4>Major Provider Free Tiers</h4>
+        <ul>
+          <li>OpenAI GPT-4o mini — unlimited messages</li>
+          <li>Google Gemini 2.5 Flash — generous free tier, 1M context</li>
+          <li>Anthropic Claude Sonnet — ~15 messages/day</li>
+          <li>xAI Grok 2 — free with X account</li>
+          <li>Meta Llama (via HF/Groq) — rate limited</li>
+        </ul>
+        <p>Source: <code>ai_agentic_tools_research.md</code></p>
+      `
+    }
+  ];
+
+  // ═══ RENDER ═══
+  function renderSkills() {
+    const el = document.getElementById('skillsList');
+    el.innerHTML = CURATED_SKILLS.map((s, i) => `
+      <div class="skill-card" data-action="toggleSkill" data-index="${i}">
+        <div class="skill-header">
+          <div class="skill-icon">${s.icon}</div>
+          <div class="skill-meta">
+            <div class="skill-name">${s.name}</div>
+            <div class="skill-tag">${s.tag}</div>
+          </div>
+          <div class="skill-chevron">∨</div>
+        </div>
+        <div class="skill-body">
+          <div class="skill-body-inner">
+            <div class="skill-desc">${s.desc}</div>
+            <ul class="skill-features">
+              ${s.features.map(f => `<li>${f}</li>`).join('')}
+            </ul>
+            <div class="skill-install-row">
+              <div class="skill-install-cmd">${s.install}</div>
+              <button class="skill-copy-btn" data-action="copyInstall" data-install="${s.install.replace(/"/g, '&quot;')}">COPY</button>
+            </div>
+            <div class="skill-meta-row">
+              ${s.meta.map((m, idx) => `<span class="skill-meta-pill${idx === 0 ? ' accent' : ''}">${m}</span>`).join('')}
+            </div>
+            <a href="${s.link}" target="_blank" rel="noopener" class="skill-link">↗ View on GitHub</a>
+          </div>
+        </div>
+      </div>
+    `).join('');
+  }
+
+  function renderWiki() {
+    const el = document.getElementById('wikiGrid');
+    el.innerHTML = WIKI_ENTRIES.map((w, i) => `
+      <div class="wiki-card" data-action="toggleWiki" data-index="${i}" style="--accent:${w.accent};">
+        <div class="wiki-icon">${w.icon}</div>
+        <div class="wiki-title">${w.title}</div>
+        <div class="wiki-summary">${w.summary}</div>
+        <div class="wiki-body">
+          <div class="wiki-body-inner">${w.body}</div>
+        </div>
+      </div>
+    `).join('');
+  }
+
+  // ═══ ANIMATE STATS ═══
+  function animateStats() {
+    document.querySelectorAll('.stat-num').forEach(el => {
+      const target = parseInt(el.dataset.target, 10);
+      if (typeof gsap !== 'undefined') {
+        const obj = { v: 0 };
+        gsap.to(obj, {
+          v: target,
+          duration: 1.2,
+          ease: 'power2.out',
+          onUpdate: () => { el.textContent = Math.round(obj.v); }
+        });
+      } else {
+        let v = 0;
+        const step = Math.max(1, Math.ceil(target / 30));
+        const tick = () => {
+          v += step;
+          if (v >= target) { el.textContent = target; return; }
+          el.textContent = v;
+          requestAnimationFrame(tick);
+        };
+        tick();
+      }
+    });
+  }
+
+  // ═══ TOAST ═══
+  function showToast(msg, ok = false) {
+    const t = document.getElementById('toast');
+    t.textContent = msg;
+    t.className = 'toast visible' + (ok ? ' ok' : '');
+    clearTimeout(t._tm);
+    t._tm = setTimeout(() => { t.className = 'toast' + (ok ? ' ok' : ''); }, 2200);
+  }
+
+  // ═══ COPY ═══
+  function copyInstall(cmd, btn) {
+    navigator.clipboard.writeText(cmd).then(() => {
+      if (btn) {
+        const orig = btn.textContent;
+        btn.textContent = '✓ COPIED';
+        btn.classList.add('copied');
+        setTimeout(() => { btn.textContent = orig; btn.classList.remove('copied'); }, 1600);
+      }
+      showToast('Install command copied', true);
+    }).catch(() => {
+      // Fallback for non-secure contexts
+      const ta = document.createElement('textarea');
+      ta.value = cmd;
+      document.body.appendChild(ta);
+      ta.select();
+      try { document.execCommand('copy'); showToast('Copied (fallback)', true); }
+      catch (e) { showToast('Copy failed — long-press to copy manually'); }
+      document.body.removeChild(ta);
+    });
+  }
+
+  // ═══ ESCAPE HTML ═══
+  function escapeHtml(s) {
+    return String(s).replace(/[&<>"']/g, c => ({ '&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;' }[c]));
+  }
+
+  // ═══ COMMAND PALETTE ═══
+  function openPalette() {
+    document.getElementById('cmdOverlay').classList.add('visible');
+    setTimeout(() => document.getElementById('cmdInput').focus(), 100);
+    renderCmdResults('');
+  }
+  function closePalette() {
+    document.getElementById('cmdOverlay').classList.remove('visible');
+    document.getElementById('cmdInput').value = '';
+  }
+  function renderCmdResults(q) {
+    const el = document.getElementById('cmdResults');
+    const query = q.toLowerCase().trim();
+    let items = [];
+    // Skills
+    CURATED_SKILLS.forEach(s => {
+      if (!query || s.name.toLowerCase().includes(query) || s.tag.toLowerCase().includes(query) || s.desc.toLowerCase().includes(query)) {
+        items.push({ icon: s.icon, title: s.name, desc: s.tag, action: () => { closePalette(); document.getElementById('skills').scrollIntoView({behavior:'smooth'}); setTimeout(() => { const card = document.querySelector(`[data-index="${CURATED_SKILLS.indexOf(s)}"]`); if (card && !card.classList.contains('expanded')) card.click(); }, 600); } });
+      }
+    });
+    // Wiki
+    WIKI_ENTRIES.forEach((w, i) => {
+      if (!query || w.title.toLowerCase().includes(query) || w.summary.toLowerCase().includes(query)) {
+        items.push({ icon: w.icon, title: w.title, desc: w.summary.slice(0, 60) + '…', action: () => { closePalette(); document.getElementById('wiki').scrollIntoView({behavior:'smooth'}); setTimeout(() => { const card = document.querySelectorAll('.wiki-card')[i]; if (card && !card.classList.contains('expanded')) card.click(); }, 600); } });
+      }
+    });
+    // Walkthrough
+    if (!query || 'walkthrough tour onboarding'.includes(query)) {
+      items.push({ icon: '📋', title: 'Walkthrough', desc: '5-step onboarding tour', action: () => { closePalette(); document.getElementById('walkthrough').scrollIntoView({behavior:'smooth'}); } });
+    }
+    if (!items.length) {
+      el.innerHTML = '<div style="padding:24px;text-align:center;color:var(--text-2);font-size:13px;">No results for "' + escapeHtml(q) + '"</div>';
+      return;
+    }
+    el.innerHTML = items.slice(0, 10).map((it, i) => `
+      <div class="cmd-item${i === 0 ? ' focused' : ''}" data-idx="${i}">
+        <div class="cmd-item-icon">${it.icon}</div>
+        <div class="cmd-item-text">
+          <div class="cmd-item-title">${escapeHtml(it.title)}</div>
+          <div class="cmd-item-desc">${escapeHtml(it.desc)}</div>
+        </div>
+      </div>
+    `).join('');
+    // Wire actions
+    el.querySelectorAll('.cmd-item').forEach((item, i) => {
+      item.addEventListener('click', () => items[i].action());
+    });
+  }
+
+  // ═══ EVENTS ═══
+  function setupEvents() {
+    document.addEventListener('click', (e) => {
+      const t = e.target;
+      const actionEl = t.closest('[data-action]');
+      const action = actionEl ? actionEl.getAttribute('data-action') : null;
+
+      if (action === 'toggleSkill') {
+        e.stopPropagation();
+        actionEl.classList.toggle('expanded');
+        return;
+      }
+      if (action === 'toggleWiki') {
+        actionEl.classList.toggle('expanded');
+        return;
+      }
+      if (action === 'copyInstall') {
+        e.stopPropagation();
+        const cmd = actionEl.getAttribute('data-install');
+        if (cmd) copyInstall(cmd, actionEl);
+        return;
+      }
+      if (action === 'walkStep') {
+        const step = actionEl.getAttribute('data-step');
+        showToast(`Step ${step} — see description above`);
+        return;
+      }
+      if (action === 'nav') {
+        const target = actionEl.getAttribute('data-target');
+        document.querySelectorAll('.nav-item').forEach(n => n.classList.remove('active'));
+        actionEl.classList.add('active');
+        document.getElementById(target)?.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        return;
+      }
+      if (action === 'openSearch') {
+        openPalette();
+        return;
+      }
+    });
+
+    // Search trigger
+    document.getElementById('searchTrigger').addEventListener('click', openPalette);
+
+    // Command palette input
+    document.getElementById('cmdInput').addEventListener('input', (e) => {
+      renderCmdResults(e.target.value);
+    });
+
+    // Cmd palette keyboard
+    document.addEventListener('keydown', (e) => {
+      const overlay = document.getElementById('cmdOverlay');
+      if (!overlay.classList.contains('visible')) {
+        if ((e.metaKey || e.ctrlKey) && e.key === 'k') { e.preventDefault(); openPalette(); }
+        if (e.key === '/' && e.target.tagName !== 'INPUT') { e.preventDefault(); openPalette(); }
+        return;
+      }
+      if (e.key === 'Escape') { closePalette(); return; }
+      if (e.key === 'Enter') {
+        const first = document.querySelector('.cmd-item.focused');
+        if (first) first.click();
+        return;
+      }
+    });
+
+    // Click outside to close palette
+    document.getElementById('cmdOverlay').addEventListener('click', (e) => {
+      if (e.target === document.getElementById('cmdOverlay')) closePalette();
+    });
+
+    // Magnetic effect
+    document.querySelectorAll('.magnetic').forEach(el => {
+      el.addEventListener('pointermove', (e) => {
+        const rect = el.getBoundingClientRect();
+        const x = e.clientX - rect.left - rect.width / 2;
+        const y = e.clientY - rect.top - rect.height / 2;
+        el.style.transform = `translate(${x * 0.08}px, ${y * 0.08}px)`;
+      });
+      el.addEventListener('pointerleave', () => {
+        el.style.transform = '';
+      });
+    });
+
+    // Allow text selection in wiki body
+    document.querySelectorAll('.wiki-body-inner, .skill-body-inner, .skill-install-cmd').forEach(el => {
+      el.addEventListener('pointerdown', () => document.body.classList.add('allow-select'));
+    });
+  }
+
+  // ═══ INIT ═══
+  function init() {
+    if (window.__kbInit) return;
+    window.__kbInit = true;
+
+    renderSkills();
+    renderWiki();
+    setupEvents();
+
+    // Animate stats on view
+    if (typeof gsap !== 'undefined' && typeof ScrollTrigger !== 'undefined') {
+      gsap.registerPlugin(ScrollTrigger);
+      ScrollTrigger.create({
+        trigger: '#statStrip',
+        start: 'top 90%',
+        once: true,
+        onEnter: animateStats
+      });
+      // Fade-in cards
+      gsap.utils.toArray('.skill-card, .wiki-card, .wt-step').forEach((el, i) => {
+        gsap.from(el, {
+          opacity: 0,
+          y: 20,
+          duration: 0.5,
+          ease: 'power2.out',
+          delay: i * 0.04,
+          scrollTrigger: { trigger: el, start: 'top 95%', once: true }
+        });
+      });
+    } else {
+      // No GSAP — just set stats
+      setTimeout(animateStats, 400);
+    }
+
+    // Check URL params
+    const params = new URLSearchParams(window.location.search);
+    if (params.get('action') === 'search') setTimeout(openPalette, 500);
+    if (params.get('skill')) {
+      const slug = params.get('skill');
+      const idx = CURATED_SKILLS.findIndex(s => s.name === slug || s.name.includes(slug));
+      if (idx >= 0) {
+        document.getElementById('skills').scrollIntoView({ behavior: 'smooth' });
+        setTimeout(() => {
+          const card = document.querySelector(`[data-index="${idx}"]`);
+          if (card) {
+            card.classList.add('expanded');
+            card.scrollIntoView({ behavior: 'smooth', block: 'center' });
+          }
+        }, 800);
+      }
+    }
+  }
+
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', init);
+  } else {
+    init();
+  }
+  </script>
+</body>
+</html>

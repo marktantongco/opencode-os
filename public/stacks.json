@@ -1,0 +1,165 @@
+{
+  "version": "9.0.0",
+  "lastUpdated": "2026-05-23",
+  "description": "9 pre-built MCP Stack configurations — each stack recommends exactly 4 servers that work together with documented synergy scores and mismatch warnings. The unsolved problem: which 4 servers do you use together? These stacks answer that.",
+  "stacks": [
+    {
+      "id": "fullstack-web",
+      "name": "Full-Stack Web Studio",
+      "emoji": "🌐",
+      "description": "Build, deploy, and monitor production web applications end-to-end",
+      "useCase": "Solo dev or small team shipping a full-stack Next.js app from concept to production",
+      "servers": [
+        { "name": "filesystem", "reason": "Read/write project files — the foundation of any code project" },
+        { "name": "github", "reason": "PR management, issue tracking, CI/CD pipeline triggers" },
+        { "name": "vercel", "reason": "Deploy previews on every PR, production deploys on merge" },
+        { "name": "postgres", "reason": "Database migrations, seed data, query debugging" }
+      ],
+      "synergy": { "score": 94, "reason": "Filesystem + GitHub covers code lifecycle; Vercel handles deployment; Postgres provides persistent storage. Zero overlap." },
+      "mismatches": [],
+      "skillsPaired": ["fullstack-dev", "frontend-design", "deployment-manager", "mcp-builder"]
+    },
+    {
+      "id": "ai-research",
+      "name": "AI Research Lab",
+      "emoji": "🧪",
+      "description": "Research, analyze, and synthesize information with AI-powered search and knowledge graphs",
+      "useCase": "Deep research workflows requiring multi-source verification and structured knowledge extraction",
+      "servers": [
+        { "name": "brave-search", "reason": "Web search for real-time information discovery" },
+        { "name": "fetch", "reason": "Retrieve and extract content from discovered URLs" },
+        { "name": "memory", "reason": "Persist research findings across sessions as structured knowledge" },
+        { "name": "sqlite", "reason": "Store and query structured research data locally" }
+      ],
+      "synergy": { "score": 91, "reason": "Search discovers, Fetch extracts, Memory persists, SQLite structures. Clean pipeline with zero overlap." },
+      "mismatches": [],
+      "skillsPaired": ["deep-research", "chain-of-thought", "web-reader", "context-compressor"]
+    },
+    {
+      "id": "content-engine",
+      "name": "Content Engine",
+      "emoji": "✍️",
+      "description": "End-to-end content creation, optimization, and distribution pipeline",
+      "useCase": "Content teams producing SEO-optimized articles, social posts, and newsletters at scale",
+      "servers": [
+        { "name": "filesystem", "reason": "Read briefs, write drafts, save final content" },
+        { "name": "brave-search", "reason": "Topic research, competitor analysis, trending queries" },
+        { "name": "google-drive", "reason": "Access brand guidelines, editorial calendars, asset libraries" },
+        { "name": "slack", "reason": "Content approvals, team notifications, review workflows" }
+      ],
+      "synergy": { "score": 87, "reason": "Search + Filesystem covers research-to-draft; Google Drive provides source material; Slack enables human-in-the-loop review." },
+      "mismatches": [
+        { "servers": ["filesystem", "google-drive"], "warning": "Both store files — decide primary storage to avoid split-brain" }
+      ],
+      "skillsPaired": ["seo-geo", "humanizer", "social-media-manager", "docx"]
+    },
+    {
+      "id": "devops-monitor",
+      "name": "DevOps Command Center",
+      "emoji": "🏗️",
+      "description": "Deploy, monitor, and respond to incidents across cloud infrastructure",
+      "useCase": "Platform teams managing multi-service deployments with observability and incident response",
+      "servers": [
+        { "name": "github", "reason": "Code changes, CI/CD triggers, deployment workflows" },
+        { "name": "docker", "reason": "Container management, image builds, compose orchestration" },
+        { "name": "kubernetes", "reason": "Cluster management, scaling, rolling deployments" },
+        { "name": "slack", "reason": "Incident alerts, deployment notifications, runbook access" }
+      ],
+      "synergy": { "score": 92, "reason": "GitHub -> Docker -> K8s is the standard build-ship-run pipeline. Slack adds the human notification layer." },
+      "mismatches": [],
+      "skillsPaired": ["deployment-manager", "audit-analyzer", "feedback-loop", "skill-vetter"]
+    },
+    {
+      "id": "data-pipeline",
+      "name": "Data Pipeline Studio",
+      "emoji": "📊",
+      "description": "Ingest, transform, analyze, and visualize data at any scale",
+      "useCase": "Data engineers building ETL pipelines, running analytics, and creating dashboards",
+      "servers": [
+        { "name": "postgres", "reason": "Source and destination for relational data" },
+        { "name": "sqlite", "reason": "Local analysis, prototyping, lightweight queries" },
+        { "name": "fetch", "reason": "Pull data from APIs and web sources" },
+        { "name": "filesystem", "reason": "Read CSVs, write reports, manage data artifacts" }
+      ],
+      "synergy": { "score": 89, "reason": "Fetch + Filesystem for ingestion; Postgres for production data; SQLite for analysis sandbox. Clean separation of concerns." },
+      "mismatches": [
+        { "servers": ["postgres", "sqlite"], "warning": "Both are SQL databases — use Postgres for production, SQLite for local analysis only" }
+      ],
+      "skillsPaired": ["xlsx", "finance", "context-compressor", "explore"]
+    },
+    {
+      "id": "security-audit",
+      "name": "Security Audit Toolkit",
+      "emoji": "🔒",
+      "description": "Scan, analyze, and remediate security vulnerabilities across code and infrastructure",
+      "useCase": "Security teams running vulnerability assessments, dependency audits, and compliance checks",
+      "servers": [
+        { "name": "filesystem", "reason": "Read source code, config files, dependency manifests" },
+        { "name": "github", "reason": "Access repos, check branch protections, review security advisories" },
+        { "name": "brave-search", "reason": "Look up CVEs, security advisories, exploit databases" },
+        { "name": "docker", "reason": "Scan container images for vulnerabilities" }
+      ],
+      "synergy": { "score": 86, "reason": "Filesystem + GitHub covers code security; Search covers external threat intel; Docker covers container security." },
+      "mismatches": [],
+      "skillsPaired": ["skill-vetter", "audit-analyzer", "skill-scanner", "devils-advocate"]
+    },
+    {
+      "id": "creative-studio",
+      "name": "Creative Studio",
+      "emoji": "🎨",
+      "description": "Design, generate, and manage visual assets with AI-powered creative tools",
+      "useCase": "Designers and creators producing images, UI mockups, and visual content at scale",
+      "servers": [
+        { "name": "filesystem", "reason": "Save generated images, organize asset libraries" },
+        { "name": "fetch", "reason": "Download reference images, pull design inspiration" },
+        { "name": "google-drive", "reason": "Share creative assets with team, access brand kits" },
+        { "name": "slack", "reason": "Creative review workflows, design critique notifications" }
+      ],
+      "synergy": { "score": 85, "reason": "Filesystem for local work; Fetch for sourcing; Google Drive for sharing; Slack for review. Good creative pipeline." },
+      "mismatches": [
+        { "servers": ["filesystem", "google-drive"], "warning": "Asset storage split — use Drive for shared, filesystem for local" }
+      ],
+      "skillsPaired": ["image-generation", "photography-ai", "gsap-animations", "ui-ux-pro-max-v7"]
+    },
+    {
+      "id": "mobile-app",
+      "name": "Mobile App Workshop",
+      "emoji": "📱",
+      "description": "Design, develop, test, and ship React Native mobile applications",
+      "useCase": "Mobile developers building cross-platform apps with React Native and backend APIs",
+      "servers": [
+        { "name": "filesystem", "reason": "Read/write app code, manage project structure" },
+        { "name": "github", "reason": "Version control, PR reviews, release management" },
+        { "name": "fetch", "reason": "API testing, backend data integration" },
+        { "name": "memory", "reason": "Persist app architecture decisions and API contracts" }
+      ],
+      "synergy": { "score": 88, "reason": "Filesystem + GitHub for code lifecycle; Fetch for API integration; Memory for architectural decisions across sessions." },
+      "mismatches": [],
+      "skillsPaired": ["react-native-skills", "shadcn", "deployment-manager", "feedback-loop"]
+    },
+    {
+      "id": "infra-unified",
+      "name": "Unified AI Gateway",
+      "emoji": "🦉",
+      "description": "9Router + OWL Proxy Defense + 4-CLI unified gateway — route AI requests through free-tier providers first, with circuit breaker fallback and protocol-first proxy defense",
+      "useCase": "Teams and power users managing multiple AI providers (Gemini, Claude, Codex, OpenCode) with unified routing, proxy defense, and credential vault",
+      "servers": [
+        { "name": "filesystem", "reason": "Read/write 9Router configs, proxy routing rules, and credential vault files" },
+        { "name": "github", "reason": "Auto-commit proxy config changes, version control for routing rules" },
+        { "name": "docker", "reason": "Run 9Router gateway, sing-box proxy, and Redis cache containers" },
+        { "name": "fetch", "reason": "Health check proxy endpoints, test provider connectivity, monitor token validity" }
+      ],
+      "synergy": { "score": 96, "reason": "Filesystem stores configs; GitHub versions them; Docker runs the stack; Fetch monitors health. Complete infrastructure lifecycle with zero overlap." },
+      "mismatches": [],
+      "skillsPaired": ["9router-gateway", "owl-proxy-defense", "4cli-unified", "secret-vault"]
+    }
+  ],
+  "curatorRules": {
+    "maxServersPerStack": 4,
+    "minSynergyScore": 80,
+    "overlapPenalty": -10,
+    "complementaryBonus": 5,
+    "pipelineBonus": 8,
+    "description": "The MCP Stack Curator recommends which 4 servers to use together. Rules: (1) No two servers with identical capabilities, (2) Pipeline bonus when servers form a clear data flow, (3) Complementary bonus when servers cover different layers, (4) Overlap penalty when servers have competing features."
+  }
+}

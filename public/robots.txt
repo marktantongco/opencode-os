@@ -1,0 +1,43 @@
+# robots.txt — opencode OS — AI Agent Skill Store
+# Allow all crawlers full access; sitemap declared below.
+
+User-agent: *
+Allow: /
+Allow: /index.html
+Allow: /manifest.json
+Allow: /sitemap.xml
+Allow: /rss.xml
+Allow: /icon-192.svg
+Allow: /icon-512.svg
+Allow: /og-image.png
+
+# Block nothing — this is a fully public catalog
+Disallow:
+
+# Crawl rate: friendly for static PWA
+Crawl-delay: 1
+
+# AI crawlers explicitly allowed (catalog is for AI agents too)
+User-agent: GPTBot
+Allow: /
+
+User-agent: OAI-SearchBot
+Allow: /
+
+User-agent: anthropic-ai
+Allow: /
+
+User-agent: ClaudeBot
+Allow: /
+
+User-agent: PerplexityBot
+Allow: /
+
+User-agent: Google-Extended
+Allow: /
+
+User-agent: Bingbot
+Allow: /
+
+# Sitemaps
+Sitemap: https://marktantongco.github.io/opencode-accomplishments/sitemap.xml

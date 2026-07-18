@@ -1,0 +1,292 @@
+{
+  "title": "MCP Stack Registry - 9 Pre-Built Stacks",
+  "description": "Curated MCP server combinations optimized for specific use cases. Each stack contains 4 servers selected for maximum synergy and minimal conflict.",
+  "version": "10.0.0",
+  "lastUpdated": "2026-07-18",
+  "curatedBy": "opencode-os",
+  "stackCuratorAlgorithm": {
+    "name": "MCP Stack Curator v10",
+    "description": "Algorithmic approach to optimal 4-server MCP stack composition",
+    "principles": [
+      {
+        "name": "Complementarity",
+        "description": "Each server must provide a capability the other 3 cannot. No two servers should solve the same problem."
+      },
+      {
+        "name": "Data Flow",
+        "description": "Servers must form a clear data pipeline: extract → process → store → verify. At least one server must produce output another consumes."
+      },
+      {
+        "name": "Universal Base",
+        "description": "Memory MCP and Filesystem MCP are universal enhancers — they can join any stack without conflict. Only include when they actively improve the data flow."
+      },
+      {
+        "name": "Conflict Avoidance",
+        "description": "Never combine Postgres + Supabase, two web search servers, or two file-writers on the same directory. These create race conditions and data conflicts."
+      },
+      {
+        "name": "Minimum Surprise",
+        "description": "All 4 servers must be free, publicly available, and have active maintenance (commits within 6 months). No private or paywalled servers in pre-built stacks."
+      }
+    ],
+    "conflictMatrix": {
+      "Postgres + Supabase": "CRITICAL - Both modify database schema, creates migration conflicts",
+      "Brave Search + Serper": "WARNING - Two web search servers produce redundant results",
+      "Filesystem + Filesystem": "CRITICAL - Two file writers on same paths creates race conditions",
+      "GitHub + GitLab": "CONDITIONAL - Only compatible if managing repos on separate platforms",
+      "Postgres + SQLite": "COMPATIBLE - Postgres for production, SQLite for local analytics is fine",
+      "Memory + any server": "COMPATIBLE - Memory MCP is a universal complement"
+    },
+    "synergyMatrix": {
+      "Memory + any": "Universal enhancer — stores preferences, context, and learned patterns",
+      "Sequential Thinking + any complex task": "Structured reasoning before action reduces errors 40%",
+      "Filesystem + any artifact producer": "Saves generated content to organized project structure",
+      "Brave Search + Fetch": "Search finds sources, Fetch extracts full content — classic research pipeline",
+      "PictoFlux AI + Filesystem": "Generate images, save to project assets — visual content pipeline",
+      "GitHub + Filesystem": "Code changes tracked in git, files managed locally — development workflow",
+      "Brave Search + Sequential Thinking": "Research findings structured into logical arguments",
+      "Postgres + Filesystem": "Database exports to local files for backup and analysis"
+    }
+  },
+  "curatorRules": {
+    "maxServersPerStack": 4,
+    "minSynergyScore": 80,
+    "overlapPenalty": -10,
+    "complementaryBonus": 5,
+    "pipelineBonus": 8,
+    "description": "The MCP Stack Curator recommends which 4 servers to use together. Rules: (1) No two servers with identical capabilities, (2) Pipeline bonus when servers form a clear data flow, (3) Complementary bonus when servers cover different layers, (4) Overlap penalty when servers have competing features."
+  },
+  "stacks": [
+    {
+      "id": "fullstack-web",
+      "name": "Full-Stack Web Studio",
+      "emoji": "🌐",
+      "description": "Build, deploy, and monitor production web applications end-to-end",
+      "useCase": "Solo dev or small team shipping a full-stack Next.js app from concept to production",
+      "version": "2.0",
+      "servers": [
+        { "name": "filesystem", "reason": "Read/write project files — the foundation of any code project" },
+        { "name": "github", "reason": "PR management, issue tracking, CI/CD pipeline triggers" },
+        { "name": "vercel", "reason": "Deploy previews on every PR, production deploys on merge" },
+        { "name": "postgres", "reason": "Database migrations, seed data, query debugging" }
+      ],
+      "synergy": { "score": 94, "reason": "Filesystem + GitHub covers code lifecycle; Vercel handles deployment; Postgres provides persistent storage. Zero overlap." },
+      "mismatches": [],
+      "skillsPaired": ["fullstack-dev", "frontend-design", "deployment-manager", "mcp-builder"],
+      "bestFor": ["Solo developers", "Small teams", "Startups"],
+      "estimatedSetupMin": 8,
+      "curatorNotes": "GitHub handles version control, Postgres manages production data, Filesystem edits project files locally, and Sequential Thinking ensures architectural decisions are reasoned through before code is written.",
+      "dataFlow": "Plan architecture → Edit code (Filesystem) → Version control (GitHub) → Deploy (Vercel) → Manage data (Postgres)",
+      "alternatives": [
+        { "replace": "postgres", "with": "sqlite", "tradeoff": "Loses production-grade database but gains lighter local analytics with no server setup" },
+        { "replace": "vercel", "with": "docker", "tradeoff": "Loses managed deployment but gains containerized builds" }
+      ]
+    },
+    {
+      "id": "ai-research",
+      "name": "AI Research Lab",
+      "emoji": "🧪",
+      "description": "Research, analyze, and synthesize information with AI-powered search and knowledge graphs",
+      "useCase": "Deep research workflows requiring multi-source verification and structured knowledge extraction",
+      "version": "2.0",
+      "servers": [
+        { "name": "brave-search", "reason": "Web search for real-time information discovery" },
+        { "name": "fetch", "reason": "Retrieve and extract content from discovered URLs" },
+        { "name": "memory", "reason": "Persist research findings across sessions as structured knowledge" },
+        { "name": "sqlite", "reason": "Store and query structured research data locally" }
+      ],
+      "synergy": { "score": 91, "reason": "Search discovers, Fetch extracts, Memory persists, SQLite structures. Clean pipeline with zero overlap." },
+      "mismatches": [],
+      "skillsPaired": ["deep-research", "chain-of-thought", "web-reader", "context-compressor"],
+      "bestFor": ["Researchers", "Analysts", "Students"],
+      "estimatedSetupMin": 4,
+      "curatorNotes": "Search (Brave) and extraction (Fetch) form the classic research pipeline, Arxiv adds academic depth that web search cannot reach, and Memory ensures no finding is lost across sessions.",
+      "dataFlow": "Search sources (Brave) → Extract content (Fetch) → Academic depth (Arxiv) → Index findings (Memory)",
+      "alternatives": [
+        { "replace": "sqlite", "with": "arxiv", "tradeoff": "Loses local SQL analytics but gains academic paper access" },
+        { "replace": "fetch", "with": "filesystem", "tradeoff": "Loses live web scraping but gains ability to save and organize research locally as files" }
+      ]
+    },
+    {
+      "id": "content-engine",
+      "name": "Content Engine",
+      "emoji": "✍️",
+      "description": "End-to-end content creation, optimization, and distribution pipeline",
+      "useCase": "Content teams producing SEO-optimized articles, social posts, and newsletters at scale",
+      "version": "2.0",
+      "servers": [
+        { "name": "filesystem", "reason": "Read briefs, write drafts, save final content" },
+        { "name": "brave-search", "reason": "Topic research, competitor analysis, trending queries" },
+        { "name": "google-drive", "reason": "Access brand guidelines, editorial calendars, asset libraries" },
+        { "name": "slack", "reason": "Content approvals, team notifications, review workflows" }
+      ],
+      "synergy": { "score": 87, "reason": "Search + Filesystem covers research-to-draft; Google Drive provides source material; Slack enables human-in-the-loop review." },
+      "mismatches": [
+        { "servers": ["filesystem", "google-drive"], "warning": "Both store files — decide primary storage to avoid split-brain" }
+      ],
+      "skillsPaired": ["seo-geo", "humanizer", "social-media-manager", "docx"],
+      "bestFor": ["Content marketers", "Bloggers", "Newsletter writers"],
+      "estimatedSetupMin": 5,
+      "curatorNotes": "Brave Search researches topics, PictoFlux creates featured images, Filesystem organizes published content, and Memory preserves brand voice so every piece sounds consistent.",
+      "dataFlow": "Research topics (Brave Search) → Generate visuals (PictoFlux) → Store content (Filesystem) → Recall brand voice (Memory)",
+      "alternatives": [
+        { "replace": "google-drive", "with": "memory", "tradeoff": "Loses cloud collaboration but gains persistent memory of pipeline configurations and schema decisions" },
+        { "replace": "brave-search", "with": "sequential-thinking", "tradeoff": "Loses web research but gains structured content outlining for long-form writing" }
+      ]
+    },
+    {
+      "id": "devops-monitor",
+      "name": "DevOps Command Center",
+      "emoji": "🏗️",
+      "description": "Deploy, monitor, and respond to incidents across cloud infrastructure",
+      "useCase": "Platform teams managing multi-service deployments with observability and incident response",
+      "version": "2.0",
+      "servers": [
+        { "name": "github", "reason": "Code changes, CI/CD triggers, deployment workflows" },
+        { "name": "docker", "reason": "Container management, image builds, compose orchestration" },
+        { "name": "kubernetes", "reason": "Cluster management, scaling, rolling deployments" },
+        { "name": "slack", "reason": "Incident alerts, deployment notifications, runbook access" }
+      ],
+      "synergy": { "score": 92, "reason": "GitHub -> Docker -> K8s is the standard build-ship-run pipeline. Slack adds the human notification layer." },
+      "mismatches": [],
+      "skillsPaired": ["deployment-manager", "audit-analyzer", "feedback-loop", "skill-vetter"],
+      "bestFor": ["Platform engineers", "DevOps teams", "Site reliability engineers"],
+      "estimatedSetupMin": 10,
+      "curatorNotes": "GitHub audits remote code, Filesystem scans local code, Brave Search looks up known CVEs, and Sequential Thinking systematically models threat vectors — full coverage from code to context to reasoning.",
+      "dataFlow": "Code changes (GitHub) → Container builds (Docker) → Orchestration (K8s) → Notifications (Slack)",
+      "alternatives": [
+        { "replace": "kubernetes", "with": "grafana", "tradeoff": "Loses cluster orchestration but gains observability dashboards and metrics" },
+        { "replace": "docker", "with": "terraform", "tradeoff": "Loses container management but gains infrastructure-as-code provisioning" }
+      ]
+    },
+    {
+      "id": "data-pipeline",
+      "name": "Data Pipeline Studio",
+      "emoji": "📊",
+      "description": "Ingest, transform, analyze, and visualize data at any scale",
+      "useCase": "Data engineers building ETL pipelines, running analytics, and creating dashboards",
+      "version": "2.0",
+      "servers": [
+        { "name": "postgres", "reason": "Source and destination for relational data" },
+        { "name": "sqlite", "reason": "Local analysis, prototyping, lightweight queries" },
+        { "name": "fetch", "reason": "Pull data from APIs and web sources" },
+        { "name": "filesystem", "reason": "Read CSVs, write reports, manage data artifacts" }
+      ],
+      "synergy": { "score": 89, "reason": "Fetch + Filesystem for ingestion; Postgres for production data; SQLite for analysis sandbox. Clean separation of concerns." },
+      "mismatches": [
+        { "servers": ["postgres", "sqlite"], "warning": "Both are SQL databases — use Postgres for production, SQLite for local analysis only" }
+      ],
+      "skillsPaired": ["xlsx", "finance", "context-compressor", "explore"],
+      "bestFor": ["Data engineers", "Analysts", "BI teams"],
+      "estimatedSetupMin": 10,
+      "curatorNotes": "Fetch extracts raw data from the web, Filesystem stages intermediate ETL files, Postgres serves as the production warehouse, and SQLite provides lightweight local analytics — a complete data pipeline with no overlapping roles.",
+      "dataFlow": "Extract data (Fetch) → Stage files (Filesystem) → Warehouse (Postgres) → Analyze locally (SQLite)",
+      "alternatives": [
+        { "replace": "sqlite", "with": "memory", "tradeoff": "Loses local SQL analytics but gains persistent memory of pipeline configurations and schema decisions" },
+        { "replace": "fetch", "with": "brave-search", "tradeoff": "Loses direct data scraping but gains broader discovery of data sources and APIs" }
+      ]
+    },
+    {
+      "id": "security-audit",
+      "name": "Security Audit Toolkit",
+      "emoji": "🔒",
+      "description": "Scan, analyze, and remediate security vulnerabilities across code and infrastructure",
+      "useCase": "Security teams running vulnerability assessments, dependency audits, and compliance checks",
+      "version": "2.0",
+      "servers": [
+        { "name": "filesystem", "reason": "Read source code, config files, dependency manifests" },
+        { "name": "github", "reason": "Access repos, check branch protections, review security advisories" },
+        { "name": "brave-search", "reason": "Look up CVEs, security advisories, exploit databases" },
+        { "name": "docker", "reason": "Scan container images for vulnerabilities" }
+      ],
+      "synergy": { "score": 86, "reason": "Filesystem + GitHub covers code security; Search covers external threat intel; Docker covers container security." },
+      "mismatches": [],
+      "skillsPaired": ["skill-vetter", "audit-analyzer", "skill-scanner", "devils-advocate"],
+      "bestFor": ["Security engineers", "DevOps teams", "Compliance officers"],
+      "estimatedSetupMin": 6,
+      "curatorNotes": "GitHub scans remote code, Filesystem scans local code, Brave Search looks up known CVEs, and Docker covers container security — full coverage from code to context to reasoning.",
+      "dataFlow": "Scan remote code (GitHub) → Scan local code (Filesystem) → Lookup CVEs (Brave Search) → Scan containers (Docker)",
+      "alternatives": [
+        { "replace": "docker", "with": "sequential-thinking", "tradeoff": "Loses container scanning but gains structured threat modeling" },
+        { "replace": "brave-search", "with": "fetch", "tradeoff": "Loses broad CVE search but gains ability to pull detailed vulnerability reports from specific advisory pages" }
+      ]
+    },
+    {
+      "id": "creative-studio",
+      "name": "Creative Studio",
+      "emoji": "🎨",
+      "description": "Design, generate, and manage visual assets with AI-powered creative tools",
+      "useCase": "Designers and creators producing images, UI mockups, and visual content at scale",
+      "version": "2.0",
+      "servers": [
+        { "name": "filesystem", "reason": "Save generated images, organize asset libraries" },
+        { "name": "fetch", "reason": "Download reference images, pull design inspiration" },
+        { "name": "google-drive", "reason": "Share creative assets with team, access brand kits" },
+        { "name": "slack", "reason": "Creative review workflows, design critique notifications" }
+      ],
+      "synergy": { "score": 85, "reason": "Filesystem for local work; Fetch for sourcing; Google Drive for sharing; Slack for review. Good creative pipeline." },
+      "mismatches": [
+        { "servers": ["filesystem", "google-drive"], "warning": "Asset storage split — use Drive for shared, filesystem for local" }
+      ],
+      "skillsPaired": ["image-generation", "photography-ai", "gsap-animations", "ui-ux-pro-max-v7"],
+      "bestFor": ["Design agencies", "Content creators", "Marketing teams"],
+      "estimatedSetupMin": 5,
+      "curatorNotes": "These four servers cover the full creative pipeline: Fetch supplies design specs, Filesystem persists assets, Google Drive shares with team, and Slack enables human-in-the-loop review.",
+      "dataFlow": "Fetch references → Filesystem saves assets → Google Drive shares → Slack reviews",
+      "alternatives": [
+        { "replace": "fetch", "with": "brave-search", "tradeoff": "Loses deep content extraction but gains broader trend research for inspiration-first workflows" },
+        { "replace": "slack", "with": "memory", "tradeoff": "Loses team review workflows but gains persistent memory of brand preferences" }
+      ]
+    },
+    {
+      "id": "mobile-app",
+      "name": "Mobile App Workshop",
+      "emoji": "📱",
+      "description": "Design, develop, test, and ship React Native mobile applications",
+      "useCase": "Mobile developers building cross-platform apps with React Native and backend APIs",
+      "version": "2.0",
+      "servers": [
+        { "name": "filesystem", "reason": "Read/write app code, manage project structure" },
+        { "name": "github", "reason": "Version control, PR reviews, release management" },
+        { "name": "fetch", "reason": "API testing, backend data integration" },
+        { "name": "memory", "reason": "Persist app architecture decisions and API contracts" }
+      ],
+      "synergy": { "score": 88, "reason": "Filesystem + GitHub for code lifecycle; Fetch for API integration; Memory for architectural decisions across sessions." },
+      "mismatches": [],
+      "skillsPaired": ["react-native-skills", "shadcn", "deployment-manager", "feedback-loop"],
+      "bestFor": ["Mobile developers", "Cross-platform teams", "Startup CTOs"],
+      "estimatedSetupMin": 7,
+      "curatorNotes": "Filesystem handles local app code, GitHub manages version control, Fetch tests backend APIs, and Memory persists architectural decisions — a complete mobile development workflow.",
+      "dataFlow": "Write app code (Filesystem) → Version control (GitHub) → Test APIs (Fetch) → Store decisions (Memory)",
+      "alternatives": [
+        { "replace": "memory", "with": "docker", "tradeoff": "Loses persistent decisions but gains containerized test environments" },
+        { "replace": "fetch", "with": "supabase", "tradeoff": "Loses general API testing but gains backend-as-a-service with auth and realtime" }
+      ]
+    },
+    {
+      "id": "infra-unified",
+      "name": "Unified AI Gateway",
+      "emoji": "🦉",
+      "description": "9Router + OWL Proxy Defense + 4-CLI unified gateway — route AI requests through free-tier providers first, with circuit breaker fallback and protocol-first proxy defense",
+      "useCase": "Teams and power users managing multiple AI providers (Gemini, Claude, Codex, OpenCode) with unified routing, proxy defense, and credential vault",
+      "version": "2.0",
+      "servers": [
+        { "name": "filesystem", "reason": "Read/write 9Router configs, proxy routing rules, and credential vault files" },
+        { "name": "github", "reason": "Auto-commit proxy config changes, version control for routing rules" },
+        { "name": "docker", "reason": "Run 9Router gateway, sing-box proxy, and Redis cache containers" },
+        { "name": "fetch", "reason": "Health check proxy endpoints, test provider connectivity, monitor token validity" }
+      ],
+      "synergy": { "score": 96, "reason": "Filesystem stores configs; GitHub versions them; Docker runs the stack; Fetch monitors health. Complete infrastructure lifecycle with zero overlap." },
+      "mismatches": [],
+      "skillsPaired": ["9router-gateway", "owl-proxy-defense", "4cli-unified", "secret-vault"],
+      "bestFor": ["AI power users", "Multi-provider teams", "Cost optimization engineers"],
+      "estimatedSetupMin": 12,
+      "curatorNotes": "This is the canonical AI infrastructure stack: Filesystem handles local configuration, GitHub provides version control, Docker runs the gateway and proxy containers, and Fetch monitors health endpoints.",
+      "dataFlow": "Store configs (Filesystem) → Version control (GitHub) → Run stack (Docker) → Monitor health (Fetch)",
+      "alternatives": [
+        { "replace": "docker", "with": "kubernetes", "tradeoff": "Loses simple container orchestration but gains enterprise-grade scaling" },
+        { "replace": "fetch", "with": "brave-search", "tradeoff": "Loses health monitoring but gains ability to search for new AI providers and models" }
+      ]
+    }
+  ]
+}

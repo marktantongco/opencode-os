@@ -1,0 +1,34 @@
+{
+  "name": "opencode-os",
+  "version": "1.0.0",
+  "private": true,
+  "description": "OpenCode OS — Unified AI Agent Platform: 276 skills, 9 MCP stacks, 223 MCP servers, 35 agent workflows, 7-agent MASTER pipeline",
+  "scripts": {
+    "dev": "next dev",
+    "build": "next build",
+    "start": "next start",
+    "lint": "next lint",
+    "skills:validate": "node scripts/validate-skills.js",
+    "skills:index": "node scripts/index-skills.js",
+    "mcp:audit": "node scripts/audit-mcp.js"
+  },
+  "dependencies": {
+    "@gsap/react": "^2.1.2",
+    "framer-motion": "^11.18.2",
+    "gsap": "^3.13.0",
+    "next": "^15.1.6",
+    "react": "^19.0.0",
+    "react-dom": "^19.0.0",
+    "three": "^0.171.0"
+  },
+  "devDependencies": {
+    "@types/node": "^22.10.7",
+    "@types/react": "^19.0.7",
+    "@types/react-dom": "^19.0.3",
+    "@types/three": "^0.171.0",
+    "typescript": "^5.7.3"
+  },
+  "engines": {
+    "node": ">=20.0.0"
+  }
+}

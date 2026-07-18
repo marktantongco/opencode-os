@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>opencode OS — AI Agent Skill Store</title>
+    <link>https://marktantongco.github.io/opencode-accomplishments/</link>
+    <atom:link href="https://marktantongco.github.io/opencode-accomplishments/rss.xml" rel="self" type="application/rss+xml"/>
+    <description>Latest skills added to the opencode OS AI Agent Skill Store — 90+ production-grade developer skills across 6 zones.</description>
+    <language>en-us</language>
+    <lastBuildDate>Wed, 17 Jun 2026 06:00:00 +0000</lastBuildDate>
+    <ttl>1440</ttl>
+    <image>
+      <url>https://marktantongco.github.io/opencode-accomplishments/og-image.png</url>
+      <title>opencode OS — AI Agent Skill Store</title>
+      <link>https://marktantongco.github.io/opencode-accomplishments/</link>
+      <width>1200</width>
+      <height>630</height>
+    </image>
+    <item>
+      <title>v24.0.0 — Raycast-style redesign with command palette and chat widget</title>
+      <link>https://marktantongco.github.io/opencode-accomplishments/?zone=activate</link>
+      <guid isPermaLink="false">opencode-os-v24-2026-06-17</guid>
+      <pubDate>Wed, 17 Jun 2026 06:00:00 +0000</pubDate>
+      <description><![CDATA[Complete redesign: dark #05060A theme, glassmorphic nav, JetBrains Mono + Inter typography, ⌘K command palette with fuzzy search, conversational recommendation chat widget, 6 zone tabs (ACTIVATE/BUILD/VALIDATE/PLAYBOOK/MONETIZE/SYSTEM), GSAP staggered animations, and URL API endpoints.]]></description>
+    </item>
+    <item>
+      <title>SEO/GEO optimization — canonical, hreflang, JSON-LD WebSite + FAQ + ItemList</title>
+      <link>https://marktantongco.github.io/opencode-accomplishments/</link>
+      <guid isPermaLink="false">opencode-os-seo-geo-2026-06-17</guid>
+      <pubDate>Wed, 17 Jun 2026 06:00:00 +0000</pubDate>
+      <description><![CDATA[Added canonical URL, geo meta tags (Manila, PH), hreflang alternates, complete OpenGraph and Twitter Card, JSON-LD for WebSite + SearchAction + ItemList + FAQPage + BreadcrumbList, sitemap.xml, robots.txt, and RSS feed.]]></description>
+    </item>
+  </channel>
+</rss>
