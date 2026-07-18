@@ -3,7 +3,6 @@
   "framework": "nextjs",
   "cleanUrls": true,
   "trailingSlash": false,
-  "functions": {},
   "headers": [
     {
       "source": "/sw.js",
