@@ -3,11 +3,7 @@
   "framework": "nextjs",
   "cleanUrls": true,
   "trailingSlash": false,
-  "functions": {
-    "api/recommend.ts": {
-      "maxDuration": 10
-    }
-  },
+  "functions": {},
   "headers": [
     {
       "source": "/sw.js",
