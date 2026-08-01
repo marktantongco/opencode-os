@@ -293,12 +293,6 @@
       },
       "enabled": true
     },
-    "proxy-control": {
-      "type": "local",
-      "command": ["python3", "/home/ubuntu/ai-workspace/kiro-gateway/mcp_proxy_server.py"],
-      "description": "Forward proxy control: check live stats, health, and rotate connections",
-      "enabled": true
-    },
     // mcp-search REMOVED: no server files exist, overlaps built-in websearch tool
     // pictoflux-ai REMOVED: no MCP server files (exists as skill only)
     // mcp-catalog REMOVED: no server files exist
