@@ -19,37 +19,86 @@
     "opencode-plugin-openspec",
     "opencode-skills",
     "pocket-universe",
-    "opencode-terminal-progress"
+    "opencode-terminal-progress",
+    "opencode-model-fallback-chain"
   ],
   "model": "opencode/deepseek-v4-flash-free",
   "small_model": "opencode/deepseek-v4-flash-free",
   "default_agent": "orchestrator",
   "subagent_depth": 2,
   "provider": {
-    "9router": {
+    // 9router gateway - disabled (not running)
+    // "9router": { ... }
+
+    // local proxy on port 8090 - WORKING
+    "local": {
       "npm": "@ai-sdk/openai-compatible",
-      "name": "9Router Podman Gateway",
+      "name": "Local Proxy (port 8090)",
       "options": {
-        "baseURL": "http://127.0.0.1:20128/v1",
-        "apiKey": "sk-9router-local",
+        "baseURL": "http://127.0.0.1:8090/v1",
+        "apiKey": "sk-local",
         "timeout": 300000
       },
       "models": {
-        "kr/claude-sonnet-4.5": {
-          "name": "Claude Sonnet 4.5 (Free)"
+        "deepseek/deepseek-v4-pro": {
+          "name": "DeepSeek V4 Pro"
         },
-        "glm/glm-5.1": {
-          "name": "GLM-5.1 (Cheap)"
+        "google/gemini-2.5-flash-lite": {
+          "name": "Gemini 2.5 Flash Lite"
         },
-        "minimax/MiniMax-M2.7": {
-          "name": "MiniMax M2.7"
+        "google/gemini-3.1-flash-lite-preview": {
+          "name": "Gemini 3.1 Flash Lite"
         },
-        "oc/auto": {
-          "name": "OpenCode Free"
+        "google/gemini-3.1-pro-preview": {
+          "name": "Gemini 3.1 Pro"
         },
-        "qwen/qwen3.6-plus-free": {
-          "name": "Qwen 3.6 Plus (Free)"
+        "moonshotai/kimi-k2.7-code": {
+          "name": "Kimi K2.7 Code"
+        },
+        "poolside/laguna-s-2.1": {
+          "name": "Poolside Laguna S 2.1"
+        },
+        "mimo/mimo-v2.5-pro": {
+          "name": "Mimo V2.5 Pro"
         }
+      }
+    },
+    // ZenMux — free GLM models via https://zenmux.ai
+    // Get a key: https://zenmux.ai → Models → Create API Key
+    "zenmux": {
+      "npm": "@ai-sdk/openai-compatible",
+      "name": "ZenMux GLM (Free)",
+      "options": {
+        "baseURL": "https://zenmux.ai/api/v1",
+        "apiKey": "${ZENMUX_API_KEY}",
+        "timeout": 300000
+      },
+      "models": {
+        "z-ai/glm-4.7-flash-free": {
+          "name": "GLM 4.7 Flash Free",
+          "multimodal": false
+        },
+        "z-ai/glm-4.6v-flash-free": {
+          "name": "GLM 4.6v Flash Free",
+          "multimodal": false
+        }
+      }
+    },
+    "kiro": {
+      "npm": "@ai-sdk/openai-compatible",
+      "name": "Kiro Gateway (Claude)",
+      "options": {
+        "baseURL": "http://127.0.0.1:8333/v1",
+        "apiKey": "kiro-gateway-8333",
+        "timeout": 300000
+      },
+      "models": {
+        "claude-sonnet-4.5": { "name": "Claude Sonnet 4.5" },
+        "claude-sonnet-4":   { "name": "Claude Sonnet 4" },
+        "claude-haiku-4.5":  { "name": "Claude Haiku 4.5" },
+        "auto-kiro":         { "name": "Auto (Kiro Select)" },
+        "deepseek-3.2":      { "name": "DeepSeek 3.2" },
+        "qwen3-coder-next":  { "name": "Qwen3 Coder Next" }
       }
     }
   },
@@ -58,7 +107,7 @@
     "orchestrator": {
       "description": "Primary orchestrator for coordinating multi-agent workflows and task decomposition",
       "mode": "primary",
-      "model": "opencode/deepseek-v4-flash-free",
+      "model": "opencode/mimo-v2.5-free",
       "prompt": "{file:./agents/orchestrator.md}",
       "permission": {
         "edit": "allow",
@@ -68,7 +117,7 @@
     "blueprint": {
       "description": "Strategic planning, brainstorming, architecture design, and research synthesis",
       "mode": "primary",
-      "model": "opencode/nemotron-3-super-free",
+      "model": "opencode/mimo-v2.5-free",
       "prompt": "{file:./agents/blueprint.md}",
       "permission": {
         "edit": "allow",
@@ -78,43 +127,43 @@
     "explorer": {
       "description": "Codebase search and pattern discovery specialist",
       "mode": "subagent",
-      "model": "opencode/deepseek-v4-flash-free",
+      "model": "opencode/laguna-s-2.1-free",
       "prompt": "{file:./agents/explorer.md}"
     },
     "librarian": {
       "description": "Documentation and API reference specialist",
       "mode": "subagent",
-      "model": "opencode/deepseek-v4-flash-free",
+      "model": "opencode/laguna-s-2.1-free",
       "prompt": "{file:./agents/librarian.md}"
     },
     "oracle": {
       "description": "Strategic technical advisor for architecture and complex problems",
       "mode": "subagent",
-      "model": "opencode/claude-opus-4-7",
+      "model": "opencode/mimo-v2.5-free",
       "prompt": "{file:./agents/oracle.md}"
     },
     "designer": {
       "description": "UI/UX design specialist for polished interfaces",
       "mode": "subagent",
-      "model": "opencode/gpt-5.5",
+      "model": "opencode/laguna-s-2.1-free",
       "prompt": "{file:./agents/designer.md}"
     },
     "fixer": {
       "description": "Code refinement, optimization, refactoring, and cleanup",
       "mode": "subagent",
-      "model": "opencode/deepseek-v4-flash-free",
+      "model": "opencode/laguna-s-2.1-free",
       "prompt": "{file:./agents/fixer.md}"
     },
     "observer": {
       "description": "Watches and reports on system behavior, logs, and metrics",
       "mode": "subagent",
-      "model": "opencode/gpt-5.5",
+      "model": "opencode/deepseek-v4-flash-free",
       "prompt": "{file:./agents/observer.md}"
     },
     "council": {
       "description": "Multi-perspective deliberation and consensus for complex decisions",
       "mode": "subagent",
-      "model": "opencode/claude-sonnet-4-6",
+      "model": "opencode/mimo-v2.5-free",
       "prompt": "{file:./agents/council.md}"
     },
     "compaction": {
@@ -126,44 +175,74 @@
     "brainstorming": {
       "description": "Creative ideation and divergent thinking for generating options and exploring possibilities",
       "mode": "subagent",
-      "model": "opencode/deepseek-v4-flash-free",
+      "model": "opencode/mimo-v2.5-free",
       "prompt": "{file:./agents/brainstorming.md}"
     },
     "researcher": {
       "description": "Web research, competitive analysis, feature investigation, and information gathering",
       "mode": "subagent",
-      "model": "opencode/deepseek-v4-flash-free",
+      "model": "opencode/mimo-v2.5-free",
       "prompt": "{file:./agents/researcher.md}"
     },
     "oracle-lite": {
       "description": "Strategic technical advice with lightweight model fallback",
       "mode": "subagent",
-      "model": "9router/qwen/qwen3.6-plus-free",
+      "model": "opencode/deepseek-v4-flash-free",
       "prompt": "{file:./agents/oracle-lite.md}"
     },
     "designer-lite": {
       "description": "UI/UX design with lightweight model fallback",
       "mode": "subagent",
-      "model": "9router/qwen/qwen3.6-plus-free",
+      "model": "opencode/deepseek-v4-flash-free",
       "prompt": "{file:./agents/designer-lite.md}"
     },
     "observer-lite": {
       "description": "System monitoring with lightweight model fallback",
       "mode": "subagent",
-      "model": "9router/qwen/qwen3.6-plus-free",
+      "model": "opencode/deepseek-v4-flash-free",
       "prompt": "{file:./agents/observer-lite.md}"
     },
     "council-lite": {
       "description": "Multi-perspective deliberation with lightweight model fallback",
       "mode": "subagent",
-      "model": "9router/qwen/qwen3.6-plus-free",
+      "model": "opencode/deepseek-v4-flash-free",
       "prompt": "{file:./agents/council-lite.md}"
     },
     "plan": {
       "description": "Plan grammar enforcement — validates plan structure, constraints, and lifecycle",
       "mode": "subagent",
-      "model": "opencode/deepseek-v4-flash-free",
+      "model": "opencode/mimo-v2.5-free",
       "prompt": "{file:./agents/plan.md}"
+    },
+    "owl-dns": {
+      "description": "Web scraping, proxy rotation, DNS tunneling, and anti-bot evasion with owl-dns v5.1",
+      "mode": "subagent",
+      "color": "#6366f1",
+      "prompt": "You are an expert web scraping operator using owl-dns v5.1. Use owl-dns fetch <url> for single URLs, owl-dns batch <file> for bulk, owl-dns discover for proxy auto-discovery, and owl-dns doctor for capability diagnostics.",
+      "tools": {
+        "bash": true,
+        "glob": true,
+        "grep": true,
+        "read": true,
+        "write": true,
+        "edit": true,
+        "webfetch": false,
+        "websearch": false
+      },
+      "model": "opencode/laguna-s-2.1-free"
+    }
+  },
+  "experimental": {
+    // Model fallback chain: if primary model fails (timeout/429/5xx),
+    // automatically retry with the next model in the chain.
+    // OpenCode Zen Free: mimo-v2.5-free → laguna-s-2.1-free → deepseek-v4-flash-free
+    "modelFallbackChain": {
+      "timeoutMs": 90000,
+      "chains": [
+        ["opencode/mimo-v2.5-free", "opencode/laguna-s-2.1-free", "opencode/deepseek-v4-flash-free"],
+        ["opencode/laguna-s-2.1-free", "opencode/mimo-v2.5-free", "opencode/deepseek-v4-flash-free"],
+        ["opencode/deepseek-v4-flash-free", "opencode/mimo-v2.5-free", "opencode/laguna-s-2.1-free"]
+      ]
     }
   },
   "mcp": {
@@ -214,25 +293,15 @@
       },
       "enabled": true
     },
-    "mcp-search": {
+    "proxy-control": {
       "type": "local",
-      "command": ["node", "./mcp-servers/mcp-search/dist/index.js"],
+      "command": ["python3", "/home/ubuntu/ai-workspace/kiro-gateway/mcp_proxy_server.py"],
+      "description": "Forward proxy control: check live stats, health, and rotate connections",
       "enabled": true
     },
-    "pictoflux-ai": {
-      "type": "local",
-      "command": ["node", "./mcp-servers/pictoflux-ai/dist/index.js"],
-      "enabled": true
-    },
-    "mcp-catalog": {
-      "type": "local",
-      "command": ["node", "./mcp-servers/mcp-catalog/dist/index.js"],
-      "enabled": true
-    },
-    "mcp-security-scanner": {
-      "type": "local",
-      "command": ["node", "./mcp-servers/mcp-security-scanner/dist/index.js"],
-      "enabled": true
-    }
+    // mcp-search REMOVED: no server files exist, overlaps built-in websearch tool
+    // pictoflux-ai REMOVED: no MCP server files (exists as skill only)
+    // mcp-catalog REMOVED: no server files exist
+    // mcp-security-scanner REMOVED: no MCP server files (exists as skill only)
   }
 }

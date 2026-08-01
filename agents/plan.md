@@ -1,7 +1,7 @@
 ---
 description: Plan grammar, constraints, and lifecycle enforcement. Defines the standard structure all plans must follow. Use for creating valid plans, validating plan correctness, and enforcing planning discipline.
 mode: subagent
-model: opencode/deepseek-v4-flash-free
+model: opencode/mimo-v2.5-free
 ---
 
 # Plan

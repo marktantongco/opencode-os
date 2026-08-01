@@ -200,7 +200,7 @@ def call_claude_with_skill(
     # Create client and call
     client = anthropic.Anthropic()
     response = client.messages.create(
-        model="claude-opus-4-7",
+        model="opencode/mimo-v2.5-free",
         max_tokens=4096,
         effort="xhigh" if skill in ['code', 'agentic'] else "high",
         system=system_prompt,

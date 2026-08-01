@@ -106,7 +106,7 @@ def call_claude(message: str, skill: str = None) -> str:
     system = get_system_prompt(skill)
     
     response = client.messages.create(
-        model="claude-opus-4-7",
+        model="opencode/mimo-v2.5-free",
         max_tokens=4096,
         effort="xhigh" if skill in ['code', 'agentic'] else "high",
         system=system,
@@ -394,7 +394,7 @@ class AgentHealthCheck:
   {
     "custom_id": "request-1",
     "params": {
-      "model": "claude-opus-4-7",
+      "model": "opencode/mimo-v2.5-free",
       "max_tokens": 1024,
       "messages": [
         {"role": "user", "content": "Design a landing page for insurance"}
@@ -404,7 +404,7 @@ class AgentHealthCheck:
   {
     "custom_id": "request-2",
     "params": {
-      "model": "claude-opus-4-7",
+      "model": "opencode/mimo-v2.5-free",
       "max_tokens": 1024,
       "messages": [
         {"role": "user", "content": "Design a landing page for SaaS"}
@@ -426,7 +426,7 @@ def submit_batch(requests: list) -> str:
     
     # Submit to API
     batch = client.beta.messages.batches.create(
-        model="claude-opus-4-7",
+        model="opencode/mimo-v2.5-free",
         requests=requests
     )
     
@@ -466,7 +466,7 @@ design_requests = [
     {
         'custom_id': f'design-{i}',
         'params': {
-            'model': 'claude-opus-4-7',
+            'model': 'opencode/mimo-v2.5-free',
             'max_tokens': 2048,
             'system': UNIVERSAL + '\n\n' + SKILLS['design'],
             'messages': [

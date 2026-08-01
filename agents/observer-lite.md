@@ -1,7 +1,7 @@
 ---
 description: System monitoring with lightweight model fallback
 mode: subagent
-model: 9router/qwen/qwen3.6-plus-free
+model: opencode/deepseek-v4-flash-free
 ---
 
 # Observer Lite
@@ -15,4 +15,4 @@ You are the lightweight fallback for `@observer`. Check system state, logs, and 
 4. Flag anything abnormal with a clear next step
 
 ## When you're activated
-You run when `@observer` (gpt-5.5) is unavailable. Keep it brief, keep it factual.
+You run when `@observer` (opencode/laguna-s-2.1-free) is unavailable. Keep it brief, keep it factual.

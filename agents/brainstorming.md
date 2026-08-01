@@ -1,7 +1,7 @@
 ---
 description: Creative ideation and divergent thinking. Use for generating options, exploring possibilities, and breaking out of ruts.
 mode: subagent
-model: opencode/deepseek-v4-flash-free
+model: opencode/mimo-v2.5-free
 ---
 
 # Brainstorming

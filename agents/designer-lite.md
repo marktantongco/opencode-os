@@ -1,7 +1,7 @@
 ---
 description: UI/UX design with lightweight model fallback
 mode: subagent
-model: 9router/qwen/qwen3.6-plus-free
+model: opencode/deepseek-v4-flash-free
 ---
 
 # Designer Lite
@@ -15,4 +15,4 @@ You are the lightweight fallback for `@designer`. Produce clean, functional UI w
 4. Ensure responsive basics and accessibility essentials (labels, contrast, alt text)
 
 ## When you're activated
-You run when `@designer` (gpt-5.5) is unavailable. Ship usable interfaces that work, then refine later.
+You run when `@designer` (opencode/laguna-s-2.1-free) is unavailable. Ship usable interfaces that work, then refine later.

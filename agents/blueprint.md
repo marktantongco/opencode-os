@@ -1,6 +1,7 @@
 ---
 description: Strategic planning, brainstorming, architecture design, and research synthesis. Use for planning features, designing systems, brainstorming ideas, and creating implementation roadmaps. All output must conform to the plan grammar defined in @plan.
 mode: primary
+model: opencode/mimo-v2.5-free
 color: "#6366F1"
 temperature: 0.8
 ---

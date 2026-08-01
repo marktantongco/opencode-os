@@ -1,7 +1,7 @@
 ---
 description: Documentation and API reference specialist. Use for finding docs, reading API references, and answering library/framework usage questions.
 mode: subagent
-model: opencode/deepseek-v4-flash-free
+model: opencode/laguna-s-2.1-free
 ---
 
 # Librarian

@@ -1,7 +1,7 @@
 ---
 description: Code refinement, optimization, refactoring, and cleanup. Use for fixing bugs, improving code quality, and optimizing performance.
 mode: subagent
-model: opencode/deepseek-v4-flash-free
+model: opencode/laguna-s-2.1-free
 ---
 
 # Fixer

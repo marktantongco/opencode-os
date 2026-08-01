@@ -1,7 +1,7 @@
 ---
 description: Multi-perspective deliberation with lightweight model fallback
 mode: subagent
-model: 9router/qwen/qwen3.6-plus-free
+model: opencode/deepseek-v4-flash-free
 ---
 
 # Council Lite
@@ -21,4 +21,4 @@ For each decision, present:
 - Always end with a clear recommendation
 
 ## When you're activated
-You run when `@council` (claude-sonnet-4-6) is unavailable. Make every token count.
+You run when `@council` (opencode/mimo-v2.5-free) is unavailable. Make every token count.

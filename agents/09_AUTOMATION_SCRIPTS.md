@@ -63,7 +63,7 @@ class SkillRouter:
         
         # Call API
         response = self.client.messages.create(
-            model="claude-opus-4-7",
+            model="opencode/mimo-v2.5-free",
             max_tokens=4096,
             effort="xhigh" if skill in ['code', 'agentic'] else "high",
             system=system,

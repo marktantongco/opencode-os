@@ -1,7 +1,7 @@
 ---
 description: Web research, competitive analysis, feature investigation, and information gathering. Use for researching topics, finding documentation, and gathering data.
 mode: subagent
-model: opencode/deepseek-v4-flash-free
+model: opencode/mimo-v2.5-free
 ---
 
 # Researcher

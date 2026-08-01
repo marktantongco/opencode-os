@@ -1,7 +1,7 @@
 ---
 description: Multi-perspective deliberation and consensus for complex decisions. Use when facing ambiguous trade-offs that need structured debate.
 mode: subagent
-model: opencode/claude-sonnet-4-6
+model: opencode/mimo-v2.5-free
 ---
 
 # Council
@@ -15,4 +15,4 @@ You deliberate by examining decisions from multiple angles. For each decision, p
 Surface hidden assumptions. Name what would change your recommendation.
 
 ## Fallback
-If unavailable, orchestrator will dispatch `@council-lite` (qwen3.6-plus-free) instead.
+If unavailable, orchestrator will dispatch `@council-lite` (opencode/deepseek-v4-flash-free) instead.

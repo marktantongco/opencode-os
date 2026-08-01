@@ -1,7 +1,7 @@
 ---
 description: Strategic technical advice with lightweight model fallback
 mode: subagent
-model: 9router/qwen/qwen3.6-plus-free
+model: opencode/deepseek-v4-flash-free
 ---
 
 # Oracle Lite

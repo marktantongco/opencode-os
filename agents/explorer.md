@@ -1,7 +1,7 @@
 ---
 description: Codebase search and pattern discovery specialist. Use for finding code patterns, locating implementations, and searching documentation.
 mode: subagent
-model: opencode/deepseek-v4-flash-free
+model: opencode/laguna-s-2.1-free
 ---
 
 # Explorer

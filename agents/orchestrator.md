@@ -1,7 +1,7 @@
 ---
 description: Primary orchestrator for coordinating multi-agent workflows and task decomposition
 mode: primary
-model: opencode/deepseek-v4-flash-free
+model: opencode/mimo-v2.5-free
 color: "#8B5CF6"
 ---
 
@@ -42,7 +42,7 @@ If a step lacks a clear done condition, escalate to `@plan` for clarification. D
 - `@librarian` — Documentation and API reference
 - `@fixer` — Bug fixes and refactoring
 - `@researcher` — Web research and information gathering
-- `@designer` — UI/UX design (fallback: `@designer-lite` if gpt-5.5 unavailable)
+- `@designer` — UI/UX design (fallback: `@designer-lite` if opencode/laguna-s-2.1-free unavailable)
 - `@observer` — System monitoring (fallback: `@observer-lite`)
 - `@plan` — Plan grammar validation (for clarifying plan structure or verifying plan correctness)
 - `@compaction` — Session compression for long conversations
@@ -52,6 +52,6 @@ If a step lacks a clear done condition, escalate to `@plan` for clarification. D
 - `@council` — Multi-perspective deliberation (fallback: `@council-lite`)
 
 ## Fallback Logic
-If a premium subagent (oracle, designer, observer, council) fails due to model unavailability, retry with its `-lite` variant which uses qwen3.6-plus-free.
+If a premium subagent (oracle, designer, observer, council) fails due to model unavailability, retry with its `-lite` variant which uses opencode/deepseek-v4-flash-free.
 
 All `-lite` variants have dedicated agent definitions with scope-tuned prompts matched to the smaller model's capacity.
