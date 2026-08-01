@@ -51,3 +51,6 @@ tool-results/
 workspace/
 mini-services/
 examples/
+
+# Backups - never commit
+*.bak*
