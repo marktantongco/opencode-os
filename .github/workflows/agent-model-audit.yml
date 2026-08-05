@@ -1,0 +1,43 @@
+name: Agent Model Audit
+
+on:
+  pull_request:
+    paths:
+      - 'opencode.jsonc'
+      - 'profiles/MODEL_ASSIGNMENT_MATRIX.md'
+      - 'scripts/audit_agent_models.py'
+  push:
+    branches: [main]
+    paths:
+      - 'opencode.jsonc'
+      - 'profiles/MODEL_ASSIGNMENT_MATRIX.md'
+      - 'scripts/audit_agent_models.py'
+
+jobs:
+  audit:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+
+      - name: Install dependencies
+        run: pip install json5
+
+      - name: Run agent model audit
+        run: python3 scripts/audit_agent_models.py
+
+      - name: Check matrix is up-to-date
+        run: |
+          # Regenerate matrix and verify it matches what's committed
+          python3 scripts/audit_agent_models.py --generate-matrix
+          if ! git diff --quiet profiles/MODEL_ASSIGNMENT_MATRIX.md; then
+            echo "❌ MODEL_ASSIGNMENT_MATRIX.md is out of date. Run locally:"
+            echo "   python3 scripts/audit_agent_models.py --generate-matrix"
+            echo "   git add profiles/MODEL_ASSIGNMENT_MATRIX.md"
+            git diff profiles/MODEL_ASSIGNMENT_MATRIX.md
+            exit 1
+          fi
+          echo "✅ Matrix is up-to-date with config"
