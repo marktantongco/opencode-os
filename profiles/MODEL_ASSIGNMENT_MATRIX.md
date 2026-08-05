@@ -13,7 +13,7 @@
 | Tier | Model ID | Display Name | Strength | Token Budget | Use Case |
 |------|----------|--------------|----------|-------------|----------|
 | **Mid** | `zen/deepseek-v4-flash-free` | Deepseek V4 Flash Free | Fast general purpose | 4,400 | `council-lite`, `designer-lite`, `observer` (+2 more) |
-| **Premium** | `zen/laguna-s-2.1-free` | Laguna S 2.1 Free | Deep reasoning, balanced, or creative | 4,400–6,100 | `designer`, `explorer`, `librarian` (+1 more) |
+| **Premium** | `zen/laguna-s-2.1-free` | Laguna S 2.1 Free | Deep reasoning, balanced, or creative | 4,400–6,100 | `designer`, `explorer`, `librarian` (+2 more) |
 | **Lightweight** | `zen/ling-3.0-flash-free` | Ling 3.0 Flash Free | Fastest, token-efficient | 2,000 | `agent-browser`, `browser-use`, `compaction` |
 | **Premium** | `zen/longcat-2.0-free` | Longcat 2.0 Free | Deep reasoning, balanced, or creative | 4,400–6,100 | `brainstorming`, `council` |
 | **Premium** | `zen/mimo-v2.5-free` | Mimo V2.5 Free | Deep reasoning, balanced, or creative | 4,400–6,100 | `oracle`, `orchestrator`, `researcher` |
@@ -21,7 +21,7 @@
 
 ---
 
-## Agent → Model Mapping (20 Agents)
+## Agent → Model Mapping (21 Agents)
 
 | Agent | Mode | Model | Prompt | Tier | Rationale |
 |-------|------|-------|--------|------|-----------|
@@ -42,6 +42,7 @@
 | `oracle` | subagent | `zen/mimo-v2.5-free` | `{file:./agents/oracle.md}` | Premium | Strategic advice needs deep reasoning |
 | `oracle-lite` | subagent | `zen/deepseek-v4-flash-free` | `{file:./agents/oracle-lite.md}` | Mid | Fallback — general purpose |
 | `orchestrator` | primary | `zen/mimo-v2.5-free` | `{file:./agents/orchestrator.md}` | Premium | Task decomposition + subagent dispatch needs deep reasoning |
+| `owl-agent` | subagent | `zen/laguna-s-2.1-free` | `{file:./agents/owl-agent.md}` | — | — |
 | `owl-dns` | subagent | `zen/laguna-s-2.1-free` | `{file:./agents/owl-dns.md}` | Premium | Scraping + data interpretation |
 | `plan` | subagent | `zen/north-mini-code-free` | `{file:./agents/plan.md}` | Code-Spec | Plan grammar validation |
 | `researcher` | subagent | `zen/mimo-v2.5-free` | `{file:./agents/researcher.md}` | Premium | Web research + synthesis |

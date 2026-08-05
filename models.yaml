@@ -166,3 +166,19 @@ agents:
     mode: subagent
     description: Multi-perspective deliberation with lightweight model fallback
     prompt: {file:./agents/council-lite.md}
+
+  owl-agent:
+    model: zen/laguna-s-2.1-free
+    mode: subagent
+    description: Self-optimising proxy HTTP client with ML quality scoring and 50+ proxy sources
+    prompt: {file:./agents/owl-agent.md}
+    color: "#6366f1"
+    tools:
+      bash: true
+      glob: true
+      grep: true
+      read: true
+      write: true
+      edit: true
+      webfetch: false
+      websearch: false

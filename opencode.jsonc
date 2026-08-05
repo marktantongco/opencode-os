@@ -265,6 +265,23 @@
       "model": "zen/deepseek-v4-flash-free",
       "prompt": "{file:./agents/council-lite.md}"
     },
+    "owl-agent": {
+      "description": "Self-optimising proxy HTTP client with ML quality scoring and 50+ proxy sources",
+      "mode": "subagent",
+      "color": "#6366f1",
+      "tools": {
+        "bash": true,
+        "glob": true,
+        "grep": true,
+        "read": true,
+        "write": true,
+        "edit": true,
+        "webfetch": false,
+        "websearch": false
+      },
+      "model": "zen/laguna-s-2.1-free",
+      "prompt": "{file:./agents/owl-agent.md}"
+    },
   },
   "experimental": {
     "modelFallbackChain": {
