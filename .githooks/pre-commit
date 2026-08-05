@@ -1,0 +1,15 @@
+#!/usr/bin/env bash
+# Pre-commit hook: audit agent model assignments in opencode.jsonc
+# against the spec in profiles/MODEL_ASSIGNMENT_MATRIX.md
+#
+# This hook is shared via core.hooksPath (see scripts/setup-hooks.sh)
+
+set -euo pipefail
+
+cd "$(git rev-parse --show-toplevel)"
+
+# Only run if relevant files are staged
+if git diff --cached --name-only | grep -qE '(opencode\.jsonc|profiles/MODEL_ASSIGNMENT_MATRIX\.md|scripts/audit_agent_models\.py)'; then
+    echo "🔍 Auditing agent model assignments..."
+    python3 scripts/audit_agent_models.py
+fi

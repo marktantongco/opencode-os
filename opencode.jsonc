@@ -6,7 +6,10 @@
     "workflows/*.md"
   ],
   "skills": {
-    "paths": ["./skills", "./.opencode/skills"]
+    "paths": [
+      "./skills",
+      "./.opencode/skills"
+    ]
   },
   "plugin": [
     "opencode-snip",
@@ -22,15 +25,11 @@
     "opencode-terminal-progress",
     "opencode-model-fallback-chain"
   ],
-  "model": "opencode/deepseek-v4-flash-free",
-  "small_model": "opencode/deepseek-v4-flash-free",
+  "model": "zen/deepseek-v4-flash-free",
+  "small_model": "zen/deepseek-v4-flash-free",
   "default_agent": "orchestrator",
   "subagent_depth": 2,
   "provider": {
-    // 9router gateway - disabled (not running)
-    // "9router": { ... }
-
-    // local proxy on port 8090 - WORKING
     "local": {
       "npm": "@ai-sdk/openai-compatible",
       "name": "Local Proxy (port 8090)",
@@ -63,8 +62,6 @@
         }
       }
     },
-    // ZenMux — free GLM models via https://zenmux.ai
-    // Get a key: https://zenmux.ai → Models → Create API Key
     "zenmux": {
       "npm": "@ai-sdk/openai-compatible",
       "name": "ZenMux GLM (Free)",
@@ -93,12 +90,24 @@
         "timeout": 300000
       },
       "models": {
-        "claude-sonnet-4.5": { "name": "Claude Sonnet 4.5" },
-        "claude-sonnet-4":   { "name": "Claude Sonnet 4" },
-        "claude-haiku-4.5":  { "name": "Claude Haiku 4.5" },
-        "auto-kiro":         { "name": "Auto (Kiro Select)" },
-        "deepseek-3.2":      { "name": "DeepSeek 3.2" },
-        "qwen3-coder-next":  { "name": "Qwen3 Coder Next" }
+        "claude-sonnet-4.5": {
+          "name": "Claude Sonnet 4.5"
+        },
+        "claude-sonnet-4": {
+          "name": "Claude Sonnet 4"
+        },
+        "claude-haiku-4.5": {
+          "name": "Claude Haiku 4.5"
+        },
+        "auto-kiro": {
+          "name": "Auto (Kiro Select)"
+        },
+        "deepseek-3.2": {
+          "name": "DeepSeek 3.2"
+        },
+        "qwen3-coder-next": {
+          "name": "Qwen3 Coder Next"
+        }
       }
     }
   },
@@ -107,7 +116,7 @@
     "orchestrator": {
       "description": "Primary orchestrator for coordinating multi-agent workflows and task decomposition",
       "mode": "primary",
-      "model": "opencode/mimo-v2.5-free",
+      "model": "zen/mimo-v2.5-free",
       "prompt": "{file:./agents/orchestrator.md}",
       "permission": {
         "edit": "allow",
@@ -117,7 +126,7 @@
     "blueprint": {
       "description": "Strategic planning, brainstorming, architecture design, and research synthesis",
       "mode": "primary",
-      "model": "opencode/mimo-v2.5-free",
+      "model": "zen/north-mini-code-free",
       "prompt": "{file:./agents/blueprint.md}",
       "permission": {
         "edit": "allow",
@@ -127,91 +136,91 @@
     "explorer": {
       "description": "Codebase search and pattern discovery specialist",
       "mode": "subagent",
-      "model": "opencode/laguna-s-2.1-free",
+      "model": "zen/laguna-s-2.1-free",
       "prompt": "{file:./agents/explorer.md}"
     },
     "librarian": {
       "description": "Documentation and API reference specialist",
       "mode": "subagent",
-      "model": "opencode/laguna-s-2.1-free",
+      "model": "zen/laguna-s-2.1-free",
       "prompt": "{file:./agents/librarian.md}"
     },
     "oracle": {
       "description": "Strategic technical advisor for architecture and complex problems",
       "mode": "subagent",
-      "model": "opencode/mimo-v2.5-free",
+      "model": "zen/mimo-v2.5-free",
       "prompt": "{file:./agents/oracle.md}"
     },
     "designer": {
       "description": "UI/UX design specialist for polished interfaces",
       "mode": "subagent",
-      "model": "opencode/laguna-s-2.1-free",
+      "model": "zen/laguna-s-2.1-free",
       "prompt": "{file:./agents/designer.md}"
     },
     "fixer": {
       "description": "Code refinement, optimization, refactoring, and cleanup",
       "mode": "subagent",
-      "model": "opencode/laguna-s-2.1-free",
+      "model": "zen/north-mini-code-free",
       "prompt": "{file:./agents/fixer.md}"
     },
     "observer": {
       "description": "Watches and reports on system behavior, logs, and metrics",
       "mode": "subagent",
-      "model": "opencode/deepseek-v4-flash-free",
+      "model": "zen/deepseek-v4-flash-free",
       "prompt": "{file:./agents/observer.md}"
     },
     "council": {
       "description": "Multi-perspective deliberation and consensus for complex decisions",
       "mode": "subagent",
-      "model": "opencode/mimo-v2.5-free",
+      "model": "zen/longcat-2.0-free",
       "prompt": "{file:./agents/council.md}"
     },
     "compaction": {
       "description": "Context compression and session compaction",
       "mode": "subagent",
-      "model": "opencode/deepseek-v4-flash-free",
+      "model": "zen/ling-3.0-flash-free",
       "prompt": "{file:./agents/compaction.md}"
     },
     "brainstorming": {
       "description": "Creative ideation and divergent thinking for generating options and exploring possibilities",
       "mode": "subagent",
-      "model": "opencode/mimo-v2.5-free",
+      "model": "zen/longcat-2.0-free",
       "prompt": "{file:./agents/brainstorming.md}"
     },
     "researcher": {
       "description": "Web research, competitive analysis, feature investigation, and information gathering",
       "mode": "subagent",
-      "model": "opencode/mimo-v2.5-free",
+      "model": "zen/mimo-v2.5-free",
       "prompt": "{file:./agents/researcher.md}"
     },
     "oracle-lite": {
       "description": "Strategic technical advice with lightweight model fallback",
       "mode": "subagent",
-      "model": "opencode/deepseek-v4-flash-free",
+      "model": "zen/deepseek-v4-flash-free",
       "prompt": "{file:./agents/oracle-lite.md}"
     },
     "designer-lite": {
       "description": "UI/UX design with lightweight model fallback",
       "mode": "subagent",
-      "model": "opencode/deepseek-v4-flash-free",
+      "model": "zen/deepseek-v4-flash-free",
       "prompt": "{file:./agents/designer-lite.md}"
     },
     "observer-lite": {
       "description": "System monitoring with lightweight model fallback",
       "mode": "subagent",
-      "model": "opencode/deepseek-v4-flash-free",
+      "model": "zen/deepseek-v4-flash-free",
       "prompt": "{file:./agents/observer-lite.md}"
     },
     "council-lite": {
       "description": "Multi-perspective deliberation with lightweight model fallback",
       "mode": "subagent",
-      "model": "opencode/deepseek-v4-flash-free",
+      "model": "zen/deepseek-v4-flash-free",
       "prompt": "{file:./agents/council-lite.md}"
     },
     "plan": {
       "description": "Plan grammar enforcement — validates plan structure, constraints, and lifecycle",
       "mode": "subagent",
-      "model": "opencode/mimo-v2.5-free",
+      "model": "zen/north-mini-code-free",
       "prompt": "{file:./agents/plan.md}"
     },
     "owl-dns": {
@@ -229,19 +238,59 @@
         "webfetch": false,
         "websearch": false
       },
-      "model": "opencode/laguna-s-2.1-free"
+      "model": "zen/laguna-s-2.1-free"
+    },
+    "browser-use": {
+      "description": "Browser automation for web browsing, UI testing, data scraping, and browser-based tasks",
+      "mode": "subagent",
+      "model": "zen/ling-3.0-flash-free",
+      "prompt": "{file:./agents/browser-use.md}",
+      "tools": {
+        "bash": true,
+        "glob": true,
+        "grep": true,
+        "read": true,
+        "write": true,
+        "edit": true,
+        "webfetch": false,
+        "websearch": false
+      }
+    },
+    "agent-browser": {
+      "description": "Structured browser automation via CDP for forms, data extraction, and UI testing",
+      "mode": "subagent",
+      "model": "zen/ling-3.0-flash-free",
+      "prompt": "{file:./agents/agent-browser.md}",
+      "tools": {
+        "bash": true,
+        "glob": true,
+        "grep": true,
+        "read": true,
+        "edit": true,
+        "webfetch": false,
+        "websearch": false
+      }
     }
   },
   "experimental": {
-    // Model fallback chain: if primary model fails (timeout/429/5xx),
-    // automatically retry with the next model in the chain.
-    // OpenCode Zen Free: mimo-v2.5-free → laguna-s-2.1-free → deepseek-v4-flash-free
     "modelFallbackChain": {
       "timeoutMs": 90000,
       "chains": [
-        ["opencode/mimo-v2.5-free", "opencode/laguna-s-2.1-free", "opencode/deepseek-v4-flash-free"],
-        ["opencode/laguna-s-2.1-free", "opencode/mimo-v2.5-free", "opencode/deepseek-v4-flash-free"],
-        ["opencode/deepseek-v4-flash-free", "opencode/mimo-v2.5-free", "opencode/laguna-s-2.1-free"]
+        [
+          "zen/mimo-v2.5-free",
+          "zen/laguna-s-2.1-free",
+          "zen/deepseek-v4-flash-free"
+        ],
+        [
+          "zen/laguna-s-2.1-free",
+          "zen/mimo-v2.5-free",
+          "zen/deepseek-v4-flash-free"
+        ],
+        [
+          "zen/deepseek-v4-flash-free",
+          "zen/mimo-v2.5-free",
+          "zen/laguna-s-2.1-free"
+        ]
       ]
     }
   },
@@ -256,17 +305,29 @@
     },
     "sequential-thinking": {
       "type": "local",
-      "command": ["npx", "-y", "@modelcontextprotocol/server-sequential-thinking"],
+      "command": [
+        "npx",
+        "-y",
+        "@modelcontextprotocol/server-sequential-thinking"
+      ],
       "enabled": true
     },
     "memory": {
       "type": "local",
-      "command": ["npx", "-y", "@modelcontextprotocol/server-memory"],
+      "command": [
+        "npx",
+        "-y",
+        "@modelcontextprotocol/server-memory"
+      ],
       "enabled": true
     },
     "github": {
       "type": "local",
-      "command": ["npx", "-y", "@modelcontextprotocol/server-github"],
+      "command": [
+        "npx",
+        "-y",
+        "@modelcontextprotocol/server-github"
+      ],
       "env": {
         "GITHUB_TOKEN": "${GITHUB_TOKEN}"
       },
@@ -274,12 +335,20 @@
     },
     "puppeteer": {
       "type": "local",
-      "command": ["npx", "-y", "@modelcontextprotocol/server-puppeteer"],
+      "command": [
+        "npx",
+        "-y",
+        "@modelcontextprotocol/server-puppeteer"
+      ],
       "enabled": true
     },
     "postgres": {
       "type": "local",
-      "command": ["npx", "-y", "@modelcontextprotocol/server-postgres"],
+      "command": [
+        "npx",
+        "-y",
+        "@modelcontextprotocol/server-postgres"
+      ],
       "env": {
         "DATABASE_URL": "${DATABASE_URL}"
       },
@@ -287,15 +356,15 @@
     },
     "podman": {
       "type": "local",
-      "command": ["npx", "-y", "mcp-server-docker"],
+      "command": [
+        "npx",
+        "-y",
+        "mcp-server-docker"
+      ],
       "env": {
         "DOCKER_HOST": "unix:///run/user/1000/podman/podman.sock"
       },
       "enabled": true
-    },
-    // mcp-search REMOVED: no server files exist, overlaps built-in websearch tool
-    // pictoflux-ai REMOVED: no MCP server files (exists as skill only)
-    // mcp-catalog REMOVED: no server files exist
-    // mcp-security-scanner REMOVED: no MCP server files (exists as skill only)
+    }
   }
 }
