@@ -1,0 +1,128 @@
+agents:
+  orchestrator:
+    model: zen/mimo-v2.5-free
+    mode: primary
+    prompt:
+      file:./agents/orchestrator.md: null
+  blueprint:
+    model: zen/north-mini-code-free
+    mode: primary
+    prompt:
+      file:./agents/blueprint.md: null
+  explorer:
+    model: zen/laguna-s-2.1-free
+    mode: subagent
+    prompt:
+      file:./agents/explorer.md: null
+  librarian:
+    model: zen/laguna-s-2.1-free
+    mode: subagent
+    prompt:
+      file:./agents/librarian.md: null
+  oracle:
+    model: zen/mimo-v2.5-free
+    mode: subagent
+    prompt:
+      file:./agents/oracle.md: null
+  designer:
+    model: zen/laguna-s-2.1-free
+    mode: subagent
+    prompt:
+      file:./agents/designer.md: null
+  fixer:
+    model: zen/north-mini-code-free
+    mode: subagent
+    prompt:
+      file:./agents/fixer.md: null
+  observer:
+    model: zen/deepseek-v4-flash-free
+    mode: subagent
+    prompt:
+      file:./agents/observer.md: null
+  council:
+    model: zen/longcat-2.0-free
+    mode: subagent
+    prompt:
+      file:./agents/council.md: null
+  brainstorming:
+    model: zen/longcat-2.0-free
+    mode: subagent
+    prompt:
+      file:./agents/brainstorming.md: null
+  compaction:
+    model: zen/ling-3.0-flash-free
+    mode: subagent
+    prompt:
+      file:./agents/compaction.md: null
+  researcher:
+    model: zen/mimo-v2.5-free
+    mode: subagent
+    prompt:
+      file:./agents/researcher.md: null
+  plan:
+    model: zen/north-mini-code-free
+    mode: subagent
+    prompt:
+      file:./agents/plan.md: null
+  owl-dns:
+    model: zen/laguna-s-2.1-free
+    mode: subagent
+    prompt:
+      file:./agents/owl-dns.md: null
+    color: '#6366f1'
+    tools:
+      bash: true
+      glob: true
+      grep: true
+      read: true
+      write: true
+      edit: true
+      webfetch: false
+      websearch: false
+  browser-use:
+    model: zen/ling-3.0-flash-free
+    mode: subagent
+    prompt:
+      file:./agents/browser-use.md: null
+    tools:
+      bash: true
+      glob: true
+      grep: true
+      read: true
+      write: true
+      edit: true
+      webfetch: false
+      websearch: false
+  agent-browser:
+    model: zen/ling-3.0-flash-free
+    mode: subagent
+    prompt:
+      file:./agents/agent-browser.md: null
+    tools:
+      bash: true
+      glob: true
+      grep: true
+      read: true
+      edit: true
+      webfetch: false
+      websearch: false
+  oracle-lite:
+    model: zen/deepseek-v4-flash-free
+    mode: subagent
+    prompt:
+      file:./agents/oracle-lite.md: null
+  designer-lite:
+    model: zen/deepseek-v4-flash-free
+    mode: subagent
+    prompt:
+      file:./agents/designer-lite.md: null
+  observer-lite:
+    model: zen/deepseek-v4-flash-free
+    mode: subagent
+    prompt:
+      file:./agents/observer-lite.md: null
+  council-lite:
+    model: zen/deepseek-v4-flash-free
+    mode: subagent
+    prompt:
+      file:./agents/council-lite.md: null

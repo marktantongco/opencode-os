@@ -286,6 +286,116 @@ def generate_matrix(config_path: Path) -> int:
     return len(agents)
 
 
+def update_matrix(config_path: Path) -> int:
+    """Update auto-generated tables in matrix, preserving hand-written sections.
+
+    Uses marker comments to identify generated sections:
+    <!-- AUTO-GENERATED:START --> ... <!-- AUTO-GENERATED:END -->
+    Content outside these markers is preserved.
+    """
+    agents = extract_config_agents(config_path)
+    details = extract_config_agent_details(config_path)
+
+    # Generate the auto-generated content
+    generated_lines = []
+    generated_lines.append("## Model Tier Hierarchy")
+    generated_lines.append("")
+    generated_lines.append("| Tier | Model ID | Display Name | Strength | Token Budget | Use Case |")
+    generated_lines.append("|------|----------|--------------|----------|-------------|----------|")
+
+    model_agents: dict[str, list[str]] = {}
+    for agent, model in agents.items():
+        model_agents.setdefault(model, []).append(agent)
+
+    seen_tiers = set()
+    for model, agent_list in sorted(model_agents.items()):
+        tier = "Other"
+        budget = "—"
+        for a in agent_list:
+            if a in AGENT_METADATA:
+                tier = AGENT_METADATA[a][1]
+                break
+        if tier in TIER_DESCRIPTIONS:
+            budget = TIER_DESCRIPTIONS[tier][1]
+
+        display_name = model.split("/")[-1].replace("-", " ").title()
+        strength = TIER_DESCRIPTIONS.get(tier, ("—",))[0]
+        use_cases = ", ".join(f"`{a}`" for a in sorted(agent_list)[:3])
+        if len(agent_list) > 3:
+            use_cases += f" (+{len(agent_list) - 3} more)"
+
+        tier_key = (tier, model)
+        if tier_key not in seen_tiers:
+            seen_tiers.add(tier_key)
+            generated_lines.append(f"| **{tier}** | `{model}` | {display_name} | {strength} | {budget} | {use_cases} |")
+
+    generated_lines.append("")
+    generated_lines.append("---")
+    generated_lines.append("")
+    generated_lines.append(f"## Agent → Model Mapping ({len(agents)} Agents)")
+    generated_lines.append("")
+    generated_lines.append("| Agent | Mode | Model | Prompt | Tier | Rationale |")
+    generated_lines.append("|-------|------|-------|--------|------|-----------|")
+
+    for agent, model in sorted(agents.items()):
+        meta = AGENT_METADATA.get(agent, ("subagent", "—", "—"))
+        mode, tier, rationale = meta
+        actual_mode = details.get(agent, {}).get("mode", mode)
+        prompt = details.get(agent, {}).get("prompt", "—")
+        generated_lines.append(f"| `{agent}` | {actual_mode} | `{model}` | `{prompt}` | {tier} | {rationale} |")
+
+    generated_lines.append("")
+
+    # Read existing file and find markers
+    if MATRIX_MD.exists():
+        existing = MATRIX_MD.read_text(encoding="utf-8")
+    else:
+        existing = ""
+
+    start_marker = "<!-- AUTO-GENERATED:START -->"
+    end_marker = "<!-- AUTO-GENERATED:END -->"
+
+    if start_marker in existing and end_marker in existing:
+        # Replace content between markers
+        before = existing[:existing.index(start_marker) + len(start_marker)]
+        after = existing[existing.index(end_marker):]
+        new_content = before + "\n" + "\n".join(generated_lines) + "\n" + after
+    else:
+        # No markers found — prepend header + markers + content + source section
+        header = []
+        header.append("# OpenCode Agent + Skill Model Assignment Matrix")
+        header.append("")
+        header.append(f"> **Version**: {len(agents)}.0 (Auto-Generated)")
+        header.append(f"> **Date**: {__import__('datetime').date.today().isoformat()}")
+        header.append("> **Status**: Auto-Generated from opencode.jsonc")
+        header.append("> **Source**: `opencode.jsonc` (single source of truth)")
+        header.append("")
+        header.append("---")
+        header.append("")
+        header.append(start_marker)
+        header.append("")
+        middle = "\n".join(generated_lines)
+        footer = []
+        footer.append("---")
+        footer.append("")
+        footer.append("## Source")
+        footer.append("")
+        footer.append("This file is auto-generated from `opencode.jsonc`.")
+        footer.append("To change agent model assignments, edit `opencode.jsonc` and run:")
+        footer.append("```")
+        footer.append("python3 scripts/audit_agent_models.py --update-matrix")
+        footer.append("```")
+        footer.append("")
+        footer.append(end_marker)
+        footer.append("")
+        new_content = "\n".join(header) + middle + "\n".join(footer)
+
+    MATRIX_MD.write_text(new_content, encoding="utf-8")
+    print(f"📝 Updated {MATRIX_MD}")
+    print(f"   {len(agents)} agents updated from {config_path}")
+    return len(agents)
+
+
 def audit(silent: bool = False) -> int:
     """Run the audit against all config sources. Returns 0 on success.
     
@@ -347,6 +457,15 @@ def main() -> int:
             print(f"❌ Failed to generate matrix: {e}", file=sys.stderr)
             return 1
 
+    if "--update-matrix" in args:
+        try:
+            count = update_matrix(OPENCODE_JSONC)
+            if count == 0:
+                return 1
+        except Exception as e:
+            print(f"❌ Failed to update matrix: {e}", file=sys.stderr)
+            return 1
+
     if "--fix" in args:
         try:
             spec = extract_spec_agents(MATRIX_MD)
@@ -359,8 +478,8 @@ def main() -> int:
     if not args:
         return audit(silent=silent)
 
-    # If --generate-matrix was the only flag and succeeded, we're done
-    if args == ["--generate-matrix"]:
+    # If a single action flag was used and succeeded, we're done
+    if args in (["--generate-matrix"], ["--update-matrix"]):
         return 0
 
     # If --fix was used, also run audit to verify

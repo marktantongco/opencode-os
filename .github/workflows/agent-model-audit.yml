@@ -26,16 +26,19 @@ jobs:
       - name: Install dependencies
         run: pip install json5
 
+      - name: Check opencode.jsonc matches models.yaml
+        run: python3 scripts/generate_config.py --check
+
       - name: Run agent model audit
-        run: python3 scripts/audit_agent_models.py
+        run: python3 scripts/audit_agent_models.py --check
 
       - name: Check matrix is up-to-date
         run: |
-          # Regenerate matrix and verify it matches what's committed
-          python3 scripts/audit_agent_models.py --generate-matrix
+          # Update matrix tables and verify it matches what's committed
+          python3 scripts/audit_agent_models.py --update-matrix
           if ! git diff --quiet profiles/MODEL_ASSIGNMENT_MATRIX.md; then
             echo "❌ MODEL_ASSIGNMENT_MATRIX.md is out of date. Run locally:"
-            echo "   python3 scripts/audit_agent_models.py --generate-matrix"
+            echo "   python3 scripts/audit_agent_models.py --update-matrix"
             echo "   git add profiles/MODEL_ASSIGNMENT_MATRIX.md"
             git diff profiles/MODEL_ASSIGNMENT_MATRIX.md
             exit 1
