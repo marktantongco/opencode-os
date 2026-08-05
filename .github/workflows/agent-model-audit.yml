@@ -4,14 +4,20 @@ on:
   pull_request:
     paths:
       - 'opencode.jsonc'
+      - 'models.yaml'
       - 'profiles/MODEL_ASSIGNMENT_MATRIX.md'
       - 'scripts/audit_agent_models.py'
+      - 'scripts/generate_config.py'
+      - '.github/workflows/agent-model-audit.yml'
   push:
     branches: [main]
     paths:
       - 'opencode.jsonc'
+      - 'models.yaml'
       - 'profiles/MODEL_ASSIGNMENT_MATRIX.md'
       - 'scripts/audit_agent_models.py'
+      - 'scripts/generate_config.py'
+      - '.github/workflows/agent-model-audit.yml'
 
 jobs:
   audit:

@@ -19,12 +19,18 @@ agents:
     mode: primary
     description: Primary orchestrator for coordinating multi-agent workflows and task decomposition
     prompt: {file:./agents/orchestrator.md}
+    permissions:
+      edit: allow
+      bash: allow
 
   blueprint:
     model: zen/north-mini-code-free
     mode: primary
     description: Strategic planning, brainstorming, architecture design, and research synthesis
     prompt: {file:./agents/blueprint.md}
+    permissions:
+      edit: allow
+      bash: allow
 
   explorer:
     model: zen/laguna-s-2.1-free

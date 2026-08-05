@@ -54,3 +54,16 @@ examples/
 
 # Backups - never commit
 *.bak*
+*.bak.audit
+
+# External skills (installed separately)
+.agents/
+.claude/
+skills/rtk/**
+skills/rtk
+
+# OWL-DNS installer (separate project)
+install.sh
+
+# Dependency locks (regenerated)
+skills-lock.json

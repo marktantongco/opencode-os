@@ -116,22 +116,16 @@
     "orchestrator": {
       "description": "Primary orchestrator for coordinating multi-agent workflows and task decomposition",
       "mode": "primary",
+      "permission": { "edit": "allow", "bash": "allow" },
       "model": "zen/mimo-v2.5-free",
-      "prompt": "{file:./agents/orchestrator.md}",
-      "permission": {
-        "edit": "allow",
-        "bash": "allow"
-      }
+      "prompt": "{file:./agents/orchestrator.md}"
     },
     "blueprint": {
       "description": "Strategic planning, brainstorming, architecture design, and research synthesis",
       "mode": "primary",
+      "permission": { "edit": "allow", "bash": "allow" },
       "model": "zen/north-mini-code-free",
-      "prompt": "{file:./agents/blueprint.md}",
-      "permission": {
-        "edit": "allow",
-        "bash": "allow"
-      }
+      "prompt": "{file:./agents/blueprint.md}"
     },
     "explorer": {
       "description": "Codebase search and pattern discovery specialist",
@@ -175,23 +169,77 @@
       "model": "zen/longcat-2.0-free",
       "prompt": "{file:./agents/council.md}"
     },
+    "brainstorming": {
+      "description": "Creative ideation and divergent thinking",
+      "mode": "subagent",
+      "model": "zen/longcat-2.0-free",
+      "prompt": "{file:./agents/brainstorming.md}"
+    },
     "compaction": {
       "description": "Context compression and session compaction",
       "mode": "subagent",
       "model": "zen/ling-3.0-flash-free",
       "prompt": "{file:./agents/compaction.md}"
     },
-    "brainstorming": {
-      "description": "Creative ideation and divergent thinking for generating options and exploring possibilities",
-      "mode": "subagent",
-      "model": "zen/longcat-2.0-free",
-      "prompt": "{file:./agents/brainstorming.md}"
-    },
     "researcher": {
-      "description": "Web research, competitive analysis, feature investigation, and information gathering",
+      "description": "Web research, competitive analysis, and information gathering",
       "mode": "subagent",
       "model": "zen/mimo-v2.5-free",
       "prompt": "{file:./agents/researcher.md}"
+    },
+    "plan": {
+      "description": "Plan grammar enforcement and task breakdown",
+      "mode": "subagent",
+      "model": "zen/north-mini-code-free",
+      "prompt": "{file:./agents/plan.md}"
+    },
+    "owl-dns": {
+      "description": "Web scraping, proxy rotation, DNS tunneling with owl-dns v5.1",
+      "mode": "subagent",
+      "color": "#6366f1",
+      "tools": {
+        "bash": true,
+        "glob": true,
+        "grep": true,
+        "read": true,
+        "write": true,
+        "edit": true,
+        "webfetch": false,
+        "websearch": false
+      },
+      "model": "zen/laguna-s-2.1-free",
+      "prompt": "{file:./agents/owl-dns.md}"
+    },
+    "browser-use": {
+      "description": "Browser automation for web browsing, UI testing, data scraping",
+      "mode": "subagent",
+      "tools": {
+        "bash": true,
+        "glob": true,
+        "grep": true,
+        "read": true,
+        "write": true,
+        "edit": true,
+        "webfetch": false,
+        "websearch": false
+      },
+      "model": "zen/ling-3.0-flash-free",
+      "prompt": "{file:./agents/browser-use.md}"
+    },
+    "agent-browser": {
+      "description": "Structured browser automation via CDP for forms and data extraction",
+      "mode": "subagent",
+      "tools": {
+        "bash": true,
+        "glob": true,
+        "grep": true,
+        "read": true,
+        "edit": true,
+        "webfetch": false,
+        "websearch": false
+      },
+      "model": "zen/ling-3.0-flash-free",
+      "prompt": "{file:./agents/agent-browser.md}"
     },
     "oracle-lite": {
       "description": "Strategic technical advice with lightweight model fallback",
@@ -217,60 +265,6 @@
       "model": "zen/deepseek-v4-flash-free",
       "prompt": "{file:./agents/council-lite.md}"
     },
-    "plan": {
-      "description": "Plan grammar enforcement — validates plan structure, constraints, and lifecycle",
-      "mode": "subagent",
-      "model": "zen/north-mini-code-free",
-      "prompt": "{file:./agents/plan.md}"
-    },
-    "owl-dns": {
-      "description": "Web scraping, proxy rotation, DNS tunneling, and anti-bot evasion with owl-dns v5.1",
-      "mode": "subagent",
-      "color": "#6366f1",
-      "prompt": "{file:./agents/owl-dns.md}",
-      "tools": {
-        "bash": true,
-        "glob": true,
-        "grep": true,
-        "read": true,
-        "write": true,
-        "edit": true,
-        "webfetch": false,
-        "websearch": false
-      },
-      "model": "zen/laguna-s-2.1-free"
-    },
-    "browser-use": {
-      "description": "Browser automation for web browsing, UI testing, data scraping, and browser-based tasks",
-      "mode": "subagent",
-      "model": "zen/ling-3.0-flash-free",
-      "prompt": "{file:./agents/browser-use.md}",
-      "tools": {
-        "bash": true,
-        "glob": true,
-        "grep": true,
-        "read": true,
-        "write": true,
-        "edit": true,
-        "webfetch": false,
-        "websearch": false
-      }
-    },
-    "agent-browser": {
-      "description": "Structured browser automation via CDP for forms, data extraction, and UI testing",
-      "mode": "subagent",
-      "model": "zen/ling-3.0-flash-free",
-      "prompt": "{file:./agents/agent-browser.md}",
-      "tools": {
-        "bash": true,
-        "glob": true,
-        "grep": true,
-        "read": true,
-        "edit": true,
-        "webfetch": false,
-        "websearch": false
-      }
-    }
   },
   "experimental": {
     "modelFallbackChain": {

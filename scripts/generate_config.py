@@ -22,6 +22,23 @@ MODELS_YAML = ROOT / "models.yaml"
 OPENCODE_JSONC = ROOT / "opencode.jsonc"
 
 
+def format_prompt(prompt) -> str:
+    """Format prompt value from YAML to JSON string.
+    
+    YAML parses {file:./agents/x.md} as a dict {'file:./agents/x.md': None}.
+    Convert back to the string format OpenCode expects: {file:./agents/x.md}
+    """
+    if isinstance(prompt, dict):
+        # YAML parsed {file:./agents/x.md} as {'file:./agents/x.md': None}
+        # Extract the key (the file path) and format as {file:path}
+        key = list(prompt.keys())[0]
+        return '{' + key + '}'
+    elif isinstance(prompt, str):
+        return prompt
+    else:
+        return str(prompt)
+
+
 def generate_agent_section(models: dict) -> str:
     """Generate the agent section of opencode.jsonc from models.yaml."""
     lines = []
@@ -37,6 +54,12 @@ def generate_agent_section(models: dict) -> str:
         if "color" in agent_conf:
             lines.append(f'      "color": "{agent_conf["color"]}",')
 
+        # Optional permissions
+        if "permissions" in agent_conf:
+            perms = agent_conf["permissions"]
+            perm_items = [f'"{k}": "{v}"' for k, v in perms.items()]
+            lines.append(f'      "permission": {{ {", ".join(perm_items)} }},')
+
         # Optional tools
         if "tools" in agent_conf:
             tools = agent_conf["tools"]
@@ -45,8 +68,9 @@ def generate_agent_section(models: dict) -> str:
             lines.append(",\n".join(tool_items))
             lines.append(f'      }},')
 
+        prompt_str = format_prompt(agent_conf["prompt"])
         lines.append(f'      "model": "{agent_conf["model"]}",')
-        lines.append(f'      "prompt": "{agent_conf["prompt"]}"')
+        lines.append(f'      "prompt": "{prompt_str}"')
         lines.append(f'    }},')
 
     lines.append('  },')
