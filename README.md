@@ -1,6 +1,6 @@
 # OpenCode OS
 
-> Your all-in-one AI agent platform — 276 skills, 17 agents, 223 MCP servers, 9 pre-built stacks
+> Your all-in-one AI agent platform — 276 skills, 20 agents, 223 MCP servers, 9 pre-built stacks
 
 OpenCode OS is a unified platform that turns [opencode](https://opencode.ai) into a powerful AI agent system. It combines two open-source repositories into one cohesive toolkit with skills, agents, MCP servers, and workflows — all pre-configured and ready to use.
 
@@ -28,10 +28,18 @@ opencode
 ```
 
 That's it. opencode will automatically discover:
-- **276 skills** in `.opencode/skills/` — loaded on-demand when you use them
-- **17 agents** in `.opencode/agents/` — available via `@mention`
+- **276 skills** in `skills/` (symlinked to `.opencode/skills/`) — loaded on-demand when you use them
+- **20 agents** in `agents/` (symlinked to `.opencode/agents/`) — available via `@mention`
 - **AGENTS.md** — loaded as project instructions
 - **11 MCP servers** — pre-configured in `opencode.jsonc`
+
+### Step 2b: Set up git hooks (recommended)
+
+```bash
+make setup-hooks
+```
+
+This installs a pre-commit hook that audits agent model assignments — catches drift before it ships.
 
 ### Step 3: Try it
 
@@ -66,24 +74,32 @@ Then use a skill by name:
 @orchestrator run the gsap-animator skill to create a scroll animation
 ```
 
-### 17 Agents
+### 20 Agents
 
-Agents are specialized AI assistants you can call with `@name`:
+Agents are specialized AI assistants you can call with `@name`. All models use the **Zen Free** provider (no API keys needed).
 
-| Agent | Type | What it does |
-|-------|------|-------------|
-| `@orchestrator` | primary | Coordinates everything — your main assistant |
-| `@blueprint` | primary | Strategic planning and architecture design |
-| `@explorer` | subagent | Searches codebases and finds patterns |
-| `@librarian` | subagent | Looks up documentation and APIs |
-| `@oracle` | subagent | Strategic technical advice |
-| `@designer` | subagent | UI/UX design |
-| `@fixer` | subagent | Code refinement and optimization |
-| `@observer` | subagent | System monitoring and metrics |
-| `@council` | subagent | Multi-perspective deliberation |
-| `@researcher` | subagent | Web research and analysis |
-| `@brainstorming` | subagent | Creative ideation |
-| `@plan` | subagent | Plan structure validation |
+| Agent | Type | Model | What it does |
+|-------|------|-------|-------------|
+| `@orchestrator` | primary | mimo-v2.5-free | Coordinates everything — your main assistant |
+| `@blueprint` | primary | north-mini-code-free | Strategic planning and architecture design |
+| `@explorer` | subagent | laguna-s-2.1-free | Searches codebases and finds patterns |
+| `@librarian` | subagent | laguna-s-2.1-free | Looks up documentation and APIs |
+| `@oracle` | subagent | mimo-v2.5-free | Strategic technical advice |
+| `@designer` | subagent | laguna-s-2.1-free | UI/UX design |
+| `@fixer` | subagent | north-mini-code-free | Code refinement and optimization |
+| `@observer` | subagent | deepseek-v4-flash-free | System monitoring and metrics |
+| `@council` | subagent | longcat-2.0-free | Multi-perspective deliberation |
+| `@researcher` | subagent | mimo-v2.5-free | Web research and analysis |
+| `@brainstorming` | subagent | longcat-2.0-free | Creative ideation |
+| `@plan` | subagent | north-mini-code-free | Plan structure validation |
+| `@compaction` | subagent | ling-3.0-flash-free | Context compression and session compaction |
+| `@owl-dns` | subagent | laguna-s-2.1-free | Web scraping with proxy rotation |
+| `@browser-use` | subagent | ling-3.0-flash-free | Natural-language browser automation |
+| `@agent-browser` | subagent | ling-3.0-flash-free | Structured CDP browser automation |
+| `@oracle-lite` | subagent | deepseek-v4-flash-free | Strategic advice (lightweight) |
+| `@designer-lite` | subagent | deepseek-v4-flash-free | UI/UX design (lightweight) |
+| `@observer-lite` | subagent | deepseek-v4-flash-free | System monitoring (lightweight) |
+| `@council-lite` | subagent | deepseek-v4-flash-free | Deliberation (lightweight) |
 
 ### Step 3: Set up environment variables
 
@@ -114,11 +130,12 @@ Opens at `http://localhost:3000` — a PWA with the Knowledge-Base catalog and l
 OpenCode OS is a **ready-to-use AI agent platform** for [opencode](https://opencode.ai). It gives you:
 
 - **276 skills** — reusable AI workflows for animation, design, development, research, content, infrastructure, and more
-- **17 agents** — specialized AI assistants you can call with `@name`
+- **20 agents** — specialized AI assistants you can call with `@name`
 - **223 MCP servers** — tools your agents can use (databases, APIs, browsers, etc.)
 - **9 pre-built MCP stacks** — curated server combinations with synergy scoring
 - **35 agent workflows** — battle-tested patterns for common tasks
 - **A Next.js PWA** — web app with skill catalog and animation demos
+- **Configuration-as-code** — `models.yaml` single source of truth with `make` targets for audit/fix/generate
 
 It's the result of merging two popular opencode repositories:
 - **opencodelinux** (214 skills, breadth-first)
@@ -184,7 +201,7 @@ MCP servers give your agents superpowers — databases, browsers, GitHub, memory
 opencode-os/
 │
 ├── .opencode/              ← opencode auto-discovers this
-│   ├── agents/ → ../agents/    17 agent definitions
+│   ├── agents/ → ../agents/    20 agent definitions
 │   ├── skills/ → ../skills/    276 skill directories
 │   ├── commands/               Custom slash commands
 │   ├── plugins/                Plugin hooks
@@ -198,15 +215,21 @@ opencode-os/
 │   ├── research-*           Research & analysis skills
 │   └── ...                  11 categories total
 │
-├── agents/                  17 agent definitions (symlinked to .opencode/)
+├── agents/                  20 agent definitions (symlinked to .opencode/)
+├── models.yaml              ← Single source of truth for agent models
 ├── profiles/                10 role profiles (loaded as instructions)
 ├── workflows/               4 workflow definitions (loaded as instructions)
+├── scripts/                 Audit + generation scripts
+│   ├── audit_agent_models.py   Audit / fix / generate-matrix
+│   ├── generate_config.py      models.yaml → opencode.jsonc
+│   └── restore_models.sh       Point-in-time recovery
+├── Makefile                 make audit / fix / matrix / generate-config
 ├── app/                     Next.js 15 PWA
 ├── public/                  Static assets (PWA manifest, KB HTML)
 ├── AGENTS.md                Operating doctrine (loaded as instructions)
 ├── stacks.json              9 MCP stack configs with synergy scoring
 ├── mcp-registry.json        223 free MCP servers across 15 categories
-└── opencode.jsonc           Platform configuration
+└── opencode.jsonc           Platform configuration (generated from models.yaml)
 ```
 
 ---
@@ -219,19 +242,31 @@ Agents are specialized AI assistants. Call any agent with `@name` in opencode.
 
 | Agent | Model | What it does |
 |-------|-------|-------------|
-| `@orchestrator` | deepseek-v4-flash-free | Coordinates everything — task decomposition, multi-agent workflows |
-| `@blueprint` | nemotron-3-super-free | Strategic planning, architecture design, research synthesis |
+| `@orchestrator` | mimo-v2.5-free | Coordinates everything — task decomposition, multi-agent workflows |
+| `@blueprint` | north-mini-code-free | Strategic planning, architecture design, research synthesis |
 
 ### Subagents (call with @name)
 
 | Agent | Model | What it does |
 |-------|-------|-------------|
-| `@explorer` | deepseek-v4-flash-free | Searches codebases and finds patterns |
-| `@librarian` | deepseek-v4-flash-free | Looks up documentation and APIs |
-| `@oracle` | claude-opus-4-7 | Strategic technical advice |
-| `@designer` | gpt-5.5 | UI/UX design |
-| `@fixer` | deepseek-v4-flash-free | Code refinement and optimization |
-| `@observer` | gpt-5.5 | System monitoring |
+| `@explorer` | laguna-s-2.1-free | Searches codebases and finds patterns |
+| `@librarian` | laguna-s-2.1-free | Looks up documentation and APIs |
+| `@oracle` | mimo-v2.5-free | Strategic technical advice |
+| `@designer` | laguna-s-2.1-free | UI/UX design |
+| `@fixer` | north-mini-code-free | Code refinement and optimization |
+| `@observer` | deepseek-v4-flash-free | System monitoring |
+| `@council` | longcat-2.0-free | Multi-perspective deliberation |
+| `@researcher` | mimo-v2.5-free | Web research and analysis |
+| `@brainstorming` | longcat-2.0-free | Creative ideation |
+| `@plan` | north-mini-code-free | Plan structure validation |
+| `@compaction` | ling-3.0-flash-free | Context compression |
+| `@owl-dns` | laguna-s-2.1-free | Web scraping with proxy rotation |
+| `@browser-use` | ling-3.0-flash-free | Natural-language browser automation |
+| `@agent-browser` | ling-3.0-flash-free | Structured CDP browser automation |
+| `@oracle-lite` | deepseek-v4-flash-free | Strategic advice (lightweight) |
+| `@designer-lite` | deepseek-v4-flash-free | UI/UX design (lightweight) |
+| `@observer-lite` | deepseek-v4-flash-free | System monitoring (lightweight) |
+| `@council-lite` | deepseek-v4-flash-free | Deliberation (lightweight) |
 | `@council` | claude-sonnet-4-6 | Multi-perspective deliberation |
 | `@researcher` | deepseek-v4-flash-free | Web research and analysis |
 | `@brainstorming` | deepseek-v4-flash-free | Creative ideation |
@@ -395,11 +430,28 @@ MCP servers give your agents tools to interact with the world. 11 are pre-config
 
 The main config file at the project root. It defines:
 
-- **17 agents** with their models, permissions, and system prompts
+- **20 agents** with their models, permissions, and system prompts
 - **11 MCP servers** with connection details
 - **11 plugins** for extended functionality
 - **Skills paths** — where to find skills
 - **Instructions** — additional context files to load
+
+### models.yaml (single source of truth)
+
+Agent model assignments are defined in `models.yaml` and synced to `opencode.jsonc`:
+
+```bash
+# Edit models.yaml, then regenerate config
+make generate-config
+
+# Audit for drift
+make audit
+
+# Fix drift automatically
+make fix
+```
+
+The full pipeline: `models.yaml` → `generate_config.py` → `opencode.jsonc` → `audit_agent_models.py` → `MODEL_ASSIGNMENT_MATRIX.md` → CI enforces sync.
 
 ### Environment variables
 
