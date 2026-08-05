@@ -24,7 +24,7 @@ jobs:
           python-version: '3.11'
 
       - name: Install dependencies
-        run: pip install json5
+        run: pip install json5 pyyaml
 
       - name: Check opencode.jsonc matches models.yaml
         run: python3 scripts/generate_config.py --check

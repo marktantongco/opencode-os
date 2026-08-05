@@ -352,8 +352,8 @@ def update_matrix(config_path: Path) -> int:
     else:
         existing = ""
 
-    start_marker = "<!-- AUTO-GENERATED:START -->"
-    end_marker = "<!-- AUTO-GENERATED:END -->"
+    start_marker = "<!-- AUTO-GENERATED -->"
+    end_marker = "<!-- END AUTO-GENERATED -->"
 
     if start_marker in existing and end_marker in existing:
         # Replace content between markers

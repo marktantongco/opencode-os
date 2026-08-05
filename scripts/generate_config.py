@@ -29,7 +29,8 @@ def generate_agent_section(models: dict) -> str:
 
     for agent_name, agent_conf in models.items():
         lines.append(f'    "{agent_name}": {{')
-        lines.append(f'      "description": "{agent_conf.get("description", agent_name)}",')
+        desc = agent_conf.get("description", agent_name).replace('"', '\\"')
+        lines.append(f'      "description": "{desc}",')
         lines.append(f'      "mode": "{agent_conf["mode"]}",')
 
         # Optional color
