@@ -241,30 +241,6 @@
       "model": "zen/ling-3.0-flash-free",
       "prompt": "{file:./agents/agent-browser.md}"
     },
-    "oracle-lite": {
-      "description": "Strategic technical advice with lightweight model fallback",
-      "mode": "subagent",
-      "model": "zen/deepseek-v4-flash-free",
-      "prompt": "{file:./agents/oracle-lite.md}"
-    },
-    "designer-lite": {
-      "description": "UI/UX design with lightweight model fallback",
-      "mode": "subagent",
-      "model": "zen/deepseek-v4-flash-free",
-      "prompt": "{file:./agents/designer-lite.md}"
-    },
-    "observer-lite": {
-      "description": "System monitoring with lightweight model fallback",
-      "mode": "subagent",
-      "model": "zen/deepseek-v4-flash-free",
-      "prompt": "{file:./agents/observer-lite.md}"
-    },
-    "council-lite": {
-      "description": "Multi-perspective deliberation with lightweight model fallback",
-      "mode": "subagent",
-      "model": "zen/deepseek-v4-flash-free",
-      "prompt": "{file:./agents/council-lite.md}"
-    },
     "owl-agent": {
       "description": "Self-optimising proxy HTTP client with ML quality scoring and 50+ proxy sources",
       "mode": "subagent",

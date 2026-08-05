@@ -1,109 +1,97 @@
-# models.yaml — Single source of truth for agent model assignments
-#
-# Edit this file → run `python3 scripts/generate_config.py` → both
-# opencode.jsonc and MODEL_ASSIGNMENT_MATRIX.md are regenerated.
-#
-# Format:
-#   agents:
-#     agent_name:
-#       model: zen/model-id
-#       mode: primary | subagent
-#       description: Human-readable description
-#       prompt: {file:./agents/agent_name.md}
-#       color: "#hex" (optional)
-#       tools: {bash: true, ...} (optional)
-
 agents:
   orchestrator:
     model: zen/mimo-v2.5-free
     mode: primary
-    description: Primary orchestrator for coordinating multi-agent workflows and task decomposition
-    prompt: {file:./agents/orchestrator.md}
+    description: Primary orchestrator for coordinating multi-agent workflows and task
+      decomposition
+    prompt:
+      file:./agents/orchestrator.md: null
     permissions:
       edit: allow
       bash: allow
-
   blueprint:
     model: zen/north-mini-code-free
     mode: primary
-    description: Strategic planning, brainstorming, architecture design, and research synthesis
-    prompt: {file:./agents/blueprint.md}
+    description: Strategic planning, brainstorming, architecture design, and research
+      synthesis
+    prompt:
+      file:./agents/blueprint.md: null
     permissions:
       edit: allow
       bash: allow
-
   explorer:
     model: zen/laguna-s-2.1-free
     mode: subagent
     description: Codebase search and pattern discovery specialist
-    prompt: {file:./agents/explorer.md}
-
+    prompt:
+      file:./agents/explorer.md: null
   librarian:
     model: zen/laguna-s-2.1-free
     mode: subagent
     description: Documentation and API reference specialist
-    prompt: {file:./agents/librarian.md}
-
+    prompt:
+      file:./agents/librarian.md: null
   oracle:
     model: zen/mimo-v2.5-free
     mode: subagent
     description: Strategic technical advisor for architecture and complex problems
-    prompt: {file:./agents/oracle.md}
-
+    prompt:
+      file:./agents/oracle.md: null
   designer:
     model: zen/laguna-s-2.1-free
     mode: subagent
     description: UI/UX design specialist for polished interfaces
-    prompt: {file:./agents/designer.md}
-
+    prompt:
+      file:./agents/designer.md: null
   fixer:
     model: zen/north-mini-code-free
     mode: subagent
     description: Code refinement, optimization, refactoring, and cleanup
-    prompt: {file:./agents/fixer.md}
-
+    prompt:
+      file:./agents/fixer.md: null
   observer:
     model: zen/deepseek-v4-flash-free
     mode: subagent
     description: Watches and reports on system behavior, logs, and metrics
-    prompt: {file:./agents/observer.md}
-
+    prompt:
+      file:./agents/observer.md: null
   council:
     model: zen/longcat-2.0-free
     mode: subagent
     description: Multi-perspective deliberation and consensus for complex decisions
-    prompt: {file:./agents/council.md}
-
+    prompt:
+      file:./agents/council.md: null
   brainstorming:
     model: zen/longcat-2.0-free
     mode: subagent
     description: Creative ideation and divergent thinking
-    prompt: {file:./agents/brainstorming.md}
-
+    prompt:
+      file:./agents/brainstorming.md: null
   compaction:
     model: zen/ling-3.0-flash-free
     mode: subagent
     description: Context compression and session compaction
-    prompt: {file:./agents/compaction.md}
-
+    prompt:
+      file:./agents/compaction.md: null
   researcher:
     model: zen/mimo-v2.5-free
     mode: subagent
     description: Web research, competitive analysis, and information gathering
-    prompt: {file:./agents/researcher.md}
-
+    prompt:
+      file:./agents/researcher.md: null
   plan:
     model: zen/north-mini-code-free
     mode: subagent
     description: Plan grammar enforcement and task breakdown
-    prompt: {file:./agents/plan.md}
-
+    prompt:
+      file:./agents/plan.md: null
   owl-dns:
     model: zen/laguna-s-2.1-free
     mode: subagent
     description: Web scraping, proxy rotation, DNS tunneling with owl-dns v5.1
-    prompt: {file:./agents/owl-dns.md}
-    color: "#6366f1"
+    prompt:
+      file:./agents/owl-dns.md: null
+    color: '#6366f1'
     tools:
       bash: true
       glob: true
@@ -113,12 +101,12 @@ agents:
       edit: true
       webfetch: false
       websearch: false
-
   browser-use:
     model: zen/ling-3.0-flash-free
     mode: subagent
     description: Browser automation for web browsing, UI testing, data scraping
-    prompt: {file:./agents/browser-use.md}
+    prompt:
+      file:./agents/browser-use.md: null
     tools:
       bash: true
       glob: true
@@ -128,12 +116,12 @@ agents:
       edit: true
       webfetch: false
       websearch: false
-
   agent-browser:
     model: zen/ling-3.0-flash-free
     mode: subagent
     description: Structured browser automation via CDP for forms and data extraction
-    prompt: {file:./agents/agent-browser.md}
+    prompt:
+      file:./agents/agent-browser.md: null
     tools:
       bash: true
       glob: true
@@ -142,37 +130,14 @@ agents:
       edit: true
       webfetch: false
       websearch: false
-
-  oracle-lite:
-    model: zen/deepseek-v4-flash-free
-    mode: subagent
-    description: Strategic technical advice with lightweight model fallback
-    prompt: {file:./agents/oracle-lite.md}
-
-  designer-lite:
-    model: zen/deepseek-v4-flash-free
-    mode: subagent
-    description: UI/UX design with lightweight model fallback
-    prompt: {file:./agents/designer-lite.md}
-
-  observer-lite:
-    model: zen/deepseek-v4-flash-free
-    mode: subagent
-    description: System monitoring with lightweight model fallback
-    prompt: {file:./agents/observer-lite.md}
-
-  council-lite:
-    model: zen/deepseek-v4-flash-free
-    mode: subagent
-    description: Multi-perspective deliberation with lightweight model fallback
-    prompt: {file:./agents/council-lite.md}
-
   owl-agent:
     model: zen/laguna-s-2.1-free
     mode: subagent
-    description: Self-optimising proxy HTTP client with ML quality scoring and 50+ proxy sources
-    prompt: {file:./agents/owl-agent.md}
-    color: "#6366f1"
+    description: Self-optimising proxy HTTP client with ML quality scoring and 50+
+      proxy sources
+    prompt:
+      file:./agents/owl-agent.md: null
+    color: '#6366f1'
     tools:
       bash: true
       glob: true
