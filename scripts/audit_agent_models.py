@@ -286,12 +286,16 @@ def generate_matrix(config_path: Path) -> int:
     return len(agents)
 
 
-def audit() -> int:
-    """Run the audit against all config sources. Returns 0 on success."""
+def audit(silent: bool = False) -> int:
+    """Run the audit against all config sources. Returns 0 on success.
+    
+    If silent is True, suppress output on pass (only print on failure).
+    """
     try:
         spec = extract_spec_agents(MATRIX_MD)
     except Exception as e:
-        print(f"❌ Failed to parse MODEL_ASSIGNMENT_MATRIX.md: {e}", file=sys.stderr)
+        if not silent:
+            print(f"❌ Failed to parse MODEL_ASSIGNMENT_MATRIX.md: {e}", file=sys.stderr)
         return 1
 
     all_issues = {}
@@ -307,24 +311,32 @@ def audit() -> int:
     total = sum(len(v) for v in all_issues.values())
 
     if total > 0:
-        print(f"🔴 AGENT MODEL AUDIT FAILED — {total} issue(s) across {len(all_issues)} config(s)\n")
-        print(f"   Spec: {MATRIX_MD}\n")
-        for source, issues in all_issues.items():
-            print(f"   [{source}]")
-            for issue in issues:
-                print(f"   {issue}")
-            print()
-        print("   Run with --fix to auto-apply corrections.")
+        if not silent:
+            print(f"🔴 AGENT MODEL AUDIT FAILED — {total} issue(s) across {len(all_issues)} config(s)\n")
+            print(f"   Spec: {MATRIX_MD}\n")
+            for source, issues in all_issues.items():
+                print(f"   [{source}]")
+                for issue in issues:
+                    print(f"   {issue}")
+                print()
+            print("   Run with --fix to auto-apply corrections.")
+        else:
+            print(f"audit failed: {total} issue(s)", file=sys.stderr)
         return 1
     else:
-        print(f"🟢 AGENT MODEL AUDIT PASSED — {len(spec)} agents in sync")
-        print(f"   Spec: {MATRIX_MD}")
-        print(f"   Checked: opencode.jsonc (repo) + ~/.opencode/opencode.json (installed)")
+        if not silent:
+            print(f"🟢 AGENT MODEL AUDIT PASSED — {len(spec)} agents in sync")
+            print(f"   Spec: {MATRIX_MD}")
+            print(f"   Checked: opencode.jsonc (repo) + ~/.opencode/opencode.json (installed)")
+        # Silent mode: no output on pass
         return 0
 
 
 def main() -> int:
     args = sys.argv[1:]
+    silent = "--check" in args or "--quiet" in args or "-q" in args
+    if silent:
+        args = [a for a in args if a not in ("--check", "--quiet", "-q")]
 
     if "--generate-matrix" in args:
         try:
@@ -343,9 +355,9 @@ def main() -> int:
             return 1
         fix(spec)
 
-    # If no flags, run audit
+    # If no flags (or only silent flags), run audit
     if not args:
-        return audit()
+        return audit(silent=silent)
 
     # If --generate-matrix was the only flag and succeeded, we're done
     if args == ["--generate-matrix"]:
@@ -353,7 +365,7 @@ def main() -> int:
 
     # If --fix was used, also run audit to verify
     if "--fix" in args:
-        return audit()
+        return audit(silent=silent)
 
     return 0
 

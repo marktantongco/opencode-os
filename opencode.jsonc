@@ -227,7 +227,7 @@
       "description": "Web scraping, proxy rotation, DNS tunneling, and anti-bot evasion with owl-dns v5.1",
       "mode": "subagent",
       "color": "#6366f1",
-      "prompt": "You are an expert web scraping operator using owl-dns v5.1. Use owl-dns fetch <url> for single URLs, owl-dns batch <file> for bulk, owl-dns discover for proxy auto-discovery, and owl-dns doctor for capability diagnostics.",
+      "prompt": "{file:./agents/owl-dns.md}",
       "tools": {
         "bash": true,
         "glob": true,

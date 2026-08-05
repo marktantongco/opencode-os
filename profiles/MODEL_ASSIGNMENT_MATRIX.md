@@ -41,7 +41,7 @@
 | `oracle` | subagent | `zen/mimo-v2.5-free` | `{file:./agents/oracle.md}` | Premium | Strategic advice needs deep reasoning |
 | `oracle-lite` | subagent | `zen/deepseek-v4-flash-free` | `{file:./agents/oracle-lite.md}` | Mid | Fallback — general purpose |
 | `orchestrator` | primary | `zen/mimo-v2.5-free` | `{file:./agents/orchestrator.md}` | Premium | Task decomposition + subagent dispatch needs deep reasoning |
-| `owl-dns` | subagent | `zen/laguna-s-2.1-free` | `You are an expert web scraping operator using owl-dns v5.1. Use owl-dns fetch <url> for single URLs, owl-dns batch <file> for bulk, owl-dns discover for proxy auto-discovery, and owl-dns doctor for capability diagnostics.` | Premium | Scraping + data interpretation |
+| `owl-dns` | subagent | `zen/laguna-s-2.1-free` | `{file:./agents/owl-dns.md}` | Premium | Scraping + data interpretation |
 | `plan` | subagent | `zen/north-mini-code-free` | `{file:./agents/plan.md}` | Code-Spec | Plan grammar validation |
 | `researcher` | subagent | `zen/mimo-v2.5-free` | `{file:./agents/researcher.md}` | Premium | Web research + synthesis |
 
