@@ -105,6 +105,22 @@ def extract_config_agents(config_path: Path) -> dict[str, str]:
     return agents
 
 
+def extract_config_agent_details(config_path: Path) -> dict[str, dict]:
+    """Extract full agent details from an opencode config file.
+    Returns {agent_name: {model, mode, prompt}}.
+    """
+    config = parse_jsonc(config_path)
+    agents = {}
+    for agent_name, agent_conf in config.get("agent", {}).items():
+        if isinstance(agent_conf, dict) and "model" in agent_conf:
+            agents[agent_name] = {
+                "model": agent_conf["model"],
+                "mode": agent_conf.get("mode", "subagent"),
+                "prompt": agent_conf.get("prompt", "—"),
+            }
+    return agents
+
+
 def audit_config(config_path: Path, spec: dict[str, str], label: str) -> list[str]:
     """Audit a single config file against the spec. Returns list of issues."""
     if not config_path.exists():
@@ -186,15 +202,16 @@ def fix(spec: dict[str, str]) -> int:
 def generate_matrix(config_path: Path) -> int:
     """Regenerate MODEL_ASSIGNMENT_MATRIX.md from an opencode config file.
 
-    Reads agent model assignments from config and writes a new matrix spec.
+    Reads agent model assignments + prompts from config and writes a new matrix spec.
     Returns number of agents written.
     """
     agents = extract_config_agents(config_path)
+    details = extract_config_agent_details(config_path)
 
     lines = []
     lines.append("# OpenCode Agent + Skill Model Assignment Matrix")
     lines.append("")
-    lines.append(f"> **Version**: {agents.__len__()}.0 (Auto-Generated)")
+    lines.append(f"> **Version**: {len(agents)}.0 (Auto-Generated)")
     lines.append(f"> **Date**: {__import__('datetime').date.today().isoformat()}")
     lines.append("> **Status**: Auto-Generated from opencode.jsonc")
     lines.append("> **Source**: `opencode.jsonc` (single source of truth)")
@@ -214,7 +231,6 @@ def generate_matrix(config_path: Path) -> int:
     # Build tier rows from unique models
     seen_tiers = set()
     for model, agent_list in sorted(model_agents.items()):
-        # Find tier from metadata
         tier = "Other"
         budget = "—"
         for a in agent_list:
@@ -240,13 +256,16 @@ def generate_matrix(config_path: Path) -> int:
     lines.append("")
     lines.append(f"## Agent → Model Mapping ({len(agents)} Agents)")
     lines.append("")
-    lines.append("| Agent | Mode | Model | Tier | Rationale |")
-    lines.append("|-------|------|-------|------|-----------|")
+    lines.append("| Agent | Mode | Model | Prompt | Tier | Rationale |")
+    lines.append("|-------|------|-------|--------|------|-----------|")
 
     for agent, model in sorted(agents.items()):
         meta = AGENT_METADATA.get(agent, ("subagent", "—", "—"))
         mode, tier, rationale = meta
-        lines.append(f"| `{agent}` | {mode} | `{model}` | {tier} | {rationale} |")
+        # Use mode from actual config if available
+        actual_mode = details.get(agent, {}).get("mode", mode)
+        prompt = details.get(agent, {}).get("prompt", "—")
+        lines.append(f"| `{agent}` | {actual_mode} | `{model}` | `{prompt}` | {tier} | {rationale} |")
 
     lines.append("")
     lines.append("---")

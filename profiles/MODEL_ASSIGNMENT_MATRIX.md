@@ -22,28 +22,28 @@
 
 ## Agent → Model Mapping (20 Agents)
 
-| Agent | Mode | Model | Tier | Rationale |
-|-------|------|-------|------|-----------|
-| `agent-browser` | subagent | `zen/ling-3.0-flash-free` | Lightweight | Structured CDP browser automation |
-| `blueprint` | primary | `zen/north-mini-code-free` | Code-Spec | Spec-first architecture, plan grammar |
-| `brainstorming` | subagent | `zen/longcat-2.0-free` | Premium | Divergent thinking + ideation |
-| `browser-use` | subagent | `zen/ling-3.0-flash-free` | Lightweight | Natural-language browser automation |
-| `compaction` | subagent | `zen/ling-3.0-flash-free` | Lightweight | Token-efficient context compression |
-| `council` | subagent | `zen/longcat-2.0-free` | Premium | Creative multi-perspective deliberation |
-| `council-lite` | subagent | `zen/deepseek-v4-flash-free` | Mid | Fallback — general purpose |
-| `designer` | subagent | `zen/laguna-s-2.1-free` | Premium | Balanced for visual design + frontend |
-| `designer-lite` | subagent | `zen/deepseek-v4-flash-free` | Mid | Fallback — general purpose |
-| `explorer` | subagent | `zen/laguna-s-2.1-free` | Premium | Balanced code understanding + pattern discovery |
-| `fixer` | subagent | `zen/north-mini-code-free` | Code-Spec | Code refinement + refactoring efficiency |
-| `librarian` | subagent | `zen/laguna-s-2.1-free` | Premium | Balanced doc retrieval + API interpretation |
-| `observer` | subagent | `zen/deepseek-v4-flash-free` | Mid | Fast monitoring, no deep reasoning needed |
-| `observer-lite` | subagent | `zen/deepseek-v4-flash-free` | Mid | Fallback — general purpose |
-| `oracle` | subagent | `zen/mimo-v2.5-free` | Premium | Strategic advice needs deep reasoning |
-| `oracle-lite` | subagent | `zen/deepseek-v4-flash-free` | Mid | Fallback — general purpose |
-| `orchestrator` | primary | `zen/mimo-v2.5-free` | Premium | Task decomposition + subagent dispatch needs deep reasoning |
-| `owl-dns` | subagent | `zen/laguna-s-2.1-free` | Premium | Scraping + data interpretation |
-| `plan` | subagent | `zen/north-mini-code-free` | Code-Spec | Plan grammar validation |
-| `researcher` | subagent | `zen/mimo-v2.5-free` | Premium | Web research + synthesis |
+| Agent | Mode | Model | Prompt | Tier | Rationale |
+|-------|------|-------|--------|------|-----------|
+| `agent-browser` | subagent | `zen/ling-3.0-flash-free` | `{file:./agents/agent-browser.md}` | Lightweight | Structured CDP browser automation |
+| `blueprint` | primary | `zen/north-mini-code-free` | `{file:./agents/blueprint.md}` | Code-Spec | Spec-first architecture, plan grammar |
+| `brainstorming` | subagent | `zen/longcat-2.0-free` | `{file:./agents/brainstorming.md}` | Premium | Divergent thinking + ideation |
+| `browser-use` | subagent | `zen/ling-3.0-flash-free` | `{file:./agents/browser-use.md}` | Lightweight | Natural-language browser automation |
+| `compaction` | subagent | `zen/ling-3.0-flash-free` | `{file:./agents/compaction.md}` | Lightweight | Token-efficient context compression |
+| `council` | subagent | `zen/longcat-2.0-free` | `{file:./agents/council.md}` | Premium | Creative multi-perspective deliberation |
+| `council-lite` | subagent | `zen/deepseek-v4-flash-free` | `{file:./agents/council-lite.md}` | Mid | Fallback — general purpose |
+| `designer` | subagent | `zen/laguna-s-2.1-free` | `{file:./agents/designer.md}` | Premium | Balanced for visual design + frontend |
+| `designer-lite` | subagent | `zen/deepseek-v4-flash-free` | `{file:./agents/designer-lite.md}` | Mid | Fallback — general purpose |
+| `explorer` | subagent | `zen/laguna-s-2.1-free` | `{file:./agents/explorer.md}` | Premium | Balanced code understanding + pattern discovery |
+| `fixer` | subagent | `zen/north-mini-code-free` | `{file:./agents/fixer.md}` | Code-Spec | Code refinement + refactoring efficiency |
+| `librarian` | subagent | `zen/laguna-s-2.1-free` | `{file:./agents/librarian.md}` | Premium | Balanced doc retrieval + API interpretation |
+| `observer` | subagent | `zen/deepseek-v4-flash-free` | `{file:./agents/observer.md}` | Mid | Fast monitoring, no deep reasoning needed |
+| `observer-lite` | subagent | `zen/deepseek-v4-flash-free` | `{file:./agents/observer-lite.md}` | Mid | Fallback — general purpose |
+| `oracle` | subagent | `zen/mimo-v2.5-free` | `{file:./agents/oracle.md}` | Premium | Strategic advice needs deep reasoning |
+| `oracle-lite` | subagent | `zen/deepseek-v4-flash-free` | `{file:./agents/oracle-lite.md}` | Mid | Fallback — general purpose |
+| `orchestrator` | primary | `zen/mimo-v2.5-free` | `{file:./agents/orchestrator.md}` | Premium | Task decomposition + subagent dispatch needs deep reasoning |
+| `owl-dns` | subagent | `zen/laguna-s-2.1-free` | `You are an expert web scraping operator using owl-dns v5.1. Use owl-dns fetch <url> for single URLs, owl-dns batch <file> for bulk, owl-dns discover for proxy auto-discovery, and owl-dns doctor for capability diagnostics.` | Premium | Scraping + data interpretation |
+| `plan` | subagent | `zen/north-mini-code-free` | `{file:./agents/plan.md}` | Code-Spec | Plan grammar validation |
+| `researcher` | subagent | `zen/mimo-v2.5-free` | `{file:./agents/researcher.md}` | Premium | Web research + synthesis |
 
 ---
 
