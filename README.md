@@ -4,6 +4,8 @@
 
 [![Config & Doctrine Check](https://github.com/marktantongco/opencode-os/actions/workflows/config-doctrine-check.yml/badge.svg)](https://github.com/marktantongco/opencode-os/actions/workflows/config-doctrine-check.yml)
 
+> 📄 **Documentation:** [System, OOM & Linux Optimization Guide](docs/system-oom-linux.md) — surviving AI agent workloads on a memory-constrained Linux desktop (kernel tuning, ZRAM, OOM protection, agent lifecycle).
+
 OpenCode OS is a unified platform that turns [opencode](https://opencode.ai) into a powerful AI agent system. It combines two open-source repositories into one cohesive toolkit with skills, agents, MCP servers, and workflows — all pre-configured and ready to use.
 
 ---

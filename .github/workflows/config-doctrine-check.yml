@@ -8,9 +8,9 @@ jobs:
   check:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v5
 
-      - uses: actions/setup-python@v5
+      - uses: actions/setup-python@v6
         with:
           python-version: '3.11'
 
@@ -23,5 +23,5 @@ jobs:
       - name: Run agent model audit
         run: make audit
 
-      - name: Check v8.0 doctrine compliance (no v5-era patterns in skills)
+      - name: Check v8.0 doctrine compliance (skills/ agents/ profiles/)
         run: make check-doctrine
