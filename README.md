@@ -53,7 +53,7 @@ Requires Python deps: `pip install json5 pyyaml` (the hook skips with a warning 
 
 **Manual checks:** `make audit` · `make check-doctrine` · `make check-config`
 
-**CI:** the same three checks run on every push/PR via the [Config & Doctrine Check](https://github.com/marktantongco/opencode-os/actions/workflows/config-doctrine-check.yml) workflow.
+**CI:** the same three checks run on every push/PR via the [Config & Doctrine Check](https://github.com/marktantongco/opencode-os/actions/workflows/config-doctrine-check.yml) workflow. `main` branch protection requires this check to pass before any merge (strict mode; admins may push directly).
 
 ### Step 3: Try it
 
