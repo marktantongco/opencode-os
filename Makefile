@@ -24,7 +24,7 @@ generate-config:
 check-config:
 	python3 scripts/generate_config.py --check
 
-## check-doctrine — Flag v5-era doctrine patterns across skills/, agents/, profiles/ (v8.0 compliance)
+## check-doctrine — Flag v5-era doctrine patterns across skills/, agents/, profiles/, docs/ (v8.0 compliance)
 check-doctrine:
 	python3 scripts/audit_doctrine_v8.py --check
 
@@ -41,6 +41,6 @@ help:
 	@echo "  make update-matrix    Update tables in matrix, preserve hand-written sections"
 	@echo "  make generate-config  Regenerate opencode.jsonc from models.yaml"
 	@echo "  make check-config     Verify opencode.jsonc matches models.yaml"
-	@echo "  make check-doctrine   Flag v5-era doctrine patterns (skills/ agents/ profiles/)"
+	@echo "  make check-doctrine   Flag v5-era doctrine patterns (skills/ agents/ profiles/ docs/)"
 	@echo "  make setup-hooks      Install shared pre-commit hook"
 	@echo "  make help             Show this help"

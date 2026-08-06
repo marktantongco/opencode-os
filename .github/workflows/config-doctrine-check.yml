@@ -23,5 +23,5 @@ jobs:
       - name: Run agent model audit
         run: make audit
 
-      - name: Check v8.0 doctrine compliance (skills/ agents/ profiles/)
+      - name: Check v8.0 doctrine compliance (skills/ agents/ profiles/ docs/)
         run: make check-doctrine

@@ -16,7 +16,7 @@ git config core.hooksPath .githooks
 echo "✅ Git hooks configured: core.hooksPath = .githooks/"
 echo "   Pre-commit hook runs on staged changes:"
 echo "   • agent model assignment audit (opencode.jsonc vs matrix)"
-echo "   • v8.0 doctrine compliance (skills/ agents/ profiles/)"
+echo "   • v8.0 doctrine compliance (skills/ agents/ profiles/ docs/)"
 echo "   • config drift check (opencode.jsonc vs models.yaml)"
 echo ""
 echo "   Requires Python deps: pip install json5 pyyaml"

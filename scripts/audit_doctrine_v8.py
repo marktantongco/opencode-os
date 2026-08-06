@@ -6,6 +6,7 @@ Scope (files that must speak v8.0):
   - skills/**/*.md        (SKILL.md files plus docs like platform-guides)
   - agents/*.md
   - profiles/*            (text files only)
+  - docs/*.md             (repo documentation)
 
 Files are SKIPPED when:
   - They carry a frozen-lineage marker ("FROZEN v<X>") — e.g. the v4 / v5.1
@@ -40,7 +41,7 @@ from pathlib import Path
 ROOT = Path(__file__).resolve().parent.parent
 
 # Directories whose docs must speak v8.0.
-SCOPE_DIRS = ["skills", "agents", "profiles"]
+SCOPE_DIRS = ["skills", "agents", "profiles", "docs"]
 
 # (label, regex) — regex matched per line.
 # Patterns target the exact v5-era CLOSING STRUCTURE markers, not generic words
@@ -59,14 +60,15 @@ FROZEN_MARKER = re.compile(r"FROZEN v\d")
 
 
 def iter_scope_files() -> list[Path]:
-    """All in-scope files, sorted. skills/ is scanned recursively (all markdown);
-    agents/ and profiles/ are flat, so every regular file is in scope."""
+    """All in-scope files, sorted. skills/ and docs/ are scanned recursively (all
+    markdown); agents/ and profiles/ are flat, so every regular file is in scope
+    (profiles includes extensionless lineage files)."""
     files: list[Path] = []
     for dirname in SCOPE_DIRS:
         base = ROOT / dirname
         if not base.is_dir():
             continue
-        if dirname == "skills":
+        if dirname in ("skills", "docs"):
             files.extend(sorted(base.rglob("*.md")))
         else:
             files.extend(sorted(p for p in base.iterdir() if p.is_file()))
@@ -132,7 +134,7 @@ def main() -> int:
 
     if not findings:
         if not args.check:
-            print("✅ All doctrine-scope files (skills/ agents/ profiles/) are v8.0 compliant.")
+            print("✅ All doctrine-scope files (skills/ agents/ profiles/ docs/) are v8.0 compliant.")
         return 0
 
     total = sum(len(f) for _, f in findings)

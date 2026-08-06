@@ -96,7 +96,7 @@ export default function Home() {
           href="https://github.com/marktantongco/opencode-accomplishments"
           title="GitHub repo"
           subtitle="source · AGENTS.md · skills/"
-          description="Canonical source. AGENTS.md includes System Master Prompt v4 doctrine. skills/animation-3d-layered-architect/SKILL.md documents the 3-layer pattern; skills/parallel-deep-research-orchestrator/SKILL.md documents the fan-out/fan-in research pipeline."
+          description="Canonical source. AGENTS.md includes the System Master Prompt v8.0 Adaptive Kernel doctrine. skills/animation-3d-layered-architect/SKILL.md documents the 3-layer pattern; skills/parallel-deep-research-orchestrator/SKILL.md documents the fan-out/fan-in research pipeline."
           accent="#10B981"
         />
       </div>

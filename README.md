@@ -46,7 +46,7 @@ make setup-hooks
 Installs shared pre-commit hooks (via `core.hooksPath`) that run on every commit, scoped to the files you stage:
 
 - **Agent model audit** — `opencode.jsonc` agent↔model assignments vs `profiles/MODEL_ASSIGNMENT_MATRIX.md` (runs when `opencode.jsonc` / the matrix / the audit script change)
-- **v8.0 doctrine compliance** — flags v5-era closing patterns (`⚡⚡`, `🔗 Hidden Assumption`, unconditional `✨ 3 Suggestions`, `Zero fluff`, `RESPONSE FRAMEWORK`) across `skills/`, `agents/`, `profiles/` (frozen v4/v5.1 profiles are exempt)
+- **v8.0 doctrine compliance** — flags v5-era closing patterns (`⚡⚡`, `🔗 Hidden Assumption`, unconditional `✨ 3 Suggestions`, `Zero fluff`, `RESPONSE FRAMEWORK`) across `skills/`, `agents/`, `profiles/`, `docs/` (frozen v4/v5.1 profiles are exempt)
 - **Config drift** — `opencode.jsonc` must stay in sync with `models.yaml` (runs when either changes)
 
 Requires Python deps: `pip install json5 pyyaml` (the hook skips with a warning if missing).

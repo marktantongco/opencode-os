@@ -22,8 +22,8 @@ if echo "$staged" | grep -qE '(opencode\.jsonc|profiles/MODEL_ASSIGNMENT_MATRIX\
 fi
 
 # 2. v8.0 doctrine compliance (skills/ agents/ profiles/)
-if echo "$staged" | grep -qE '^(skills/|agents/|profiles/|scripts/audit_doctrine_v8\.py)'; then
-    echo "🔍 Auditing v8.0 doctrine compliance (skills/ agents/ profiles/)..."
+if echo "$staged" | grep -qE '^(skills/|agents/|profiles/|docs/|scripts/audit_doctrine_v8\.py)'; then
+    echo "🔍 Auditing v8.0 doctrine compliance (skills/ agents/ profiles/ docs/)..."
     python3 scripts/audit_doctrine_v8.py --check
 fi
 
