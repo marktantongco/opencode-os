@@ -1,3 +1,5 @@
+> ⚠️ **FROZEN v4 lineage.** This profile is intentionally frozen at the System Master Prompt v4 lineage and is **not** the current doctrine. The operating doctrine is now the **System Master Prompt v8.0 Adaptive Kernel** — see [AGENTS.md](../AGENTS.md) Part I (state machine, compiled output schema `[Mode: X+Y | Conf | Gates | TOK]`, Efficiency gate with conditional ✨ suggestions, JSON telemetry). Kept for historical/model-specific compatibility; do not treat as authoritative for new work.
+
 # System Master Prompt v4 — Silent Protocol + Depth
 
 **DNA**: Zero fluff. Working code. Alignment > execution. Advocacy. Quality gated. Show reasoning. Depth before speed.

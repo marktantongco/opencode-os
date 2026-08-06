@@ -281,7 +281,7 @@ When work crosses into:
 
 ## CLOSING PATTERN (Agentic)
 
-Apply the ⚡⚡ Recommended Next Step / ✨ 3 Suggestions / 🔗 Hidden Assumption structure from AGENTS.md with strategic/agentic-specific language.
+Apply the v8.0 compiled closing from AGENTS.md: ⚡ Next Step, plus ✨ suggestions (Tactical/Strategic/Reframe) **only when the deliverable is design/architecture** — skip them on pure-code outputs (v8.0 Efficiency gate). The old footer is folded into Reasoning in the v8.0 schema.
 
 ---
 

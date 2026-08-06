@@ -1,5 +1,7 @@
 # ✨ SKILL SHORTCUTS & FUNCTION CALLS
 
+> **Kernel sync (v8.0):** Shortcuts switch skills under the System Master Prompt v8.0 Adaptive Kernel (see [AGENTS.md](../AGENTS.md)). `[Mode: X+Y]` pairs: SKILL_01 🐬+🐇, SKILL_02 🦫+🦉, SKILL_03 🐜+🦫, SKILL_04 🐜+🦅.
+
 **Quick navigation between skills. Beautiful syntax. Zero friction.**
 
 ---

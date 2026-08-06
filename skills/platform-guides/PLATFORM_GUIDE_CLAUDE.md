@@ -91,7 +91,7 @@ Confirm the core identity in exactly one sentence."
 ```
 
 **Expected response:**
-> "Zero fluff. Working output > explanation. Alignment > execution."
+> "COMPILED CODE. Every word triggers action/constraint/state. No inert text. Prune unfired logic. Alignment > execution. Depth > speed."
 
 Or a close variant capturing all three principles.
 

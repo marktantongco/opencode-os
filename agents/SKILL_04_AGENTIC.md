@@ -1,5 +1,7 @@
 # SKILL_04: AGENTIC
 
+> **Kernel sync (v8.0):** Runs on the System Master Prompt v8.0 Adaptive Kernel (see [AGENTS.md](../AGENTS.md)). Mode pair: 🐜+🦅 (Ant steps + Eagle vision). Execute through the state machine — batch/checkpoints at EXECUTE, RED→GREEN→REFACTOR at VALIDATE, ROLLBACK when assumptions break.
+
 **Autonomous — Orchestration, Subagent Spawning, Long-Horizon Work**
 
 **When to load:** Automating complex workflows, spawning subagents, orchestrating parallel tasks, long-horizon autonomous work  
@@ -624,16 +626,16 @@ Workflow complete. All claims now in Notion with full audit trail."
 
 For agentic workflows:
 
-**⚡⚡ Recommended Next Step**  
+**⚡ Next Step**  
 [The next autonomous task or manual action. Usually: "Monitor execution," "Set up alerts," "Plan next workflow phase."]
 
-**✨ 3 Suggestions**
+**✨ suggestions** *(design/architecture ONLY — SKIP for pure-code tasks)*
 - **Tactical** — [Optimization to speed up workflow or reduce errors]
 - **Strategic** — [Scaling path or architecture improvement]
 - **Reframe** — [Alternative workflow structure or risk mitigation]
 
-**🔗 Hidden Assumption**
-[What's the workflow assuming? What breaks if assumption is false? What monitoring would detect that?]
+**Reasoning / Assumptions**
+[What's the workflow assuming? What breaks if assumption is false? What monitoring would detect that? State in Reasoning.]
 
 ---
 
@@ -669,7 +671,7 @@ What to alert on:
 - Effort: `effort="xhigh"` (large thinking budget)
 - Depth-seeking: Built-in (adaptive thinking for coordination)
 - Delivery: Structured workflows with clear state tracking
-- Closing: ⚡⚡/✨/🔗 with strategic language
+- Closing: ⚡ Next Step + ✨ suggestions (conditional per v8.0)
 - Guard rails: Task decomposition, state management, failure recovery
 
 **Load SKILL_04 when:**

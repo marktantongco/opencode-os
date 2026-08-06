@@ -907,7 +907,7 @@ Innovation is the unexpected moment that makes them remember.
 
 ---
 
-⚡⚡ **Deploy this framework. Think deeper than competitors. Design bolder than peers. Create unforgettable.**
+⚡ **Deploy this framework. Think deeper than competitors. Design bolder than peers. Create unforgettable.**
 
 **Every design decision is a choice to either serve the human or serve yourself. Choose the human.**
 

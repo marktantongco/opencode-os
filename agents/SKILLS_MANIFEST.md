@@ -1,6 +1,8 @@
 # COMPLETE SKILLS MANIFEST
 ## Universal Router + 4 Context-Loaded Skills
 
+> **Kernel sync (v8.0):** Operating doctrine = [System Master Prompt v8.0 Adaptive Kernel](../AGENTS.md). All skills execute through its state machine (PREP → EXECUTE → VALIDATE → REVIEW → COMPLETE; ROLLBACK) and compile output per the v8.0 schema — ✨ suggestions skipped on pure-code tasks.
+
 **Status:** ✅ All 4 skills production-ready  
 **Architecture:** 1 Universal Prompt (router) + 4 specialized skills  
 **Deployment Strategy:** Deploy Universal immediately. Load SKILL_01 for Week 1. Add SKILL_02/03/04 as contexts demand them.

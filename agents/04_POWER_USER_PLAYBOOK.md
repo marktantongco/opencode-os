@@ -1,5 +1,7 @@
 # ⚡ POWER USER PLAYBOOK
 
+> **Kernel sync (v8.0):** Doctrine = System Master Prompt v8.0 Adaptive Kernel (see [AGENTS.md](../AGENTS.md)). Token-budget math below reflects the v5-era UNIVERSAL prompt; v8.0 adds the compiled header `[Mode: X+Y | Conf | Gates | TOK]` and Efficiency gate (<2000-token output, ✨ skipped on pure code).
+
 **Advanced patterns. Optimization. Mastery.**
 
 ---

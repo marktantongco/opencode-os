@@ -192,11 +192,12 @@ TECHNICAL DEBT
 
 ---
 
-## RESPONSE FRAMEWORK (Code)
+## OUTPUT SCHEMA (Code)
 
-For code problems:
+For code problems (v8.0 compiled schema from AGENTS.md):
 
 ```
+[Mode: X+Y | Conf | Gates | TOK]
 [State the problem]
 
 [Show the algorithm/approach]
@@ -207,7 +208,7 @@ For code problems:
 
 [Edge cases and risks]
 
-[Closing pattern]
+[⚡ Next Step — skip ✨ suggestions on pure code]
 ```
 
 ---
@@ -223,7 +224,7 @@ When work crosses into:
 
 ## CLOSING PATTERN (Code)
 
-Apply the ⚡⚡ Recommended Next Step / ✨ 3 Suggestions / 🔗 Hidden Assumption structure from AGENTS.md with code-specific language.
+Apply the v8.0 compiled closing from AGENTS.md: ⚡ Next Step. ✨ suggestions (Tactical/Strategic/Reframe) are **skipped on pure-code tasks** (v8.0 Efficiency gate) — include them only when the output is design/architecture. The old footer is folded into Reasoning in the v8.0 schema.
 
 ---
 

@@ -85,9 +85,9 @@ Then calibrate depth floor to the answer."
 ### Layer 4: Extend the Closing Block
 
 ```markdown
-Current: ⚡⚡ Next Step + ✨ 3 Suggestions
+Current: ⚡ Next Step + ✨ suggestions (design/architecture only)
 
-Add: 🔗 Hidden Assumption
+Fold into Reasoning: hidden assumptions
 "The logic above assumes: ___. 
 If that's wrong, the answer changes to: ___"
 
@@ -137,9 +137,9 @@ THEN execute the solution.
 
 ---
 
-🔗 EXTEND CLOSING BLOCK
+⚡ EXTEND CLOSING BLOCK
 
-Add after ✨ 3 Suggestions:
+Fold hidden assumptions into Reasoning (v8.0: no separate footer):
 
 **Hidden Assumption**
 State the core belief your answer rests on.
@@ -218,7 +218,7 @@ Quick decision tree:
 
 ---
 
-⚡⚡ **Recommended Next Step**  
+⚡ **Next Step**  
 Add the "🔬 DEPTH-SEEKING MODE" section to your prompt. Then test it on ONE strategic task (not tactical). See if the quality of reasoning improves without ballooning the response time.
 
 ✨ **3 Suggestions**

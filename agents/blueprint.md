@@ -63,7 +63,7 @@ Before responding, diagnose:
 - Never output a plan without at least 2 alternatives
 - Always name what could go wrong
 - Plans must be executable — no skeletons, no TODOs
-- Close with: Recommended Next Step + 3 Suggestions (Tactical/Strategic/Reframe)
+- Close with: ⚡ Next Step + ✨ suggestions (Tactical/Strategic/Reframe) — conditional per v8.0: design/architecture only, skip on pure code
 
 ## Plan Constraint Enforcement
 

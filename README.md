@@ -1,6 +1,8 @@
 # OpenCode OS
 
-> Your all-in-one AI agent platform — 276 skills, 20 agents, 223 MCP servers, 9 pre-built stacks
+> Your all-in-one AI agent platform — 276 skills, 20 agents, 223 MCP servers, 9 pre-built stacks. Operating doctrine: **System Master Prompt v8.0 Adaptive Kernel**.
+
+[![Config & Doctrine Check](https://github.com/marktantongco/opencode-os/actions/workflows/config-doctrine-check.yml/badge.svg)](https://github.com/marktantongco/opencode-os/actions/workflows/config-doctrine-check.yml)
 
 OpenCode OS is a unified platform that turns [opencode](https://opencode.ai) into a powerful AI agent system. It combines two open-source repositories into one cohesive toolkit with skills, agents, MCP servers, and workflows — all pre-configured and ready to use.
 
@@ -39,7 +41,17 @@ That's it. opencode will automatically discover:
 make setup-hooks
 ```
 
-This installs a pre-commit hook that audits agent model assignments — catches drift before it ships.
+Installs shared pre-commit hooks (via `core.hooksPath`) that run on every commit, scoped to the files you stage:
+
+- **Agent model audit** — `opencode.jsonc` agent↔model assignments vs `profiles/MODEL_ASSIGNMENT_MATRIX.md` (runs when `opencode.jsonc` / the matrix / the audit script change)
+- **v8.0 doctrine compliance** — flags v5-era closing patterns (`⚡⚡`, `🔗 Hidden Assumption`, unconditional `✨ 3 Suggestions`, `Zero fluff`, `RESPONSE FRAMEWORK`) across `skills/`, `agents/`, `profiles/` (frozen v4/v5.1 profiles are exempt)
+- **Config drift** — `opencode.jsonc` must stay in sync with `models.yaml` (runs when either changes)
+
+Requires Python deps: `pip install json5 pyyaml` (the hook skips with a warning if missing).
+
+**Manual checks:** `make audit` · `make check-doctrine` · `make check-config`
+
+**CI:** the same three checks run on every push/PR via the [Config & Doctrine Check](https://github.com/marktantongco/opencode-os/actions/workflows/config-doctrine-check.yml) workflow.
 
 ### Step 3: Try it
 
@@ -695,12 +707,13 @@ npm run dev
 
 ## Operating Doctrine
 
-The `AGENTS.md` file defines how AI agents should behave in this project:
+The `AGENTS.md` file defines how AI agents should behave in this project. It runs on the **System Master Prompt v8.0 Adaptive Kernel** (supersedes v5):
 
-- **Zero fluff** — working code only, no placeholders
-- **Quality gates** — every response is checked before submission
+- **Compiled execution** — every word triggers action/constraint/state; responses open with `[Mode: X+Y | Conf: 0.0-1.0 | Gates: All/None | TOK: X]`
+- **State machine** — PREP (default) → DISCOVERY (exception) → EXECUTE → VALIDATE → REVIEW → COMPLETE, with ROLLBACK when assumptions break
+- **Quality gates** — Clarity, Code, Reasoning, Efficiency (<2000-token output), Safety; ✨ suggestions are design/architecture-only (skipped on pure code)
 - **Silent Protocol** — parse the real need, find blind spots, give the simplest true answer
-- **Depth-seeking** — for complex problems, show reasoning and alternatives
+- **JSON telemetry** — sessions self-report `turns` / `pruned` / `next_check`
 - **No one-off work** — if you do something twice, it should become a skill
 
 ---
@@ -815,12 +828,12 @@ The `agent-master` skill orchestrates 7 specialized agents in sequence:
 
 ### Operating Doctrine
 
-The `AGENTS.md` file defines how AI agents behave:
+The `AGENTS.md` file defines how AI agents behave (System Master Prompt **v8.0 Adaptive Kernel**):
 
-- **Zero fluff** — working code only, no placeholders
-- **Quality gates** — every response checked before submission
+- **Compiled execution** — responses open with `[Mode: X+Y | Conf | Gates | TOK]`
+- **Quality gates** — Clarity, Code, Reasoning, Efficiency, Safety; ✨ skipped on pure code
 - **Silent Protocol** — parse the real need, find blind spots
-- **Depth-seeking** — show reasoning, explore alternatives
+- **State machine** — PREP → EXECUTE → VALIDATE → REVIEW → COMPLETE (ROLLBACK)
 - **No one-off work** — if you do something twice, it becomes a skill
 
 ---
@@ -877,12 +890,12 @@ The `agent-master` skill orchestrates 7 agents in sequence:
 
 ### Operating Doctrine
 
-The `AGENTS.md` file defines how AI agents behave in this project. Key principles:
+The `AGENTS.md` file defines how AI agents behave in this project (System Master Prompt **v8.0 Adaptive Kernel**). Key principles:
 
-- **Zero fluff** — working code only, no pseudocode, no placeholders
-- **Quality gates** — every response checked before submission
+- **Compiled execution** — responses open with `[Mode: X+Y | Conf | Gates | TOK]`; prune unfired logic
+- **Quality gates** — Clarity, Code, Reasoning, Efficiency, Safety; ✨ suggestions design/architecture-only
 - **Silent Protocol** — parse the real need, find blind spots, give the simplest true answer
-- **Depth-seeking** — for complex problems, show reasoning and explore alternatives
+- **State machine** — PREP → EXECUTE → VALIDATE → REVIEW → COMPLETE (ROLLBACK)
 - **No one-off work** — if you do something twice, it becomes a skill
 
 ---

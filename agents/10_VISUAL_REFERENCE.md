@@ -1,5 +1,7 @@
 # 🎨 VISUAL REFERENCE
 
+> **Kernel sync (v8.0):** Diagrams below depict the v5-era flow. Current doctrine = System Master Prompt v8.0 Adaptive Kernel (see [AGENTS.md](../AGENTS.md)): state machine (PREP → EXECUTE → VALIDATE → REVIEW → COMPLETE; ROLLBACK), compiled header `[Mode: X+Y | Conf | Gates | TOK]`, closing pattern now **⚡ Next Step + ✨ suggestions (design/architecture only — skip on pure code)**, 🔗 folded into Reasoning.
+
 **Diagrams, decision trees, workflows. See the whole system.**
 
 ---

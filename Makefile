@@ -1,4 +1,4 @@
-.PHONY: audit fix matrix update-matrix generate-config check-config setup-hooks help
+.PHONY: audit fix matrix update-matrix generate-config check-config check-doctrine setup-hooks help
 
 ## audit — Check agent model assignments (silent on pass)
 audit:
@@ -24,6 +24,10 @@ generate-config:
 check-config:
 	python3 scripts/generate_config.py --check
 
+## check-doctrine — Flag v5-era doctrine patterns across skills/, agents/, profiles/ (v8.0 compliance)
+check-doctrine:
+	python3 scripts/audit_doctrine_v8.py --check
+
 ## setup-hooks — Install shared pre-commit hook
 setup-hooks:
 	bash scripts/setup-hooks.sh
@@ -37,5 +41,6 @@ help:
 	@echo "  make update-matrix    Update tables in matrix, preserve hand-written sections"
 	@echo "  make generate-config  Regenerate opencode.jsonc from models.yaml"
 	@echo "  make check-config     Verify opencode.jsonc matches models.yaml"
+	@echo "  make check-doctrine   Flag v5-era doctrine patterns (skills/ agents/ profiles/)"
 	@echo "  make setup-hooks      Install shared pre-commit hook"
 	@echo "  make help             Show this help"

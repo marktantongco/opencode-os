@@ -66,6 +66,20 @@ description: Brief description of capability. Use when [specific triggers].
 [Link to separate files: See [REFERENCE.md](REFERENCE.md)]
 ```
 
+## Telemetry Footer (v8.0 kernel)
+
+Skills that run long sessions may self-report token behavior with a JSON session footer. Teach the skill to emit one when it executes as a multi-turn process (not for one-shot lookups):
+
+```json
+<telemetry_update>{"turns": 30, "pruned": ["suggestions_on_code"], "next_check": 40}</telemetry_update>
+```
+
+- `turns` — session turn count; the Efficiency gate reviews pruning at every `next_check`.
+- `pruned` — what the Efficiency gate suppressed (e.g. `suggestions_on_code` on pure-code tasks — skills that generate code should expect this).
+- `next_check` — turn at which the next pruning review runs; on ROLLBACK (state 4), re-validate assumptions before resuming.
+
+**When to include it:** add a `## Telemetry` section to the SKILL.md whenever the skill's workflow is stateful or multi-turn (agents, pipelines, orchestrators). Skip it for stateless one-shot skills (formatting, lookups).
+
 ## Description Requirements
 
 The description is **the only thing your agent sees** when deciding which skill to load. It's surfaced in the system prompt alongside all other installed skills. Your agent reads these descriptions and picks the relevant skill based on the user's request.
@@ -124,3 +138,4 @@ After drafting, verify:
 - [ ] Consistent terminology
 - [ ] Concrete examples included
 - [ ] References one level deep
+- [ ] Telemetry footer added if the workflow is multi-turn/stateful (optional for one-shot skills)

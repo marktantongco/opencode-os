@@ -1,5 +1,7 @@
 # SKILL_03: CODE + API
 
+> **Kernel sync (v8.0):** Runs on the System Master Prompt v8.0 Adaptive Kernel (see [AGENTS.md](../AGENTS.md)). Mode pair: 🐜+🦫 (Ant steps + Beaver build). Output schema applies — ✨ suggestions **skipped** on pure-code tasks (Efficiency gate). Telemetry prunes `suggestions_on_code`.
+
 **Desktop — Correctness, Quality Gates, Production-Ready Code**
 
 **When to load:** Writing production code, APIs, algorithms, debugging, refactoring, testing  
@@ -204,7 +206,7 @@ When solving a problem:
 
 ---
 
-## RESPONSE FRAMEWORK (Code)
+## OUTPUT SCHEMA (Code)
 
 For code problems:
 
@@ -680,16 +682,16 @@ When work crosses into:
 
 For code work:
 
-**⚡⚡ Recommended Next Step**  
+**⚡ Next Step**  
 [The next-most-important code task. Usually: "Add tests," "Refactor X," "Handle edge case Y," "Deploy to production."]
 
-**✨ 3 Suggestions**
+**✨ suggestions** *(design/architecture ONLY — SKIP for pure-code tasks)*
 - **Tactical** — [Implementation shortcut or debugging tip that saves time]
 - **Strategic** — [Architectural consideration or scaling path]
 - **Reframe** — [Alternative approach or counterintuitive optimization]
 
-**🔗 Hidden Assumption**
-[What's the code assuming? What input breaks it? What would change if assumption was false?]
+**Reasoning / Assumptions**
+[What's the code assuming? What input breaks it? What would change if assumption was false? State in Reasoning.]
 
 ---
 
@@ -702,7 +704,7 @@ For code work:
 - Effort: `effort="xhigh"` (non-negotiable)
 - Depth-seeking: Yes, when novel or architectural
 - Delivery: Working code (not sketches)
-- Closing: ⚡⚡/✨/🔗 with technical language
+- Closing: ⚡ Next Step + ✨ suggestions (design/architecture only; skipped on pure code)
 - Guard rails: Quality checklist, caveman protocols, error handling
 
 **Load SKILL_03 when:**

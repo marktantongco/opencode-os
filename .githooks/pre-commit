@@ -1,6 +1,5 @@
 #!/usr/bin/env bash
-# Pre-commit hook: audit agent model assignments in opencode.jsonc
-# against the spec in profiles/MODEL_ASSIGNMENT_MATRIX.md
+# Pre-commit hook: audit agent model assignments + v8.0 doctrine compliance.
 #
 # This hook is shared via core.hooksPath (see scripts/setup-hooks.sh)
 
@@ -8,8 +7,32 @@ set -euo pipefail
 
 cd "$(git rev-parse --show-toplevel)"
 
-# Only run if relevant files are staged
-if git diff --cached --name-only | grep -qE '(opencode\.jsonc|profiles/MODEL_ASSIGNMENT_MATRIX\.md|scripts/audit_agent_models\.py)'; then
+# The audits below import the 'json5' module (config check also needs 'yaml').
+if ! python3 -c "import json5" 2>/dev/null; then
+    echo "⚠️  Skipping pre-commit audits: missing Python deps (run: pip install json5 pyyaml)"
+    exit 0
+fi
+
+staged="$(git diff --cached --name-only)"
+
+# 1. Agent model assignments (opencode.jsonc vs MODEL_ASSIGNMENT_MATRIX.md)
+if echo "$staged" | grep -qE '(opencode\.jsonc|profiles/MODEL_ASSIGNMENT_MATRIX\.md|scripts/audit_agent_models\.py)'; then
     echo "🔍 Auditing agent model assignments..."
     python3 scripts/audit_agent_models.py
+fi
+
+# 2. v8.0 doctrine compliance (skills/ agents/ profiles/)
+if echo "$staged" | grep -qE '^(skills/|agents/|profiles/|scripts/audit_doctrine_v8\.py)'; then
+    echo "🔍 Auditing v8.0 doctrine compliance (skills/ agents/ profiles/)..."
+    python3 scripts/audit_doctrine_v8.py --check
+fi
+
+# 3. Config regeneration drift (opencode.jsonc vs models.yaml)
+if echo "$staged" | grep -qE '(opencode\.jsonc|models\.yaml|scripts/generate_config\.py)'; then
+    echo "🔍 Checking config drift (opencode.jsonc vs models.yaml)..."
+    if ! python3 -c "import yaml" 2>/dev/null; then
+        echo "⚠️  Skipping config drift check: 'pyyaml' not installed (pip install pyyaml)"
+        exit 0
+    fi
+    python3 scripts/generate_config.py --check
 fi

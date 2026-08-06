@@ -1,5 +1,7 @@
 # 📄 ONE-PAGE CHEAT SHEET
 
+> **Kernel sync (v8.0):** Doctrine = System Master Prompt v8.0 Adaptive Kernel (see [AGENTS.md](../AGENTS.md)). States: PREP → DISCOVERY → EXECUTE → VALIDATE → REVIEW → COMPLETE (ROLLBACK to PREP). Header: `[Mode: X+Y | Conf | Gates | TOK]`. ✨ suggestions skipped on pure code.
+
 **Print this. Laminate it. Keep it near your desk.**
 
 ```
@@ -38,9 +40,9 @@ CONTINUITY PROTOCOL
     4. Quick-Feedback Prompt: "Was that smooth? (Y/N)"
 
 CLOSING PATTERNS (All Skills)
-  ⚡⚡ Recommended Next Step  = Highest-leverage action (1-2 sentences)
-  ✨ 3 Suggestions          = Tactical / Strategic / Reframe
-  🔗 Hidden Assumption      = What could change the answer?
+  ⚡ Next Step               = Highest-leverage action (1-2 sentences)
+  ✨ suggestions             = Tactical / Strategic / Reframe — design/architecture ONLY, skip on pure code
+  Assumptions               = Stated in Reasoning (what could change the answer?)
 
 QUALITY GATES (Before Shipping)
   ✓ Works on first execution? (No manual setup)
@@ -50,6 +52,8 @@ QUALITY GATES (Before Shipping)
   ✓ Tests included (happy + sad path)?
   ✓ Type-safe (if code)?
   ✓ Edge cases considered?
+  ✓ Efficiency: <2000 token output; truncate non-essential reasoning past 1800
+  ✓ Safety: no malicious code / IP violations
 
 WEEKLY HEALTH CHECK
   Routing accuracy:    >90%? ✓

@@ -1,5 +1,7 @@
 # 🚀 EVOLUTION & IMPROVEMENT GUIDE
 
+> **Kernel sync (v8.0):** Doctrine = System Master Prompt v8.0 Adaptive Kernel (see [AGENTS.md](../AGENTS.md)). Token-optimization targets reference the v5-era UNIVERSAL prompt; v8.0's Efficiency gate (<2000-token output) and telemetry footer are the operative token controls.
+
 **System isn't static. Improve continuously. Plan for scale.**
 
 ---

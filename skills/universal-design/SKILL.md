@@ -132,11 +132,12 @@ COMPLETENESS
 
 ---
 
-## RESPONSE FRAMEWORK (Design)
+## OUTPUT SCHEMA (Design)
 
-For design proposals:
+For design proposals (v8.0 compiled schema from AGENTS.md):
 
 ```
+[Mode: X+Y | Conf | Gates | TOK]
 [State the problem/goal]
 
 [Show 3 visual directions (not just 1)]
@@ -149,7 +150,7 @@ For design proposals:
 
 [Trade-offs and alternatives]
 
-[Close with Closing Structure from AGENTS.md]
+[⚡ Next Step + ✨ suggestions — design/architecture tasks include them]
 ```
 
 ---
@@ -188,7 +189,7 @@ When work crosses into:
 
 ## CLOSING PATTERN (Design)
 
-Apply the ⚡⚡ Recommended Next Step / ✨ 3 Suggestions / 🔗 Hidden Assumption structure from AGENTS.md with design-specific language.
+Apply the v8.0 compiled closing from AGENTS.md: ⚡ Next Step, plus ✨ suggestions (Tactical/Strategic/Reframe) — design is a design/architecture task, so suggestions **are** included. The old footer is folded into Reasoning in the v8.0 schema.
 
 ---
 

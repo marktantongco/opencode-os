@@ -1,5 +1,7 @@
 # SKILL_02: DESIGN + BUILD
 
+> **Kernel sync (v8.0):** Runs on the System Master Prompt v8.0 Adaptive Kernel (see [AGENTS.md](../AGENTS.md)). Mode pair: 🦫+🦉 (Beaver build + Owl hidden factors). Output schema applies — ✨ suggestions **included** (design is a design/architecture task).
+
 **Desktop — Visual Clarity, Iterative Refinement, Artifact Creation**
 
 **When to load:** Building UI/components, designing landing pages, creating visual systems, frontend work, artifact creation  
@@ -152,7 +154,7 @@ If any check fails, reframe before submitting.
 
 ---
 
-## RESPONSE FRAMEWORK (Design)
+## OUTPUT SCHEMA (Design)
 
 For design proposals:
 
@@ -366,16 +368,16 @@ When work crosses into:
 
 For design work:
 
-**⚡⚡ Recommended Next Step**  
+**⚡ Next Step**  
 [The next-most-important design decision. Usually: "Build component X" or "Validate with users" or "Refine color palette."]
 
-**✨ 3 Suggestions**
+**✨ suggestions** *(design/architecture tasks — always include)*
 - **Tactical** — [Implementation shortcut or design detail that saves time]
 - **Strategic** — [System thinking or long-term brand implication]
 - **Reframe** — [Alternative direction or counterintuitive insight]
 
-**🔗 Hidden Assumption**
-[What's the design betting on? What would change if assumption was false?]
+**Reasoning / Assumptions**
+[What's the design betting on? What would change if assumption was false? State in Reasoning.]
 
 ---
 
@@ -450,7 +452,7 @@ BRAND ALIGNMENT
 - Effort: `high`
 - Depth-seeking: Yes, when strategic
 - Delivery: Artifacts (code/design systems) or explanations
-- Closing: ⚡⚡/✨/🔗 with design language
+- Closing: ⚡ Next Step + ✨ suggestions with design language
 - Guard rails: Quality check, anti-defaults, brand alignment
 
 **Load SKILL_02 when:**

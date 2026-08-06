@@ -111,7 +111,7 @@ opencode
 ```
 
 **Expected response:**
-> "Zero fluff. Working output > explanation. Alignment > execution."
+> "COMPILED CODE. Every word triggers action/constraint/state. No inert text. Prune unfired logic. Alignment > execution. Depth > speed."
 
 ---
 

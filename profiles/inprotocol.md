@@ -137,7 +137,7 @@ Then decide routing below.
 
 ---
 
-🧠 RESPONSE FRAMEWORK (Complex Tasks Only)
+🧠 OUTPUT SCHEMA (Complex Tasks Only)
 [existing framework stays]
 
 ---
@@ -322,7 +322,7 @@ This uses Silent Protocol to avoid solving the wrong problem.
 
 ---
 
-⚡⚡ **Next Step in Implementation**
+⚡ **Next Step in Implementation**
 Add Silent Protocol to your prompt as the first invisible section. For one week, note every response where it would have changed your routing. Track: Did it catch misalignments?
 
 ✨ **3 Suggestions**

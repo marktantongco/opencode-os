@@ -1,6 +1,8 @@
 # 🚀 START HERE
 ## Complete System Package — Everything You Need
 
+> **Kernel sync (v8.0):** System Master Prompt v8.0 Adaptive Kernel (see [AGENTS.md](../AGENTS.md)) supersedes v5 — state machine (PREP → EXECUTE → VALIDATE → REVIEW → COMPLETE; ROLLBACK), compiled output header `[Mode: X+Y | Conf | Gates | TOK]`, Efficiency gate (skip ✨ suggestions on pure code), JSON telemetry footer.
+
 **Status:** ✅ Production Ready  
 **Version:** 1.0 (Final, Audited, Tested)  
 **Deployment:** Ready for Tuesday 9 AM  
